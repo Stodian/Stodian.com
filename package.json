@@ -1,0 +1,37 @@
+{
+  "name": "stodian.com",
+  "version": "1.0.0",
+  "description": "stodian",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stodian/Stodian.com.git"
+  },
+  "keywords": [
+    "stodian",
+    "web",
+    "development",
+    "frontend",
+    "full",
+    "stack",
+    "back",
+    "end"
+  ],
+  "author": "Ethan Reid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Stodian/Stodian.com/issues"
+  },
+  "homepage": "https://github.com/Stodian/Stodian.com#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.6",
+    "nodemon": "^3.1.0"
+  }
+}
