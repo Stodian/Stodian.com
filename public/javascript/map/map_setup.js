@@ -38,7 +38,7 @@ function initMap() {
 
 
       // Load the GeoJSON file directly from the local path
-map.data.loadGeoJson('/workspaces/StodianReid.com/Counties_and_Unitary_Authorities_December_2021_UK_BUC_2022_1631144631117414121.geojson');
+map.data.loadGeoJson('../../Counties_and_Unitary_Authorities_December_2021_UK_BUC_2022_1631144631117414121.geojson');
 
       // Define a style for the GeoJSON features.
 map.data.setStyle({

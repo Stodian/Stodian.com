@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Sales</title>
 
     <style>
         /* Reset margin and padding for all elements */
@@ -57,16 +57,20 @@
 }
 
 .stats-box {
-  position: absolute;
-  width: 200px;
-  background-color: #f9f9f9;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  padding: 8px;
-  z-index: 1;
-  display: none;
-  top: -5px; /* adjust the distance from the top of the icon */
-  right: 50%; /* position it to the right of the icon */
-  transform: translateX(50%) translateY(-100%); /* move it up and center it horizontally */
+  position: fixed; /* Changed to fixed to keep it within the viewport */
+  width: 250px;             /* Use 100% of the container width */
+  border: 1px solid #ccc;  /* Adds a border for better visibility */
+  background-color: #f9f9f9; /* Background color */
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Shadow for depth */
+  padding: 8px;            /* Padding for content inside the box */
+  box-sizing: border-box;  /* Includes padding and border in the width calculation */
+  margin: 0 auto;          /* Center it horizontally */
+  z-index: 1;              /* Stack order */
+  display: none;           /* Initially hidden */
+  top: 50%;                /* Start at the middle of the screen vertically */
+  left: 50%;           /* Start at the middle of the screen horizontally */
+  max-height: 90vh;        
+  transform: translate(-20%, -50%); /* Center it perfectly */
 }
 
 /* Hover effect to display the box */
@@ -149,16 +153,16 @@ header:hover {
 
       <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-      <script src="../Static/Javascript/Map/map_setup.js"></script>
+      <script src="../public/javascript/map/map_setup.js"></script>
 
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6tAduWuL-vyr_Z5c-LsRGZYXfZIUNmcI&callback=initMap"></script>
 
-      <script src="../Static/Javascript/Map/dropdown_header.js"></script>
+      <script src="../public/javascript/map/dropdown_header.js"></script>
 
-      <script src="../Static/Javascript/Map/stats_box.js"></script>
+      <script src="../public/javascript/map/stats_box.js"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="../Static/Styles/index.css">
+    <link rel="stylesheet" type="text/css" href="../styles/index.css">
 
 </head>
 
@@ -167,11 +171,11 @@ header:hover {
     <header>
         <nav>
             <ul>
-                <li><a href="../Pages/beta.html">Beta</a></li>
-                <li><a href="../Pages/about.html">About</a></li>
-                <li><a href="../Pages/developments.html">Developments</a></li>
-                <li><a href="../Pages/blog.html">Blog</a></li>
-                <li><a href="../Pages/crowdfunding.html">Crowdfunding</a></li>
+                <li><a href="../pages/beta.html">Beta</a></li>
+                <li><a href="../pages/about.html">About</a></li>
+                <li><a href="../pages/sales.html">Sales</a></li>
+                <li><a href="../pages/blog.html">Blog</a></li>
+                <li><a href="../pages/crowdfunding.html">Crowdfunding</a></li>
             </ul>
         </nav>
     </header>
@@ -180,13 +184,21 @@ header:hover {
     <main>
 
       <div class="icon-container">
-        <img src="../Static/Icons/house-black-silhouette-without-door.png" alt="Game Icon" class="game-icon">
+        <img src="../public/icons/2644990_media_social_twitter_icon.png" alt="Game Icon" class="game-icon">
         <div class="stats-box">
-          <h3>Stats</h3>
-          <p>Health: 100</p>
-          <p>Mana: 80</p>
-          <p>Strength: 75</p>
-          <!-- Add more stats as needed -->
+            <h3>Sales Performance Stats</h3>
+            <p>Calls Made Today: 50</p>
+            <p>Emails Sent: 40</p>
+            <p>Leads Generated: 20</p>
+            <p>Meetings Scheduled: 10</p>
+            <p>Deals Closed: 5</p>
+            <p>Revenue Generated: $15,000</p>
+            <p>Call Response Rate: 25%</p>
+            <p>Email Open Rate: 30%</p>
+            <p>Conversion Rate: 10%</p>
+            <p>Average Deal Size: $3,000</p>
+            <p>Client Engagement Score: 80/100</p>
+            <!-- Add more stats as needed -->
         </div>
       </div>
     
