@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoCAD Style Drawing Palette</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .toolbar {
+        width: 60px;
+        background-color: #333;
+        height: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    .toolbar button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .toolbar button:hover {
+        background-color: #555;
+    }
+
+    .canvas-container {
+        margin-left: 60px;
+        height: 100%;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .toolbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the spacer can push the last button to the bottom */
+    height: 100%; /* Make sure the toolbar takes full height */
+}
+
+.spacer {
+    flex: 1; /* Takes up all available space */
+}
+
+#navigate-beta {
+    margin-bottom: 30px; /* Adjust the value as needed */
+}
+
+    canvas {
+        border: 1px solid #ccc;
+    }
+
+    
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <button data-tool="pencil"><i class="fas fa-pencil-alt"></i></button>
+    <button data-tool="shapes"><i class="fas fa-shapes"></i></button>
+    <button data-tool="eraser"><i class="fas fa-eraser"></i></button>
+    <button data-tool="fill"><i class="fas fa-fill"></i></button>
+    <!-- Spacer to push navigation button to the bottom -->
+    <div class="spacer"></div>
+    <button id="navigate-beta"><i class="fas fa-arrow-left"></i></button>
+</div>
+
+
+<div class="canvas-container">
+    <canvas id="drawingCanvas" width="1628" height="880"></canvas>
+</div>
+
+<script>
+  const canvas = document.getElementById('drawingCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let currentTool = 'pencil';
+  let isDrawing = false;
+  let startX, startY;
+
+  // Tool activation
+  document.querySelectorAll('.toolbar button').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.toolbar button').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentTool = this.dataset.tool;
+    });
+  });
+
+  // Canvas event listeners
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseout', stopDrawing);
+
+  function startDrawing(e) {
+    isDrawing = true;
+    startX = e.offsetX;
+    startY = e.offsetY;
+    if (currentTool === 'fill') {
+      ctx.fillStyle = ctx.strokeStyle;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      stopDrawing();
+    }
+  }
+
+  function stopDrawing() {
+    isDrawing = false;
+    ctx.beginPath();
+  }
+
+  function draw(e) {
+    if (!isDrawing) return;
+
+    if (currentTool === 'pencil') {
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    } else if (currentTool === 'eraser') {
+      ctx.clearRect(e.offsetX - 10, e.offsetY - 10, 20, 20); // Erase a 20x20 square
+    } else if (currentTool === 'shapes') {
+      if (isDrawing) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+        ctx.beginPath();
+        ctx.rect(startX, startY, e.offsetX - startX, e.offsetY - startY);
+        ctx.stroke();
+        ctx.closePath();
+      }
+    }
+  }
+
+  // Set tool and styles
+  function setActiveTool(tool) {
+    currentTool = tool;
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = 'black';
+  }
+
+  setActiveTool('pencil'); // Default to pencil tool
+
+  document.getElementById('navigate-beta').addEventListener('click', function() {
+    window.location.href = '../Pages/beta.html'; // Redirects to beta.html
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+/* styles.css */
+
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333; /* Text color */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+h1, h2 {
+    text-align: center;
+}
+
+/* Header styles */
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2px;
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 10px; /* Add some space below the heading */
+    color: #9a9a9a; /* Lighter grey */
+}
+
+/* Main styles */
+main {
+    flex: 1; /* Allow main to take up remaining vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    text-align: center;
+    padding-top: 10px; /* Adjust the top padding to move the content down */
+}
+
+
+.engineering-fact {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.data-box {
+    margin: 10px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+
+/* Signup form styles */
+.signup-form {
+    margin-top: 20px; /* Add space above the subscription form */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px; /* Add padding inside the form */
+    font-size: 20px;
+    padding: 30px;
+}
+
+    .signup-form input[type="email"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none; /* Remove border */
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for subtle effect */
+        font-size: 20px;
+    }
+
+    .signup-form button {
+        background-color: #000000; /* Black color */
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 20px;
+    }
+
+        .signup-form button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+/* Data boxes styles */
+.data-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    text-align: left;
+    overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+    padding: 0 50px; /* Add padding on both sides */
+}
+
+.data-box {
+    flex: 1; /* Each box takes up equal space */
+    max-width: calc((100% - 120px) / 3); /* Maximum width for each box with padding included */
+    padding: 20px; /* Adjust padding for content */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-left: 20px; /* Add left margin to create space between boxes */
+}
+
+    .data-box:first-child {
+        margin-left: 0; /* Remove left margin for the first box */
+    }
+
+    .data-box h2,
+    .data-box p,
+    .data-box h3,
+    .data-box h4 {
+        margin: 4px; /* Add margin for all headings and paragraphs */
+    }
+
+    .data-box h2 {
+        font-size: 18px;
+    }
+
+    .data-box p {
+        font-size: 14px;
+    }
+
+    .data-box h3 {
+        font-size: 35px;
+    }
+
+    .data-box h4 {
+        font-size: 18px;
+    }
+
+
+
+
+/* Footer styles */
+footer {
+    text-align: center;
+}
+
+.footer-line {
+    width: calc(100% - 80px); /* Set the width to 100% of the parent container minus 40px */
+    margin: 0 auto; /* Center the line horizontally */
+    border: none;
+    border-top: 1px solid #ccc; /* Add a solid border line */
+    margin-top: 10px; /* Adjust top margin for spacing */
+    margin-bottom: 100px; /* Adjust bottom margin for spacing */
+}
+
+/* Social links styles */
+.social-links {
+    position: fixed;
+    bottom: 35px;
+    right: 20px;
+}
+
+    .social-links a {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .social-links img {
+        width: 30px; /* Adjust as needed */
+        height: 30px; /* Adjust as needed */
+        transition: transform 0.3s ease;
+    }
+
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+
+
+        

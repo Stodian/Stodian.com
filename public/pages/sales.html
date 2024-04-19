@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <style>
+        /* Reset margin and padding for all elements */
+        html, body {
+          height: 100%; /* Ensures that the html and body elements take up the full height of the viewport */
+          margin: 0;
+          padding: 0;
+          overflow: hidden; /* Prevents scrolling on the entire page */
+        }
+      
+        header {
+          text-align: center; /* Center aligns the text for aesthetics */
+          padding: 0px 0; /* Adds padding but only vertically */
+          background: #f8f9fa; /* Gives a light grey background */
+        }
+      
+        main {
+          height: calc(100vh - 120px); /* Reduces the height of main by the total height of the header and footer */
+          overflow: hidden; /* Prevents scrolling within the main tag */
+        }
+      
+        #map {
+          width: 100%;
+          height: 100%; /* Sets the map to take up all of the available space in the main tag */
+        }
+
+        .map-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-container {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* Set the z-index to a value higher than the map */
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.game-icon {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+
+.stats-box {
+  position: absolute;
+  width: 200px;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  padding: 8px;
+  z-index: 1;
+  display: none;
+  top: -5px; /* adjust the distance from the top of the icon */
+  right: 50%; /* position it to the right of the icon */
+  transform: translateX(50%) translateY(-100%); /* move it up and center it horizontally */
+}
+
+/* Hover effect to display the box */
+.icon-container:hover .stats-box {
+  display: block;
+}
+
+</style>
+
+<style>
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    font-family: Arial, sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: -50px; /* Initially hide the header */
+    z-index: 1000; /* Ensures it's above all other content */
+    transition: top 0.3s;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    position: relative;
+    z-index: 1;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background-image: url('your-map-image-or-placeholder.jpg'); /* Placeholder for your map */
+    background-size: cover;
+    position: absolute;
+    top: 0;
+}
+
+.content {
+    z-index: 2; /* Makes sure content is clickable and on top of the map background */
+    text-align: center;
+}
+
+header:hover {
+    top: 0;  /* This will only trigger when the mouse is directly over the header */
+}
+
+      </style>
+
+
+
+
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+      <script src="../Static/Javascript/Map/map_setup.js"></script>
+
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6tAduWuL-vyr_Z5c-LsRGZYXfZIUNmcI&callback=initMap"></script>
+
+      <script src="../Static/Javascript/Map/dropdown_header.js"></script>
+
+      <script src="../Static/Javascript/Map/stats_box.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="../Static/Styles/index.css">
+
+</head>
+
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../Pages/beta.html">Beta</a></li>
+                <li><a href="../Pages/about.html">About</a></li>
+                <li><a href="../Pages/developments.html">Developments</a></li>
+                <li><a href="../Pages/blog.html">Blog</a></li>
+                <li><a href="../Pages/crowdfunding.html">Crowdfunding</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+
+      <div class="icon-container">
+        <img src="../Static/Icons/house-black-silhouette-without-door.png" alt="Game Icon" class="game-icon">
+        <div class="stats-box">
+          <h3>Stats</h3>
+          <p>Health: 100</p>
+          <p>Mana: 80</p>
+          <p>Strength: 75</p>
+          <!-- Add more stats as needed -->
+        </div>
+      </div>
+    
+        <div id="map"></div>
+    </main>
+
+
+
+</body>
+
+</html>
