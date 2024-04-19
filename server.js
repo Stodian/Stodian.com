@@ -13,3 +13,6 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
+app.get('/geojson', (req, res) => {
+  res.sendFile(path.join(__dirname, 'Counties_and_Unitary_Authorities_December_2021_UK_BUC.geojson'));
+});

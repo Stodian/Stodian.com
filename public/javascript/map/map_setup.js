@@ -23,8 +23,13 @@ function initMap() {
         elementType: 'geometry',
         stylers: [{ color: '#C9C9C9' }]
       },
+    
+      
       // ... add additional feature types as needed
     ],
+
+
+
     // Disable various UI elements to enhance the 'gamified' look
     disableDefaultUI: true,
     // Optional: depending on the gamified look you want, consider enabling or disabling certain controls
@@ -34,11 +39,12 @@ function initMap() {
 
   };
 
+
   const map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 
       // Load the GeoJSON file directly from the local path
-map.data.loadGeoJson('../../Counties_and_Unitary_Authorities_December_2021_UK_BUC_2022_1631144631117414121.geojson');
+map.data.loadGeoJson('Counties_and_Unitary_Authorities_December_2021_UK_BUC_2022_1631144631117414121.geojson');
 
       // Define a style for the GeoJSON features.
 map.data.setStyle({
@@ -58,6 +64,34 @@ map: map, // The map to place the circle on
 center: location, // The position of the center of the circle
 radius: 100 // The radius of the circle in meters
 });
+
+
+// Fetch the JSON data from your local file
+fetch('../../../../output.json')
+.then(response => response.json())
+.then(data => {
+    // Iterate over each business and create a circle
+    data.forEach(business => {
+        const location = {
+            lat: business.lat,
+            lng: business.lng
+        };
+
+        new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: location,
+            radius: 100 // Radius in meters
+        });
+    });
+})
+.catch(error => console.error('Error fetching data:', error));
+
+
 
 let zoom = mapOptions.zoom;
 const interval = setInterval(() => {
