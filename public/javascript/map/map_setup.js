@@ -4,6 +4,9 @@ function initMap() {
   const mapOptions = {
     zoom: 19,
     center: location,
+    maxZoom: 20, // set maximum zoom level
+    minZoom:4, // set minimum zoom level
+    disableDefaultUI: true,
     styles: [
       { elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
       { elementType: 'labels', stylers: [{ visibility: 'off' }] },
@@ -40,7 +43,81 @@ function initMap() {
   };
 
 
-  const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+
+
+
+// Fetch the JSON data from your local file
+fetch('../../../../output.json')
+.then(response => response.json())
+.then(data => {
+    const circles = [];
+    data.forEach(business => {
+        const location = new google.maps.LatLng(business.lat, business.lng);
+
+        const circle = new google.maps.Circle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: location,
+            radius: 100 // Radius in meters
+        });
+
+        circles.push(circle);
+    });
+
+
+
+
+
+    
+  function connectCircles(circles, map) {
+    if (circles.length < 1) return; // Ensure there is at least one circle to connect
+
+    // Start the line path from the map's center
+    const linePath = [map.getCenter()];
+
+    // Add the center of each circle to the path
+    circles.forEach(circle => {
+        linePath.push(circle.getCenter());
+    });
+
+    // Create a polyline using the line coordinates and map
+    const line = new google.maps.Polyline({
+        path: linePath,
+        geodesic: true,
+        strokeColor: '#006499', // Dark blue color for visibility
+        strokeOpacity: 0, // Make the base line invisible
+        strokeWeight: 4,
+        map: map,
+        icons: [{
+            icon: {
+                path: 'M 0,-1 0,1', // SVG path notation for a simple line
+                strokeOpacity: 1.0, // Fully opaque line segments
+                scale: 4 // Scale of the icon to adjust the appearance of dashes
+            },
+            offset: '0',
+            repeat: '15px' // Distance between each segment of the dashed line
+        }]
+    });
+}
+    
+
+
+    // Connect the circles after they are created
+    connectCircles(circles, map);
+})
+
+
+.catch(error => console.error('Error fetching data:', error));
+
+
+
+
 
 
       // Load the GeoJSON file directly from the local path
@@ -70,24 +147,25 @@ radius: 100 // The radius of the circle in meters
 fetch('../../../../output.json')
 .then(response => response.json())
 .then(data => {
-    // Iterate over each business and create a circle
-    data.forEach(business => {
-        const location = {
-            lat: business.lat,
-            lng: business.lng
-        };
+  const circles = [];
+  data.forEach(business => {
+    const location = new google.maps.LatLng(business.lat, business.lng);
 
-        new google.maps.Circle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
-            map: map,
-            center: location,
-            radius: 100 // Radius in meters
-        });
+    const circle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: location,
+      radius: 100
     });
+
+    circles.push(circle);
+  });
+
+connectCircles(circles, map); // Connect the circles after they are created
 })
 .catch(error => console.error('Error fetching data:', error));
 
@@ -103,3 +181,7 @@ if (zoom <=14) {
 }, 70); // Adjust the interval for smoother or faster animation
 
 }
+
+
+
+
