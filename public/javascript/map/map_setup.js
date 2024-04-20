@@ -36,7 +36,7 @@ function initMap() {
 
   {
   // Load the GeoJSON data from a web server
-  map.data.loadGeoJson('https://github.com/Stodian/Stodian.com/blob/main/public/javascript/map/Transformed_Counties_and_Unitary_Authorities_December_2021_UK_BUC.geojson');
+  map.data.loadGeoJson('http://localhost:3306/path/to/your/Transformed_Counties_and_Unitary_Authorities_December_2021_UK_BUC.geojson');
 
   // Style the features
   map.data.setStyle({
