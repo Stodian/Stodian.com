@@ -37,48 +37,119 @@
   height: 100%;
 }
 
-.icon-container {
-  position: absolute;
-  top: 50%;
-  left: 3%;
-  transform: translate(-50%, -50%);
-  z-index: 10; /* Set the z-index to a value higher than the map */
-}
-
 #map {
   width: 100%;
   height: 100%;
 }
 
-.game-icon {
-  width: 50px;
-  height: auto;
-  cursor: pointer;
+</style>
+
+
+<style>
+.modal-dialog {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: calc(1366px * 0.5);
+  height: calc(768px * 0.5);
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border: 5px solid #dddddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1050;
 }
 
-.stats-box {
-  position: fixed; /* Changed to fixed to keep it within the viewport */
-  width: 250px;             /* Use 100% of the container width */
-  border: 1px solid #ccc;  /* Adds a border for better visibility */
-  background-color: #f9f9f9; /* Background color */
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* Shadow for depth */
-  padding: 8px;            /* Padding for content inside the box */
-  box-sizing: border-box;  /* Includes padding and border in the width calculation */
-  margin: 0 auto;          /* Center it horizontally */
-  z-index: 1;              /* Stack order */
-  display: none;           /* Initially hidden */
-  top: 50%;                /* Start at the middle of the screen vertically */
-  left: 50%;           /* Start at the middle of the screen horizontally */
-  max-height: 90vh;        
-  transform: translate(-20%, -50%); /* Center it perfectly */
+.modal-content {
+  height: calc(100% - 60px);
+  border: none;
+  border-radius: 0;
+  background: transparent;
 }
 
-/* Hover effect to display the box */
-.icon-container:hover .stats-box {
+.modal-header {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.modal-body {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-body iframe {
+  margin: 0 auto;
   display: block;
+  max-width: 100%;
+  height: auto;
+  border: 3px solid #dddddd;
+  border-radius: 5px;
+}
+
+.close {
+  font-size: 2rem;
+  color: #ff0000;
+  opacity: 0.5;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.close:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.close:before,
+.close:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.close:active:before,
+.close:active:after {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+.close span {
+  position: relative; /* add this line */
+  z-index: 1; /* add this line */
+}
+
+.hidden {
+  display: none;
 }
 
 </style>
+
+
 
 <style>
 
@@ -90,6 +161,8 @@ body, html {
     font-family: Arial, sans-serif;
 }
 
+
+
 header {
     width: 100%;
     background-color: #333;
@@ -99,6 +172,25 @@ header {
     z-index: 1000; /* Ensures it's above all other content */
     transition: top 0.3s;
 }
+
+/* Extending the hoverable area using ::before pseudo-element */
+header::before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Start slightly above the hidden header */
+    left: 0;
+    width: 100%; /* Cover the full width of the header */
+    height: 60px; /* Adjust the height as needed to make sure it's easy to hover */
+    background: transparent;
+    z-index: -1; /* Keep below the header content but above other content */
+}
+
+header:hover {
+    top: 0; /* Move header into view */
+}
+
+
+
 
 header nav ul {
     list-style-type: none;
@@ -142,9 +234,96 @@ main {
     text-align: center;
 }
 
-header:hover {
-    top: 0;  /* This will only trigger when the mouse is directly over the header */
+
+
+
+
+
+
+
+
+/* Container for all icons, initially off the screen */
+.icon-container-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center;
+  position: fixed; /* Fixes the container to the side */
+  top: 0; /* Aligns container to the top */
+  left: -50px; /* Adjust so a small part is still visible */
+  width: 50px; /* Fixed width to suit the icon size */
+  height: 100%; /* Full height of the viewport */
+  flex-direction: column; /* Stacks children vertically */
+  align-items: center; /* Centers icons horizontally */
+  padding-top: 10px; /* Space from top of the viewport */
+  z-index: 10; /* Ensures it stays above other elements */
+  background-color: transparent; /* No background color */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
 }
+
+/* Extending the hoverable area using ::before pseudo-element */
+.icon-container-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px; /* Adjust this value based on how much larger you want the hoverable area to be */
+  width: 400px; /* Width of the extended hoverable area */
+  height: 100%; /* Same height as the parent to cover the entire height */
+  background: transparent; /* Invisible extension */
+  z-index: 9; /* Lower than the actual container to not interfere with other interactions */
+}
+
+/* When the mouse hovers over the left side of the viewport, the icons move into view */
+.icon-container-wrapper:hover,
+.icon-container-wrapper:focus-within { /* Focus-within ensures accessibility for keyboard users */
+  transform: translateX(60px); /* Moves the icons into view */
+}
+
+
+
+/* Individual icon styling */
+.game-icon {
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height for consistency */
+  cursor: pointer; /* Changes the cursor to a pointer to indicate interactivity */
+  margin-bottom: 1rem; /* Space between icons */
+  z-index: 10;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transformations */
+}
+
+
+
+/* Base styles for stats-box */
+.stats-box {
+  display: none; /* Hide by default */
+  position: fixed;
+  width: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 8px;
+  box-sizing: border-box;
+  max-height: 90vh; /* Adjust this value if needed */
+  overflow: auto; /* Allows scrolling within the box if content exceeds the max-height */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transformations */
+}
+
+/* Adjust position dynamically to avoid off-screen rendering */
+.icon-container:hover .stats-box {
+  display: block; /* Show on hover */
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.75);
+  border: 2px solid #fff;
+  top: calc(50% - 20px); /* Slightly adjust the top value to ensure it's fully visible */
+}
+
+
+
+
 
 .info-window {
   position: absolute;
@@ -152,7 +331,7 @@ header:hover {
   height: 200px;
   background-image: url('path/to/background-image.png');
   background-size: cover;
-  animation: fade-in 0.5s ease-out;
+  animation: fade-in 3s ease-out;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
@@ -192,6 +371,8 @@ header:hover {
   text-decoration: underline;
 }
 
+
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -203,7 +384,10 @@ header:hover {
 
       </style>
 
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="../../public\javascript\map\openwebsite.js"></script>  
 
 
       <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -213,8 +397,6 @@ header:hover {
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6tAduWuL-vyr_Z5c-LsRGZYXfZIUNmcI&callback=initMap"></script>
 
       <script src="../../public/javascript/map/dropdown_header.js"></script>
-
-      <script src="../../public/javascript/map/stats_box.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
@@ -237,13 +419,30 @@ header:hover {
 
 
     <main>
-
-      <div class="icon-container">
-        <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Game Icon" class="game-icon">
-        <div class="stats-box">
-            <h3>Sales Performance Stats</h3>
+      <!-- Wrapper for all icons to keep them aligned and not overlapping -->
+      <div class="icon-container-wrapper">
+        <!-- Individual icon container -->
+        <div class="icon-container">
+          <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon">
+          <div class="stats-box">
+            <h3>Profile</h3>
             <p>Calls Made Today: 50</p>
             <p>Emails Sent: 40</p>
+            <p>Leads Generated: 20</p>
+            <p>Meetings Scheduled: 10</p>
+            <p>Conversion Rate: 10%</p>
+            <p>Average Deal Size: $3,000</p>
+            <p>Client Engagement Score: 80/100</p>
+            <!-- Add more stats as needed -->
+          </div>
+        </div>
+    
+        <!-- Another individual icon container -->
+        <div class="icon-container">
+          <img src="../../public/icons/2644999_media_pinterest_social_icon.png" alt="Pinterest Icon" class="game-icon">
+          <div class="stats-box">
+            <!-- Stats details identical or specific to this icon -->
+            <h3>Sales Performance Stats</h3>
             <p>Leads Generated: 20</p>
             <p>Meetings Scheduled: 10</p>
             <p>Deals Closed: 5</p>
@@ -253,14 +452,47 @@ header:hover {
             <p>Conversion Rate: 10%</p>
             <p>Average Deal Size: $3,000</p>
             <p>Client Engagement Score: 80/100</p>
-            <!-- Add more stats as needed -->
+          </div>
+        </div>
+    
+        <!-- Third individual icon container -->
+        <div class="icon-container">
+          <img src="../../public/icons/2645013_dropbox_media_social_icon.png" alt="Dropbox Icon" class="game-icon">
+          <div class="stats-box">
+            <!-- Stats details identical or specific to this icon -->
+            <h3>Settings</h3>
+            <p>Calls Made Today: 50</p>
+            <p>Emails Sent: 40</p>
+            <p>Leads Generated: 20</p>
+            <p>Meetings Scheduled: 10</p>
+            <p>Deals Closed: 5</p>
+            <p>Revenue Generated: $15,000</p>
+            <p>Call Response Rate: 25%</p>
+          </div>
         </div>
       </div>
     
+      
         <div id="map"></div>
     </main>
 
 
+<!-- Modal -->
+<div class="modal fade hidden" id="websiteModal" tabindex="-1" role="dialog" aria-labelledby="websiteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="websiteModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="websiteIframe" src="" style="width: 100%; height: 100%;" frameborder="0"></iframe>
+     </div>
+    </div>
+  </div>
+</div>
 
 </body>
 

@@ -87,22 +87,18 @@ function createBusinessCircle(business, map) {
     radius: 100  // Adjust the radius based on your needs
   });
 
-  const infoWindow = new google.maps.InfoWindow({
-    content: `<div style="font-size: 16px;"><strong>${business.name}</strong><br/>
-              Phone: ${business.formatted_phone_number}<br/>
-              <a href="${business.website}" target="_blank">Website</a></div>`
-  });
 
-  const template = document.createElement('div');
-  template.innerHTML = `
-    <div class="info-window">
-      <div class="info-window-content">
-        <h2 class="info-window-title">${business.name}</h2>
-        <p class="info-window-phone">Call us: <a href="tel:${business.phone}">${business.phone}</a></p>
-        <p class="info-window-website"><a href="${business.website}" target="_blank">Visit our website</a></p>
-      </div>
+
+  const infoWindow = new google.maps.InfoWindow();
+  infoWindow.setContent(`
+    <div style="font-size: 16px;">
+      <strong>${business.name}</strong><br/>
+      Phone: ${business.formatted_phone_number}<br/>
+      <a href="#" onclick="openWebsiteInModal('${business.website}'); return false;">Website</a>
     </div>
-  `;
+  `);
+
+  
 
 
 circle.addListener('mouseover', () => {
