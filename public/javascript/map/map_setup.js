@@ -3,7 +3,6 @@ function initMap() {
   const mapOptions = {
     zoom: 19,
     center: location,
-    maxZoom: 20,
     minZoom: 4,
     disableDefaultUI: true,
     styles: [
@@ -35,15 +34,18 @@ function initMap() {
 
 
   {
-  // Load the GeoJSON data from a web server
-  map.data.loadGeoJson('http://localhost:3306/path/to/your/Transformed_Counties_and_Unitary_Authorities_December_2021_UK_BUC.geojson');
+  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+  map.data.loadGeoJson(
+    "https://storage.googleapis.com/mapsdevsite/json/google.json",
+  );
+}
 
-  // Style the features
-  map.data.setStyle({
-    fillColor: 'blue',
-    strokeWeight: 1,
-    zIndex: 1000
-  });
+
+{
+  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+  map.data.loadGeoJson(
+    "http://localhost:8080/geojson",
+  );
 }
 
 
@@ -57,6 +59,10 @@ window.initMap = initMap;
     .then(data => {
       const circles = data.map(business => createBusinessCircle(business, map));
       connectCircles(circles, map);
+      // Wait for all circles to be created and added to the map
+      setTimeout(() => {
+        drawShortestPath(circles, map);
+      }, 1000);
     })
     .catch(error => console.error('Error fetching data:', error));
 
@@ -67,6 +73,7 @@ window.initMap = initMap;
   gradualZoomOut(map, mapOptions.zoom);
 }
 
+// Function to create and return a Google Maps Circle with an attached InfoWindow
 function createBusinessCircle(business, map) {
   const location = new google.maps.LatLng(business.lat, business.lng);
   const circle = new google.maps.Circle({
@@ -77,50 +84,60 @@ function createBusinessCircle(business, map) {
     fillOpacity: 0.35,
     map: map,
     center: location,
-    radius: 100
+    radius: 100  // Adjust the radius based on your needs
   });
 
   const infoWindow = new google.maps.InfoWindow({
     content: `<div style="font-size: 16px;"><strong>${business.name}</strong><br/>
-              Phone: ${business.phone}<br/>
+              Phone: ${business.formatted_phone_number}<br/>
               <a href="${business.website}" target="_blank">Website</a></div>`
   });
 
-  circle.addListener('mouseover', () => {
-    infoWindow.setPosition(circle.getCenter());
-    infoWindow.open(map);
-  });
+  const template = document.createElement('div');
+  template.innerHTML = `
+    <div class="info-window">
+      <div class="info-window-content">
+        <h2 class="info-window-title">${business.name}</h2>
+        <p class="info-window-phone">Call us: <a href="tel:${business.phone}">${business.phone}</a></p>
+        <p class="info-window-website"><a href="${business.website}" target="_blank">Visit our website</a></p>
+      </div>
+    </div>
+  `;
 
-  circle.addListener('mouseout', () => {
-    infoWindow.close();
-  });
 
-  return circle;
+circle.addListener('mouseover', () => {
+  infoWindow.setPosition(circle.getCenter());
+  infoWindow.open(map);
+});
+
+circle.addListener('mouseout', () => {
+  infoWindow.close();
+});
+
+return circle;
 }
 
-function connectCircles(circles, map) {
-  if (circles.length < 1) return;
-
-  const linePath = [map.getCenter(), ...circles.map(circle => circle.getCenter())];
-
-  const line = new google.maps.Polyline({
-    path: linePath,
-    geodesic: true,
-    strokeColor: '#006499',
-    strokeOpacity: 0,
-    strokeWeight: 4,
-    map: map,
-    icons: [{
-      icon: {
-        path: 'M 0,-1 0,1',
-        strokeOpacity: 1.0,
-        scale: 4
-      },
-      offset: '0',
-      repeat: '15px'
-    }]
-  });
+// Function to fetch data from a GeoJSON file and create circles
+function loadAndDisplayCircles(map) {
+  fetch('URL_TO_YOUR_GEOJSON_FILE')  // Replace this with the actual URL
+    .then(response => response.json())
+    .then(data => {
+      const circles = data.features.map(feature => {
+        const business = {
+          lat: feature.geometry.coordinates[1],  // Assuming [longitude, latitude] order
+          lng: feature.geometry.coordinates[0],
+          name: feature.properties.name,
+          formatted_phone_number: feature.properties.formatted_phone_number, // Using the formatted_phone_number property
+          website: feature.properties.website
+        };
+        return createBusinessCircle(business, map);
+      });
+      connectCircles(circles, map);
+    })
+    .catch(error => console.error('Error loading the GeoJSON data: ', error));
 }
+
+
 
 function createStaticCircle(location, map) {
   new google.maps.Circle({
@@ -135,6 +152,10 @@ function createStaticCircle(location, map) {
   });
 }
 
+
+
+
+
 function gradualZoomOut(map, initialZoom) {
   let zoom = initialZoom;
   const interval = setInterval(() => {
@@ -145,3 +166,6 @@ function gradualZoomOut(map, initialZoom) {
     }
   }, 70);
 }
+
+
+
