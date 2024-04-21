@@ -100,40 +100,93 @@ function createBusinessCircle(business, map) {
 
   
 
+    
+  class CustomOverlay extends google.maps.OverlayView {
+    constructor(position, content) {
+        super();
+        this.position = position;
+        this.content = content;
+        this.div = null;
+    }
+
+    onAdd() {
+        this.div = document.createElement('div');
+        this.div.className = 'overlay-container';
+        this.div.style.position = 'absolute';
+        this.div.style.background = "white";
+        this.div.style.border = "1px solid black";
+        this.div.style.padding = "10px";
+        this.div.innerHTML = this.content;
+        const panes = this.getPanes();
+        panes.overlayLayer.appendChild(this.div);
+
+        // Ensure the overlay stays when hovered over
+        this.div.addEventListener('mouseover', (event) => {
+          event.stopPropagation();
+          // Keep visible while hovered
+          clearTimeout(this.hideTimeout);
+        });
+        
+        this.div.addEventListener('mouseout', (event) => {
+          event.stopPropagation();
+          // Hide after mouseout with delay
+          this.hideTimeout = setTimeout(() => {
+              this.setMap(null);
+          }, 300); // short delay before hiding
+        });
+        
+        this.div.addEventListener('click', (event) => {
+          event.stopPropagation(); // Important to allow click events on links
+        });
+    }
+
+    draw() {
+        const overlayProjection = this.getProjection();
+        const position = overlayProjection.fromLatLngToDivPixel(this.position);
+        this.div.style.left = position.x + 'px';
+        this.div.style.top = position.y + 'px';
+    }
+
+    onRemove() {
+        if (this.div) {
+            this.div.parentNode.removeChild(this.div);
+            this.div = null;
+        }
+    }
+}
+
+let overlay; // Declare overlay variable outside to manage its scope
 
 circle.addListener('mouseover', () => {
-  infoWindow.setPosition(circle.getCenter());
-  infoWindow.open(map);
+    const content = `
+        <div style="font-size: 16px;">
+            <strong>${business.name}</strong><br/>
+            Phone: ${business.formatted_phone_number}<br/>
+            <a href="#" onclick="openWebsiteInModal('${business.website}'); return false;">Website</a>
+        </div>
+    `;
+    if (!overlay) {
+        overlay = new CustomOverlay(circle.getCenter(), content);
+        overlay.setMap(map);
+    } else {
+        overlay.div.innerHTML = content; // Update content if overlay already exists
+    }
+    // Prevent overlay from disappearing when mouse is over the circle
+    clearTimeout(overlay.hideTimeout);
 });
 
 circle.addListener('mouseout', () => {
-  infoWindow.close();
+    // Start the process to hide the overlay, but allow cancellation if quickly hovered again
+    overlay.hideTimeout = setTimeout(() => {
+        if (overlay && !overlay.div.matches(':hover')) {
+            overlay.setMap(null); // Remove the overlay from the map if not hovered
+            overlay = null;
+        }
+    }, 1000); // short delay before hiding
 });
 
 return circle;
 }
-
-// Function to fetch data from a GeoJSON file and create circles
-function loadAndDisplayCircles(map) {
-  fetch('URL_TO_YOUR_GEOJSON_FILE')  // Replace this with the actual URL
-    .then(response => response.json())
-    .then(data => {
-      const circles = data.features.map(feature => {
-        const business = {
-          lat: feature.geometry.coordinates[1],  // Assuming [longitude, latitude] order
-          lng: feature.geometry.coordinates[0],
-          name: feature.properties.name,
-          formatted_phone_number: feature.properties.formatted_phone_number, // Using the formatted_phone_number property
-          website: feature.properties.website
-        };
-        return createBusinessCircle(business, map);
-      });
-      connectCircles(circles, map);
-    })
-    .catch(error => console.error('Error loading the GeoJSON data: ', error));
-}
-
-
 
 function createStaticCircle(location, map) {
   new google.maps.Circle({

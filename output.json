@@ -42,13 +42,6 @@
     "lng": -1.9045499
   },
   {
-    "name": "ADM Studio Ltd",
-    "formatted_phone_number": "0121 238 3263",
-    "website": "https://www.admstudio.co.uk/",
-    "lat": 52.47187049999999,
-    "lng": -1.9459996
-  },
-  {
     "name": "Design AI Ltd",
     "formatted_phone_number": "07966 206595",
     "website": "http://www.designai.co.uk/",
@@ -56,11 +49,11 @@
     "lng": -1.8066738
   },
   {
-    "name": "Wellspace Architects",
-    "formatted_phone_number": "0121 751 8183",
-    "website": "http://www.wellspacearchitects.com/",
-    "lat": 52.4849592,
-    "lng": -1.8839506
+    "name": "ADM Studio Ltd",
+    "formatted_phone_number": "0121 238 3263",
+    "website": "https://www.admstudio.co.uk/",
+    "lat": 52.47187049999999,
+    "lng": -1.9459996
   },
   {
     "name": "Pace Studio LTD",
@@ -68,6 +61,13 @@
     "website": "https://www.pacestudio.co.uk/",
     "lat": 52.4854737,
     "lng": -1.9046442
+  },
+  {
+    "name": "Wellspace Architects",
+    "formatted_phone_number": "0121 751 8183",
+    "website": "http://www.wellspacearchitects.com/",
+    "lat": 52.4849592,
+    "lng": -1.8839506
   },
   {
     "name": "Gruhe Architects",
@@ -105,13 +105,6 @@
     "lng": -1.8896217
   },
   {
-    "name": "LMi Architecture Ltd",
-    "formatted_phone_number": "07861 084668",
-    "website": "http://lmiarchitecture.com/",
-    "lat": 52.48953849999999,
-    "lng": -1.8746934
-  },
-  {
     "name": "Brophy Riaz & Partners (BRP Architects)",
     "formatted_phone_number": "0121 507 1616",
     "website": "https://brophyriaz.co.uk/?utm_source=organic&utm_medium=gmb",
@@ -138,5 +131,517 @@
     "website": "http://www.mysolihullarchitect.co.uk/",
     "lat": 52.442286,
     "lng": -1.859192
+  },
+  {
+    "name": "Co-Arch",
+    "formatted_phone_number": "0121 817 7878",
+    "website": "http://www.co-arch.co.uk/",
+    "lat": 52.4850349,
+    "lng": -1.8840465
+  },
+  {
+    "name": "Darcy Architects",
+    "formatted_phone_number": "07474 350037",
+    "website": "http://www.darcyarchitects.co.uk/",
+    "lat": 52.4229852,
+    "lng": -1.9292907,
+    "place_id": "ChIJ48UlIvK_cEgR22-qJ2SGcwY"
+  },
+  {
+    "name": "D5 Architects LLP",
+    "formatted_phone_number": "0121 633 4663",
+    "website": "http://www.d5architects.net/",
+    "lat": 52.4766238,
+    "lng": -1.8868353,
+    "place_id": "ChIJUyztLoe8cEgRlQjNbSjk8CM"
+  },
+  {
+    "name": "Arcon Architects Ltd",
+    "lat": 52.513292,
+    "lng": -1.9017523,
+    "place_id": "ChIJ__8q3kijcEgRnswhXEiuglA"
+  },
+  {
+    "name": "Lapworth Architects",
+    "formatted_phone_number": "0121 455 0032",
+    "website": "http://www.lapwortharchitects.com/",
+    "lat": 52.4809273,
+    "lng": -1.9139237,
+    "place_id": "ChIJ2curWFa8cEgRthGwEESnXPI"
+  },
+  {
+    "name": "Minesh Patel Architects",
+    "formatted_phone_number": "0121 633 5538",
+    "website": "http://www.mineshpatel.co.uk/",
+    "lat": 52.4784519,
+    "lng": -1.8896217,
+    "place_id": "ChIJ61HhnEm9cEgRoboB7Wr4rOQ"
+  },
+  {
+    "name": "Wellspace Architects",
+    "formatted_phone_number": "0121 751 8183",
+    "website": "http://www.wellspacearchitects.com/",
+    "lat": 52.4849592,
+    "lng": -1.8839506,
+    "place_id": "ChIJkUNAUlGjcEgR3cwhdQe9Cd0"
+  },
+  {
+    "name": "Tristan Arthur Architects Ltd",
+    "formatted_phone_number": "07852 296229",
+    "website": "https://www.tristanarthurarchitects.com/",
+    "lat": 52.4148006,
+    "lng": -2.0574238,
+    "place_id": "ChIJJVGEDnCVcEgRs2reSgmlU5s"
+  },
+  {
+    "name": "Brophy Riaz & Partners (BRP Architects)",
+    "formatted_phone_number": "0121 507 1616",
+    "website": "https://brophyriaz.co.uk/?utm_source=organic&utm_medium=gmb",
+    "lat": 52.49126709999999,
+    "lng": -1.9127408,
+    "place_id": "ChIJg6ew3-u8cEgRgnbT5EeJo_I"
+  },
+  {
+    "name": "Abacus Architects",
+    "formatted_phone_number": "0121 608 3700",
+    "website": "http://www.abacusarchitects.co.uk/",
+    "lat": 52.48503299999999,
+    "lng": -1.910687,
+    "place_id": "ChIJNc0Oje28cEgRt8pfz9qUmQU"
+  },
+  {
+    "name": "JSA Architects",
+    "formatted_phone_number": "0121 663 6084",
+    "website": "http://www.jsa.design/",
+    "lat": 52.4007043,
+    "lng": -1.8054587,
+    "place_id": "ChIJ51aPElO5cEgRJPD2Fn58j20"
+  },
+  {
+    "name": "HB Architects (Wythall)",
+    "formatted_phone_number": "07961 146351",
+    "website": "https://hb-architects-wythall.business.site/?utm_source=gmb&utm_medium=referral",
+    "lat": 52.3765764,
+    "lng": -1.8812534,
+    "place_id": "ChIJn2HTIBi_cEgRI40JWgdwr1Q"
+  },
+  {
+    "name": "The General Architecture Company Ltd",
+    "formatted_phone_number": "0121 270 7227",
+    "website": "https://www.thegeneralarchitecturecompany.co.uk/",
+    "lat": 52.4320713,
+    "lng": -1.9289555,
+    "place_id": "ChIJ_1RUFdW9cEgRci2RXn7k8is"
+  },
+  {
+    "name": "Harper Architects",
+    "formatted_phone_number": "0121 608 2510",
+    "website": "http://www.harperarchitects.co.uk/",
+    "lat": 52.4101055,
+    "lng": -1.8354018,
+    "place_id": "ChIJ_we7wcG5cEgR9yYZECfVYfY"
+  },
+  {
+    "name": "My Arch1tect Ltd",
+    "formatted_phone_number": "07522 545737",
+    "website": "https://www.houzz.co.uk/pro/myarchitect3000/my-architect",
+    "lat": 52.430585,
+    "lng": -1.8824714,
+    "place_id": "ChIJfwaieEmZcEgRgYeY-UKXUJw"
+  },
+  {
+    "name": "Design AI Ltd",
+    "formatted_phone_number": "07966 206595",
+    "website": "http://www.designai.co.uk/",
+    "lat": 52.4182284,
+    "lng": -1.8066738,
+    "place_id": "ChIJgZbN3ZO5cEgRoYMbbZtYcas"
+  },
+  {
+    "name": "David Thorp Architects Ltd",
+    "formatted_phone_number": "0121 777 5925",
+    "website": "http://www.mysolihullarchitect.co.uk/",
+    "lat": 52.442286,
+    "lng": -1.859192,
+    "place_id": "ChIJW0Pf_eW7cEgRa_vPJt7HlNk"
+  },
+  {
+    "name": "Hepburn Daoudi Architects",
+    "formatted_phone_number": "07720 813035",
+    "website": "http://www.hepburndaoudi.com/",
+    "lat": 52.4527181,
+    "lng": -1.9095568,
+    "place_id": "ChIJJecz-_i9cEgRggsCf7omgCY"
+  },
+  {
+    "name": "MDG Architects",
+    "formatted_phone_number": "0121 638 0201",
+    "website": "http://www.mdgarchitects.co.uk/",
+    "lat": 52.4859968,
+    "lng": -1.9070539,
+    "place_id": "ChIJq6qqqjfPcEgR0evXi1PbjcI"
+  },
+  {
+    "name": "David Cauldwell Architects",
+    "formatted_phone_number": "0121 428 1979",
+    "website": "https://www.davidcauldwell.co.uk/",
+    "lat": 52.4552127,
+    "lng": -1.9584664,
+    "place_id": "ChIJT5TXS5S9cEgRst_ozzSquBs"
+  },
+  {
+    "name": "Hampton Architecture Limited",
+    "formatted_phone_number": "01564 330714",
+    "website": "http://www.hamptonarchitecture.uk/",
+    "lat": 52.405001,
+    "lng": -1.8224842,
+    "place_id": "ChIJhXYGIae5cEgRz1PHBJkNc84"
+  },
+  {
+    "name": "Edward Jones Architecture services",
+    "formatted_phone_number": "01283 529148",
+    "website": "http://www.ejarchitecture.co.uk/",
+    "lat": 52.81542169999999,
+    "lng": -1.632755
+  },
+  {
+    "name": "Spark Design and Planning",
+    "formatted_phone_number": "01332 977487",
+    "website": "http://www.sparkdesign.co.uk/",
+    "lat": 52.80714889999999,
+    "lng": -1.6433636
+  },
+  {
+    "name": "Hardwick Studio Architects Ltd.",
+    "formatted_phone_number": "01283 904090",
+    "website": "http://www.hardwickarchitects.co.uk/",
+    "lat": 52.7102549,
+    "lng": -1.6281221
+  },
+  {
+    "name": "The Next Sketch",
+    "formatted_phone_number": "020 3724 2534",
+    "website": "https://thenextsketch.com/",
+    "lat": 52.8246687,
+    "lng": -1.4292057
+  },
+  {
+    "name": "Extended Ideas: Specialist Derby Architect",
+    "formatted_phone_number": "01332 416448",
+    "website": "https://www.extendedideas.co.uk/",
+    "lat": 52.8800909,
+    "lng": -1.4487834
+  },
+  {
+    "name": "JMJ Architecture",
+    "formatted_phone_number": "07872 688728",
+    "website": "http://jmjarchitecture.com/",
+    "lat": 52.65018800000001,
+    "lng": -1.6954674
+  },
+  {
+    "name": "Mark Reynolds Architect",
+    "formatted_phone_number": "01283 515155",
+    "website": "http://www.markreynoldsarchitect.com/",
+    "lat": 52.8352294,
+    "lng": -1.6461718
+  },
+  {
+    "name": "JDP Architects",
+    "formatted_phone_number": "01283 763392",
+    "website": "https://www.jdp-architects.co.uk/",
+    "lat": 52.7321305,
+    "lng": -1.6378645
+  },
+  {
+    "name": "DCI Architecture",
+    "formatted_phone_number": "01530 588141",
+    "website": "http://dciarch.co.uk/",
+    "lat": 52.68235300000001,
+    "lng": -1.517976
+  },
+  {
+    "name": "Sketch Design & Planning Studio",
+    "formatted_phone_number": "07800 596653",
+    "website": "http://www.sketchplanningstudio.co.uk/",
+    "lat": 52.74411989999999,
+    "lng": -1.3856736
+  },
+  {
+    "name": "Worcester Architects Limited",
+    "formatted_phone_number": "01332 742557",
+    "website": "http://www.worcester-architects.co.uk/",
+    "lat": 52.9235037,
+    "lng": -1.4796873
+  },
+  {
+    "name": "SG Design Studio",
+    "formatted_phone_number": "01283 226771",
+    "lat": 52.77651729999999,
+    "lng": -1.5267643
+  },
+  {
+    "name": "Urban Designs",
+    "formatted_phone_number": "01283 763763",
+    "website": "http://www.urban-designs.co.uk/",
+    "lat": 52.8074415,
+    "lng": -1.6267561
+  },
+  {
+    "name": "S & S Architecture Limited",
+    "formatted_phone_number": "01530 417764",
+    "website": "http://www.sandsarchitecture.co.uk/",
+    "lat": 52.74963820000001,
+    "lng": -1.4756603
+  },
+  {
+    "name": "Niche Architecture",
+    "formatted_phone_number": "01283 499451",
+    "website": "http://nichearchitecture.co.uk/",
+    "lat": 52.8009254,
+    "lng": -1.646389
+  },
+  {
+    "name": "NWL architectural design services",
+    "formatted_phone_number": "07414 145345",
+    "lat": 52.74624129999999,
+    "lng": -1.4615138
+  },
+  {
+    "name": "Faber Architects Ltd",
+    "formatted_phone_number": "01283 702489",
+    "website": "http://www.faberarchitects.com/",
+    "lat": 52.8335674,
+    "lng": -1.5254007
+  },
+  {
+    "name": "A for Architect",
+    "formatted_phone_number": "07960 495728",
+    "website": "https://www.aforarchitect.com/",
+    "lat": 52.8000893,
+    "lng": -1.5551606
+  },
+  {
+    "name": "Manning Holden Architects",
+    "formatted_phone_number": "07793 863642",
+    "website": "http://www.manningholden.com/",
+    "lat": 53.1430321,
+    "lng": -1.5572023
+  },
+  {
+    "name": "Hewitt&Carr Architects",
+    "formatted_phone_number": "01538 756888",
+    "website": "http://www.hcarchitects.co.uk/",
+    "lat": 52.9898687,
+    "lng": -1.9876664
+  },
+  {
+    "name": "Design Studio Architects",
+    "formatted_phone_number": "0116 251 0606",
+    "website": "https://ds-a.co.uk/",
+    "lat": 52.62865149999999,
+    "lng": -1.1316797
+  },
+  {
+    "name": "Lang Architects",
+    "formatted_phone_number": "07921 842074",
+    "website": "http://www.langarchitects.co.uk/",
+    "lat": 53.1576017,
+    "lng": -1.5769111
+  },
+  {
+    "name": "Robert Davies Architects",
+    "formatted_phone_number": "024 7711 0619",
+    "website": "http://www.robertdavies-architects.co.uk/",
+    "lat": 52.40341170000001,
+    "lng": -1.5132422
+  },
+  {
+    "name": "AM2 Architects",
+    "formatted_phone_number": "0800 069 8285",
+    "website": "http://www.am2architects.com/",
+    "lat": 53.0748536,
+    "lng": -0.8167220000000001
+  },
+  {
+    "name": "Walters Architects",
+    "formatted_phone_number": "0116 254 1830",
+    "website": "http://www.waltersarchitects.com/?utm_source=GBP&utm_medium=GBP&utm_campaign=GBP&utm_id=GBP",
+    "lat": 52.6342798,
+    "lng": -1.1380837
+  },
+  {
+    "name": "Blend Architects Ltd",
+    "formatted_phone_number": "07545 247319",
+    "website": "http://www.blendarchitects.co.uk/",
+    "lat": 52.5097948,
+    "lng": -2.178032
+  },
+  {
+    "name": "Julian Owen Associates Architects",
+    "formatted_phone_number": "0115 922 9831",
+    "website": "https://www.julianowen.co.uk/",
+    "lat": 52.9230762,
+    "lng": -1.2096988
+  },
+  {
+    "name": "KOR Architects",
+    "formatted_phone_number": "07841 511909",
+    "website": "http://www.korarchitects.co.uk/",
+    "lat": 52.9516205,
+    "lng": -1.143747
+  },
+  {
+    "name": "The Drawing Room (Architects) Ltd",
+    "formatted_phone_number": "0116 288 0111",
+    "website": "http://www.tdrarchitects.co.uk/",
+    "lat": 52.5817,
+    "lng": -1.1049094
+  },
+  {
+    "name": "Unity Architects",
+    "formatted_phone_number": "01926 569069",
+    "website": "http://www.unityarchitects.co.uk/",
+    "lat": 52.2880818,
+    "lng": -1.535765
+  },
+  {
+    "name": "Focus Architects Limited",
+    "formatted_phone_number": "01952 370054",
+    "website": "http://focusarchitects.co.uk/",
+    "lat": 52.6771948,
+    "lng": -2.3757564
+  },
+  {
+    "name": "Stoneleigh Architectural Services Limited",
+    "formatted_phone_number": "01902 927265",
+    "website": "http://stoneleigharchitectural.co.uk/",
+    "lat": 52.6176404,
+    "lng": -2.2436254
+  },
+  {
+    "name": "Richard Partington Architect",
+    "formatted_phone_number": "07884 187224",
+    "website": "http://www.richardpartingtonarchitect.co.uk/",
+    "lat": 52.58532319999999,
+    "lng": -1.8235641
+  },
+  {
+    "name": "William Green Architects",
+    "formatted_phone_number": "0330 320 0665",
+    "website": "http://www.williamgreenarchitects.co.uk/",
+    "lat": 52.0587002,
+    "lng": -1.339932
+  },
+  {
+    "name": "Rickett Architects Leamington Spa",
+    "formatted_phone_number": "01926 967090",
+    "website": "https://rickett.co.uk/",
+    "lat": 52.2903898,
+    "lng": -1.5340794
+  },
+  {
+    "name": "Midlands Extension Plans",
+    "formatted_phone_number": "07572 777382",
+    "website": "http://www.midlands-extensionplans.co.uk/",
+    "lat": 52.6421661,
+    "lng": -1.7195575
+  },
+  {
+    "name": "Simon Foote Architects",
+    "formatted_phone_number": "01332 209178",
+    "website": "http://www.simonfootearchitects.co.uk/",
+    "lat": 52.9247484,
+    "lng": -1.4889371
+  },
+  {
+    "name": "Design 30",
+    "formatted_phone_number": "07741 538515",
+    "lat": 52.7825795,
+    "lng": -1.5778303
+  },
+  {
+    "name": "Making Plans Architecture",
+    "formatted_phone_number": "01283 703160",
+    "website": "http://www.makingplans-architecture.co.uk/",
+    "lat": 52.8538481,
+    "lng": -1.5622752
+  },
+  {
+    "name": "HomePlans Architectural Practice",
+    "formatted_phone_number": "0800 021 0233",
+    "website": "http://www.myhomeplans.co.uk/",
+    "lat": 52.7270104,
+    "lng": -1.3652696
+  },
+  {
+    "name": "Bluelime Home Design",
+    "formatted_phone_number": "01283 224524",
+    "website": "http://www.bluelimeprojects.com/derby/",
+    "lat": 52.745723,
+    "lng": -1.472317
+  },
+  {
+    "name": "SREAR Planning, Design & Property",
+    "formatted_phone_number": "07729 755864",
+    "website": "http://www.srear.co.uk/",
+    "lat": 52.888855,
+    "lng": -1.503257
+  },
+  {
+    "name": "BDS Architecture Ltd",
+    "formatted_phone_number": "01332 830313",
+    "website": "http://www.bdsarchitecture.co.uk/",
+    "lat": 52.9243737,
+    "lng": -1.4837114
+  },
+  {
+    "name": "bi Design Architecture Ltd",
+    "formatted_phone_number": "01283 704082",
+    "website": "https://www.bidesign-architecture.co.uk/",
+    "lat": 52.8363851,
+    "lng": -1.5470623
+  },
+  {
+    "name": "AK Innovative Design Solution",
+    "formatted_phone_number": "07878 975415",
+    "website": "https://www.akids.co.uk/",
+    "lat": 52.93512999999999,
+    "lng": -1.5358163
+  },
+  {
+    "name": "The Art of Building Ltd",
+    "formatted_phone_number": "01509 891105",
+    "website": "http://www.theartofbuilding.co.uk/",
+    "lat": 52.7218952,
+    "lng": -1.2171901
+  },
+  {
+    "name": "The Practical Planning Company Ltd",
+    "formatted_phone_number": "07743 686654",
+    "website": "https://www.practicalplanningco.co.uk/",
+    "lat": 52.83856979999999,
+    "lng": -1.3540725
+  },
+  {
+    "name": "arch/FORM",
+    "formatted_phone_number": "01509 737162",
+    "website": "http://archformstudio.co.uk/",
+    "lat": 52.7730635,
+    "lng": -1.2873166
+  },
+  {
+    "name": "DS Architectural Ltd",
+    "formatted_phone_number": "07912 211590",
+    "website": "http://www.dsarchitectural.co.uk/",
+    "lat": 52.709,
+    "lng": -1.3811113
+  },
+  {
+    "name": "Alrewas Architecture Ltd",
+    "formatted_phone_number": "01283 792283",
+    "website": "http://www.alrewasarchitecture.com/",
+    "lat": 52.7350854,
+    "lng": -1.748207
   }
 ]

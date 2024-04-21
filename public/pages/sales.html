@@ -324,51 +324,50 @@ main {
 
 
 
-
-.info-window {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background-image: url('path/to/background-image.png');
-  background-size: cover;
-  animation: fade-in 3s ease-out;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+/* Base styling for the overlay container */
+.overlay-container {
+    position: absolute;
+    padding: 20px;
+    background-color: #fff; /* white background */
+    border: 1px solid #ccc; /* light grey border */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* subtle shadow for depth */
+    border-radius: 12px; /* rounded corners */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Apple-like font */
+    color: #333; /* dark grey text for readability */
+    text-align: left;
+    width: 250px; /* fixed width */
+    box-sizing: border-box; /* includes padding in width */
+    z-index: 1000; /* ensures it floats above other map elements */
 }
 
-.info-window-content {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #fff;
+/* Styling for the title using strong tag */
+.overlay-container strong {
+    font-size: 18px; /* slightly larger font for titles */
+    color: #000; /* black for emphasis */
+    display: block; /* makes it break to a new line */
+    margin-bottom: 8px; /* space between title and rest of content */
 }
 
-.info-window-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+/* Additional link styling for a more interactive feel */
+.overlay-container a {
+    color: #007aff; /* iOS blue for links */
+    text-decoration: none; /* no underline to keep it clean */
+    font-weight: bold; /* makes links bold */
 }
 
-.info-window-phone {
-  font-size: 18px;
-  margin-bottom: 5px;
-  text-decoration: none;
-  color: #fff;
+.overlay-container a:hover,
+.overlay-container a:focus {
+    text-decoration: underline; /* adds underline on hover/focus for better accessibility */
 }
 
-.info-window-phone:hover {
-  text-decoration: underline;
-}
-
-.info-window-website {
-  font-size: 14px;
-  text-decoration: none;
-  color: #fff;
-}
-
-.info-window-website:hover {
-  text-decoration: underline;
+/* Additional styling if you need to add specific gamified elements or icons */
+.overlay-container .icon {
+    display: inline-block; /* allows icons to sit next to text */
+    margin-right: 10px; /* space between icon and text */
+    width: 24px; /* fixed width for icons */
+    height: 24px; /* fixed height for icons */
+    background-size: cover; /* ensures the icon fits the container without being stretched */
+    vertical-align: middle; /* aligns icons with the middle of the text */
 }
 
 
