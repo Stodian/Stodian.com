@@ -104,7 +104,7 @@ function createBusinessCircle(business, map) {
   class CustomOverlay extends google.maps.OverlayView {
     constructor(position, content) {
         super();
-        this.position = position;
+        this.position = position;  // This should be a google.maps.LatLng object
         this.content = content;
         this.div = null;
     }
@@ -112,39 +112,23 @@ function createBusinessCircle(business, map) {
     onAdd() {
         this.div = document.createElement('div');
         this.div.className = 'overlay-container';
-        this.div.style.position = 'absolute';
-        this.div.style.background = "white";
-        this.div.style.border = "1px solid black";
-        this.div.style.padding = "10px";
         this.div.innerHTML = this.content;
         const panes = this.getPanes();
         panes.overlayLayer.appendChild(this.div);
 
-        // Ensure the overlay stays when hovered over
-        this.div.addEventListener('mouseover', (event) => {
-          event.stopPropagation();
-          // Keep visible while hovered
-          clearTimeout(this.hideTimeout);
-        });
-        
-        this.div.addEventListener('mouseout', (event) => {
-          event.stopPropagation();
-          // Hide after mouseout with delay
-          this.hideTimeout = setTimeout(() => {
-              this.setMap(null);
-          }, 300); // short delay before hiding
-        });
-        
+        // Stops propagation of clicks from the overlay to the map
         this.div.addEventListener('click', (event) => {
-          event.stopPropagation(); // Important to allow click events on links
+            event.stopPropagation();
         });
     }
 
     draw() {
         const overlayProjection = this.getProjection();
-        const position = overlayProjection.fromLatLngToDivPixel(this.position);
-        this.div.style.left = position.x + 'px';
-        this.div.style.top = position.y + 'px';
+        const pixelCoords = overlayProjection.fromLatLngToDivPixel(this.position);
+
+        // Position the overlay directly above the circle
+        this.div.style.left = (pixelCoords.x - this.div.offsetWidth / 2) + 'px';
+        this.div.style.top = (pixelCoords.y - this.div.offsetHeight - 20) + 'px'; // 20 pixels above the circle
     }
 
     onRemove() {
@@ -153,40 +137,45 @@ function createBusinessCircle(business, map) {
             this.div = null;
         }
     }
+
+    startHideTimeout() {
+        this.hideTimeout = setTimeout(() => {
+            this.setMap(null);
+        }, 300);
+    }
 }
 
-let overlay; // Declare overlay variable outside to manage its scope
+let overlay; // Manage overlay's scope
 
-circle.addListener('mouseover', () => {
-    const content = `
-        <div style="font-size: 16px;">
-            <strong>${business.name}</strong><br/>
-            Phone: ${business.formatted_phone_number}<br/>
-            <a href="#" onclick="openWebsiteInModal('${business.website}'); return false;">Website</a>
-        </div>
-    `;
-    if (!overlay) {
-        overlay = new CustomOverlay(circle.getCenter(), content);
-        overlay.setMap(map);
-    } else {
-        overlay.div.innerHTML = content; // Update content if overlay already exists
-    }
-    // Prevent overlay from disappearing when mouse is over the circle
-    clearTimeout(overlay.hideTimeout);
-});
-
-circle.addListener('mouseout', () => {
-    // Start the process to hide the overlay, but allow cancellation if quickly hovered again
-    overlay.hideTimeout = setTimeout(() => {
-        if (overlay && !overlay.div.matches(':hover')) {
-            overlay.setMap(null); // Remove the overlay from the map if not hovered
-            overlay = null;
+function handleCircleMouseover(event) {
+    const content = `<div style="font-size: 16px;">
+        <strong>${business.name}</strong><br/>
+        Phone: ${business.formatted_phone_number}<br/>
+        <a href="${business.website}" target="_blank">Website</a>
+    </div>`;
+    if (!overlay || !overlay.getMap()) {
+        if (overlay) {
+            overlay.setMap(null);
         }
-    }, 1000); // short delay before hiding
-});
+        overlay = new CustomOverlay(event.latLng, content);
+        overlay.setMap(map);
+    }
+}
+
+function handleCircleMouseout() {
+    if (overlay) {
+        overlay.startHideTimeout();
+    }
+}
+
+circle.addListener('mouseover', handleCircleMouseover);
+circle.addListener('mouseout', handleCircleMouseout);
 
 return circle;
+
 }
+
+
 
 function createStaticCircle(location, map) {
   new google.maps.Circle({

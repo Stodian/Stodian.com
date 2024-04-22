@@ -328,46 +328,55 @@ main {
 .overlay-container {
     position: absolute;
     padding: 20px;
-    background-color: #fff; /* white background */
-    border: 1px solid #ccc; /* light grey border */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* subtle shadow for depth */
-    border-radius: 12px; /* rounded corners */
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Apple-like font */
-    color: #333; /* dark grey text for readability */
-    text-align: left;
-    width: 250px; /* fixed width */
-    box-sizing: border-box; /* includes padding in width */
-    z-index: 1000; /* ensures it floats above other map elements */
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%); /* subtle white to light grey gradient */
+    border-radius: 15px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* clean and sophisticated font */
+    color: #303030; /* dark grey for elegant contrast */
+    text-align: center;
+    width: 320px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* softer shadow for a subtle depth */
 }
 
-/* Styling for the title using strong tag */
+/* Hover effect for the whole container */
+.overlay-container:hover {
+    transform: scale(1.03); /* less pronounced scale effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* elegant shadow enhancement on hover */
+}
+
+/* Styling for the title */
 .overlay-container strong {
-    font-size: 18px; /* slightly larger font for titles */
-    color: #000; /* black for emphasis */
-    display: block; /* makes it break to a new line */
-    margin-bottom: 8px; /* space between title and rest of content */
+    font-size: 20px; /* slightly smaller for sophistication */
+    margin-bottom: 10px; /* refined spacing */
+    color: #5a5a5a; /* softer color for the title */
+    font-weight: 500; /* less bold, more elegant */
 }
 
-/* Additional link styling for a more interactive feel */
+/* Additional styling for a classy feel */
+.overlay-container p {
+    font-size: 16px; /* appropriate font size for readability */
+    color: #4a4a4a; /* consistent with elegant dark grey theme */
+    margin-bottom: 15px; /* generous spacing for a clean layout */
+}
+
+/* Refined link/button styling */
 .overlay-container a {
-    color: #007aff; /* iOS blue for links */
-    text-decoration: none; /* no underline to keep it clean */
-    font-weight: bold; /* makes links bold */
+    color: #007aff; /* classic blue for a trustworthy, premium look */
+    text-decoration: none; /* keep it clean */
+    font-weight: bold; /* emphasis on actionable items */
+    padding: 8px 16px; /* balanced padding for buttons */
+    border-radius: 8px; /* soft rounded corners */
+    background-color: #f8f8f8; /* light background for the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+    transition: background-color 0.3s, color 0.3s; /* smooth transitions for hover effects */
 }
 
 .overlay-container a:hover,
 .overlay-container a:focus {
-    text-decoration: underline; /* adds underline on hover/focus for better accessibility */
-}
-
-/* Additional styling if you need to add specific gamified elements or icons */
-.overlay-container .icon {
-    display: inline-block; /* allows icons to sit next to text */
-    margin-right: 10px; /* space between icon and text */
-    width: 24px; /* fixed width for icons */
-    height: 24px; /* fixed height for icons */
-    background-size: cover; /* ensures the icon fits the container without being stretched */
-    vertical-align: middle; /* aligns icons with the middle of the text */
+    background-color: #e7e7e7; /* darker on hover for subtle interaction */
+    text-decoration: none; /* maintain cleanliness */
 }
 
 
