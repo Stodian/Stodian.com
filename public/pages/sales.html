@@ -322,7 +322,7 @@ main {
     align-items: center;    /* Center-align items horizontally */
     justify-content: start; /* Align items to the start of the flex container */
     width: 100%;            /* Set width, adjust as necessary */
-    padding: 10px;          /* Padding around the entire container */
+    padding: 2px;          /* Padding around the entire container */
     background: none;        /* Removes any background styling */
     border: none;            /* Removes border */
 }
@@ -564,20 +564,23 @@ main {
 
 
     <main>
->
+
+
     <div class="icon-container-wrapper">
 
       <div class="icon-stats-container">
-        <button class="game-icon-link" onclick="toggleStatsBox(event, 'stats-box-1')">
-            <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon-1">
-        </button>
+        <a href="../../public/pages/dashboard.html" class="game-icon-link">
+          <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon-1">
+      </a>
         <div class="stats-box" id="stats-box-1">
         </div>
     </div>
+    
+
 
     <div class="icon-stats-container">
       <button class="game-icon-link" onclick="toggleStatsBox(event, 'stats-box-2')">
-          <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon-1">
+          <img src="../../public\icons\2645013_dropbox_media_social_icon.png" alt="Twitter Icon" class="game-icon-1">
       </button>
       <div class="stats-box" id="stats-box-2">
       </div>
@@ -585,7 +588,7 @@ main {
       
   <div class="icon-stats-container">
     <button class="game-icon-link" onclick="toggleStatsBox(event, 'stats-box-3')">
-        <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon-1">
+        <img src="../../public\icons\2644999_media_pinterest_social_icon.png" alt="Twitter Icon" class="game-icon-1">
     </button>
     <div class="stats-box" id="stats-box-3">
     </div>
@@ -594,8 +597,8 @@ main {
     </div>
 
 
-    <div>
-      <div class="stats-box-1">
+      <div>
+        <div class="stats-box-1">
           <h3>Profile</h3>
           <p>Calls Made Today: 50</p>
           <p>Emails Sent: 40</p>
@@ -604,8 +607,8 @@ main {
           <p>Conversion Rate: 10%</p>
           <p>Average Deal Size: $3,000</p>
           <p>Client Engagement Score: 80/100</p>
+        </div>
       </div>
-    </div>
 
 
     <div>
@@ -639,15 +642,16 @@ main {
 
     
       
-    
-      
         <div id="map"></div>
 
+
+        
       <div>
         <div class="metrics-container">
           <div class="metric-display" id="metric1">Calls Made: 0</div>
           <div class="metric-display" id="metric2">Meetings Bookes: 8</div>
           <div class="metric-display" id="metric3">Center Lat: 52.77</div>
+        </div>
       </div>
 
     </main>

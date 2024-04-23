@@ -3,7 +3,6 @@
 <head>
 	<title>My Dashboard</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../../public\styles\index.css">
 
 	
     <style>
@@ -35,6 +34,7 @@ body {
 h1, h2 {
 	color: #333;
 }
+
 
 .this-week, .last-week {
 	background-color: #fff;
@@ -161,7 +161,56 @@ h1, h2 {
 	</style>
 	
 
-<link rel="stylesheet" type="text/css" href="../styles/index.css">
+	<link rel="stylesheet" type="text/css" href="../styles/index.css">
+
+
+	<style>
+
+	h1	{
+		margin-bottom: 15px;
+		margin-top: 0px;
+	}
+
+</style>
+
+<style> 
+
+.sales-dashboard {
+    display: flex; /* Aligns children horizontally */
+    justify-content: space-around; /* Distributes space evenly around the items */
+    align-items: center; /* Vertically aligns items in the middle */
+    background-color: #f4f4f4; /* Light grey background */
+    padding: 20px; /* Padding around the entire container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 20px; /* Margin around the container */
+    overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+}
+
+.dashboard-item {
+    min-width: 120px; /* Minimum width for each item */
+    padding: 10px; /* Padding inside each item */
+    text-align: center; /* Centers text horizontally */
+    border-right: 1px solid #ddd; /* Separator between items */
+}
+
+.dashboard-item:last-child {
+    border-right: none; /* Removes border from the last item */
+}
+
+.dashboard-item h4 {
+    color: #333; /* Dark grey color for headings */
+    font-size: 16px; /* Font size for headings */
+    margin-bottom: 5px; /* Space below headings */
+}
+
+.dashboard-item p {
+    color: #666; /* Medium grey color for numbers */
+    font-size: 14px; /* Font size for numbers */
+}
+
+
+</style>
 
 </head>
 <body>
@@ -185,13 +234,85 @@ h1, h2 {
 		<div class="this-week">
 			<h2>This Week</h2>
 			<div class="stat-container-1">
-				<!-- Include your weekly comparison graph here -->
+
+				<div class="sales-dashboard">
+					<div class="dashboard-item">
+						<h4>Total Calls</h4>
+						<p>120</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Meetings Scheduled</h4>
+						<p>30</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Deals Closed</h4>
+						<p>15</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Conversion Rate</h4>
+						<p>25%</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Average Deal Size</h4>
+						<p>$5,000</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Revenue Generated</h4>
+						<p>$75,000</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Emails Sent</h4>
+						<p>200</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Email Open Rate</h4>
+						<p>60%</p>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 		<div class="last-week">
 			<h2>Last Week</h2>
 			<div class="stat-container-2">
-				<!-- Include your sales stats here -->
+
+
+				<div class="sales-dashboard">
+					<div class="dashboard-item">
+						<h4>Total Calls</h4>
+						<p>120</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Meetings Scheduled</h4>
+						<p>30</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Deals Closed</h4>
+						<p>15</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Conversion Rate</h4>
+						<p>25%</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Average Deal Size</h4>
+						<p>$5,000</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Revenue Generated</h4>
+						<p>$75,000</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Emails Sent</h4>
+						<p>200</p>
+					</div>
+					<div class="dashboard-item">
+						<h4>Email Open Rate</h4>
+						<p>60%</p>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
 
