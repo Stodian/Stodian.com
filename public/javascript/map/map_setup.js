@@ -235,6 +235,13 @@ function setupMapListeners(map) {
 setupMapListeners(map);
 
 
+function toggleStatsBox(event, id) {
+  const statsBox = document.getElementById(id);
+  statsBox.style.display = statsBox.style.display === 'block' ? 'none' : 'block';
+  event.preventDefault(); // Prevent default button click behavior if using <button>
+}
+
+
 
 
 
