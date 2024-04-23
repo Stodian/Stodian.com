@@ -35,41 +35,6 @@ h1, h2 {
 	color: #333;
 }
 
-
-.this-week, .last-week {
-	background-color: #fff;
-    margin-right: 20px;
-	margin-bottom: 20px;
-	border-radius: 5px;
-	padding: 20px;
-	margin-bottom: 20px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.last-week {
-	flex-basis: calc(33.33% - 20px);
-	margin-right: 20px;
-	margin-bottom: 20px;
-	background-color: #fff;
-	border-radius: 5px;
-	padding: 20px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.stat-container-1 {
-	height: 300px;
-	width: 1800px;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.stat-container-2 {
-	height: 300px;
-	width: 1800px;
-	display: flex;
-	flex-wrap: wrap;
-}
-
     </style>
 
 <style>
@@ -175,6 +140,30 @@ h1, h2 {
 
 <style> 
 
+.this-week, .last-week {
+	background-color: #fff;
+    margin-right: 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.stat-container-1 {
+	height: 300px;
+	width: 1800px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.stat-container-2 {
+	height: 300px;
+	width: 1800px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .sales-dashboard {
     display: flex; /* Aligns children horizontally */
     justify-content: space-around; /* Distributes space evenly around the items */
@@ -182,7 +171,7 @@ h1, h2 {
     background-color: #f4f4f4; /* Light grey background */
     padding: 20px; /* Padding around the entire container */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+	width: 100%;
     margin: 20px; /* Margin around the container */
     overflow-x: auto; /* Allows horizontal scrolling if content overflows */
 }
