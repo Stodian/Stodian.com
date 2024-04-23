@@ -73,6 +73,7 @@ function createStaticCircle(location, map) {
   fetch('../../../../output.json')
     .then(response => response.json())
     .then(data => {
+      const circles = data.map(business => createBusinessCircle(business, map));
       // Wait for all circles to be created and added to the map
       setTimeout(() => {
       }, 1000);
@@ -214,13 +215,13 @@ function setupMapListeners(map) {
   // Listener for map clicks
   map.addListener('click', function() {
       clickCount++;
-      document.getElementById('metric1').textContent = `Clicks: ${clickCount}`;
+      document.getElementById('metric1').textContent = `Calls Made: ${clickCount}`;
   });
 
   // Listener for zoom changes
   map.addListener('zoom_changed', function() {
       var zoomLevel = map.getZoom();
-      document.getElementById('metric2').textContent = `Zoom Level: ${zoomLevel}`;
+      document.getElementById('metric2').textContent = `Meetings Booked: ${zoomLevel}`;
   });
 
   // Listener for center changes (e.g., after dragging)

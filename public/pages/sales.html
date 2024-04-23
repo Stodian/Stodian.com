@@ -328,8 +328,9 @@ main {
 }
 
 .icon-container {
-  width: 50px; /* Fixed width */
-  height: 50px; /* Fixed height for consistency */
+  position: relative; /* Positioning context for the stats-box */
+    display: inline-block; /* Keeps the container fitting to its content */
+    cursor: pointer; /* Indicates that the element is interactive */
   margin-bottom: 1rem; /* Space between icons */
 }
 
@@ -337,12 +338,12 @@ main {
 
 /* Base styles for stats-box */
 .stats-box {
-  display: none; /* Hide by default */
+  display: block; /* Hide by default */
   position: fixed;
   width: 250px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
+  bottom: 100%; /* Position above the icon */
+  left: 50%; /* Center the box horizontally relative to the icon */
+  transform: translate(-50%);
   z-index: 100;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   background-color: #f9f9f9;
@@ -357,7 +358,7 @@ main {
 /* Adjust position dynamically to avoid off-screen rendering */
 .icon-container:hover .stats-box {
   display: block; /* Show on hover */
-  transform: scale(1.2);
+  transform: translateY(200%) scale(1.05); /* Slight scale up effect */
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.75);
   border: 2px solid #fff;
  /* Slightly adjust the top value to ensure it's fully visible */
@@ -433,23 +434,35 @@ main {
 
       </style>
 
-      <style>.metrics-container {
-        position: absolute;
-        bottom: 20px; /* Adjust this value to position the container higher or lower */
-        left: 50%; /* Center the container horizontally */
-        transform: translateX(-50%); /* Precisely center the container */
-        display: flex; /* Line up the displays horizontally */
-        justify-content: space-around; /* Evenly space the metric displays */
-    }
-    
-    .metric-display {
-        background-color: #ffffff; /* Background color of the display */
-        padding: 10px 20px; /* Padding around the text */
-        border-radius: 20px; /* Rounded corners for a smooth look */
-        font-size: 16px; /* Text size */
-        color: #333; /* Text color */
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-    }
+      <style>
+      
+      .metrics-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+}
+
+.metric-display {
+  background-color: #333;
+  opacity: 80%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: default;
+  transition: all 0.3s ease-in-out;
+  margin: 10px;
+}
+
+.metric-display:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
     
     </style>
 
@@ -555,10 +568,10 @@ main {
       
         <div id="map"></div>
 
-        
+
         <div class="metrics-container">
-          <div class="metric-display" id="metric1">Clicks: 0</div>
-          <div class="metric-display" id="metric2">Zoom Level: 8</div>
+          <div class="metric-display" id="metric1">Calls Made: 0</div>
+          <div class="metric-display" id="metric2">Meetings Bookes: 8</div>
           <div class="metric-display" id="metric3">Center Lat: 52.77</div>
       </div>
 
