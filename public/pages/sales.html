@@ -46,6 +46,7 @@
 
 
 <style>
+
 .modal-dialog {
   position: fixed;
   bottom: 0;
@@ -61,12 +62,14 @@
   z-index: 1050;
 }
 
+
 .modal-content {
   height: calc(100% - 60px);
   border: none;
   border-radius: 0;
   background: transparent;
 }
+
 
 .modal-header {
   position: absolute;
@@ -76,6 +79,7 @@
   border: none;
   background: none;
 }
+
 
 .modal-body {
   padding: 20px;
@@ -88,6 +92,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+
 .modal-body iframe {
   margin: 0 auto;
   display: block;
@@ -96,6 +101,7 @@
   border: 3px solid #dddddd;
   border-radius: 5px;
 }
+
 
 .close {
   font-size: 2rem;
@@ -108,12 +114,14 @@
   transition: all 0.3s ease-in-out;
 }
 
+
 .close:hover {
   opacity: 1;
   transform: translateY(-2px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
 }
+
 
 .close:before,
 .close:after {
@@ -132,12 +140,14 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+
 .close:active:before,
 .close:active:after {
   width: 1.5rem;
   height: 1.5rem;
   transition: all 0.2s ease-in-out;
 }
+
 .close span {
   position: relative; /* add this line */
   z-index: 1; /* add this line */
@@ -162,7 +172,6 @@ body, html {
 }
 
 
-
 header {
     width: 100%;
     background-color: #333;
@@ -173,23 +182,6 @@ header {
     transition: top 0.3s;
 }
 
-/* Extending the hoverable area using ::before pseudo-element */
-header::before {
-    content: "";
-    position: absolute;
-    top: -10px; /* Start slightly above the hidden header */
-    left: 0;
-    width: 100%; /* Cover the full width of the header */
-    height: 60px; /* Adjust the height as needed to make sure it's easy to hover */
-    background: transparent;
-    z-index: -1; /* Keep below the header content but above other content */
-}
-
-header:hover {
-    top: 0; /* Move header into view */
-}
-
-
 
 
 header nav ul {
@@ -199,15 +191,18 @@ header nav ul {
     text-align: center;
 }
 
+
 header nav ul li {
     display: inline;
     margin-right: 20px;
 }
 
+
 header nav ul li a {
     text-decoration: none;
     color: white;
 }
+
 
 main {
     width: 100%;
@@ -220,7 +215,41 @@ main {
     z-index: 1;
 }
 
+
+.header-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center;
+  top: 0; /* Aligns container to the top */
+  width: 100%; /* Fixed width to suit the icon size */
+  height: 15%; /* Fixed width to suit the icon size */
+  padding-top: 10px; /* Space from top of the viewport */
+  z-index: 2; /* Ensures it stays above other elements */
+  background-color: transparent; /* No background color */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
+  position: fixed; /* Fixes the container to the viewport */
+}
+
+/* Extending the hoverable area using ::before pseudo-element */
+.header-container::before {
+  content: "";
+  position: absolute;
+  top: 1000px;
+  left: 0px; 
+  height: 500px; 
+  background: transparent; 
+  z-index: 1; /* Lower than the actual container to not interfere with other interactions */
+}
+
+/* When the mouse hovers over the left side of the viewport, the icons move into view */
+.header-container:hover,
+.header-container:focus-within { /* Focus-within ensures accessibility for keyboard users */
+  transform: translateY(50px); /* Moves the icons into view */
+}
+
 </style>
+
 
 
 <style>
@@ -240,11 +269,12 @@ main {
 }
 
 
+</style>
 
 
 
 
-
+<style>
 
 
 /* Container for all icons, initially off the screen */
@@ -391,9 +421,6 @@ main {
 }
 
 
-
-
-
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -404,6 +431,9 @@ main {
 }
 
       </style>
+
+
+
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -426,6 +456,7 @@ main {
 
 
 <body>
+  <div class="header-container">
     <header>
         <nav>
             <ul>
@@ -437,6 +468,7 @@ main {
             </ul>
         </nav>
     </header>
+  </div>
 
 
     <main>

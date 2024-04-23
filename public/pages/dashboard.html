@@ -68,76 +68,94 @@ h1, h2 {
 
     </style>
 
-	<style>
+<style>
 
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevents horizontal scrolling */
-    font-family: Arial, sans-serif;
-}
-
-
-
-header {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    position: fixed;
-    top: -50px; /* Initially hide the header */
-    z-index: 1000; /* Ensures it's above all other content */
-    transition: top 0.3s;
-}
-
-/* Extending the hoverable area using ::before pseudo-element */
-header::before {
-    content: "";
-    position: absolute;
-    top: -10px; /* Start slightly above the hidden header */
-    left: 0;
-    width: 100%; /* Cover the full width of the header */
-    height: 60px; /* Adjust the height as needed to make sure it's easy to hover */
-    background: transparent;
-    z-index: -1; /* Keep below the header content but above other content */
-}
-
-header:hover {
-    top: 0; /* Move header into view */
-}
-
-
-
-
-header nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-header nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: white;
-}
-
-main {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
-    position: relative;
-    z-index: 1;
-}
-
-</style>
+	body, html {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden; /* Prevents horizontal scrolling */
+		font-family: Arial, sans-serif;
+	}
+	
+	
+	header {
+		width: 100%;
+		background-color: #333;
+		color: white;
+		position: fixed;
+		top: -50px; /* Initially hide the header */
+		z-index: 1000; /* Ensures it's above all other content */
+		transition: top 0.3s;
+	}
+	
+	
+	header nav ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		text-align: center;
+	}
+	
+	
+	header nav ul li {
+		display: inline;
+		margin-right: 20px;
+	}
+	
+	
+	header nav ul li a {
+		text-decoration: none;
+		color: white;
+	}
+	
+	
+	main {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #f4f4f4;
+		position: relative;
+		z-index: 1;
+	}
+	
+	
+	.header-container {
+	  display: flex;
+	  align-items: center;
+	  margin-bottom: 1rem;
+	  justify-content: center;
+	  top: 0; /* Aligns container to the top */
+	  width: 100%; /* Fixed width to suit the icon size */
+	  height: 15%; /* Fixed width to suit the icon size */
+	  padding-top: 10px; /* Space from top of the viewport */
+	  z-index: 2; /* Ensures it stays above other elements */
+	  background-color: transparent; /* No background color */
+	  transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
+	  position: fixed; /* Fixes the container to the viewport */
+	}
+	
+	/* Extending the hoverable area using ::before pseudo-element */
+	.header-container::before {
+	  content: "";
+	  position: absolute;
+	  top: 1000px;
+	  left: 0px; 
+	  height: 500px; 
+	  background: transparent; 
+	  z-index: 1; /* Lower than the actual container to not interfere with other interactions */
+	}
+	
+	/* When the mouse hovers over the left side of the viewport, the icons move into view */
+	.header-container:hover,
+	.header-container:focus-within { /* Focus-within ensures accessibility for keyboard users */
+	  transform: translateY(50px); /* Moves the icons into view */
+	}
+	
+	</style>
+	
 
 <link rel="stylesheet" type="text/css" href="../styles/index.css">
 
@@ -145,6 +163,7 @@ main {
 <body>
 
 	<header>
+		<div class="header-container">
         <nav>
             <ul>
                 <li><a href="../pages/beta.html">Beta</a></li>
@@ -154,6 +173,7 @@ main {
                 <li><a href="../pages/crowdfunding.html">Crowdfunding</a></li>
             </ul>
         </nav>
+	</div>
     </header>
 
 	<main>
