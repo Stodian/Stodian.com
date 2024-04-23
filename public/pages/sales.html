@@ -220,6 +220,11 @@ main {
     z-index: 1;
 }
 
+</style>
+
+
+<style>
+
 #map {
     width: 100%;
     height: 100%;
@@ -256,7 +261,7 @@ main {
   flex-direction: column; /* Stacks children vertically */
   align-items: center; /* Centers icons horizontally */
   padding-top: 10px; /* Space from top of the viewport */
-  z-index: 10; /* Ensures it stays above other elements */
+  z-index: 2; /* Ensures it stays above other elements */
   background-color: transparent; /* No background color */
   transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
 }
@@ -270,7 +275,7 @@ main {
   width: 400px; /* Width of the extended hoverable area */
   height: 100%; /* Same height as the parent to cover the entire height */
   background: transparent; /* Invisible extension */
-  z-index: 9; /* Lower than the actual container to not interfere with other interactions */
+  z-index: 1; /* Lower than the actual container to not interfere with other interactions */
 }
 
 /* When the mouse hovers over the left side of the viewport, the icons move into view */
@@ -291,6 +296,12 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transformations */
 }
 
+.icon-container {
+  width: 50px; /* Fixed width */
+  height: 50px; /* Fixed height for consistency */
+  margin-bottom: 1rem; /* Space between icons */
+}
+
 
 
 /* Base styles for stats-box */
@@ -300,7 +311,7 @@ main {
   width: 250px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 50%);
   z-index: 100;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   background-color: #f9f9f9;
@@ -318,7 +329,7 @@ main {
   transform: scale(1.2);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.75);
   border: 2px solid #fff;
-  top: calc(50% - 20px); /* Slightly adjust the top value to ensure it's fully visible */
+ /* Slightly adjust the top value to ensure it's fully visible */
 }
 
 
@@ -381,6 +392,8 @@ main {
 
 
 
+
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -430,8 +443,10 @@ main {
       <!-- Wrapper for all icons to keep them aligned and not overlapping -->
       <div class="icon-container-wrapper">
         <!-- Individual icon container -->
-        <div class="icon-container">
-          <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon">
+        <div class="game-icon">
+          <a href="../../public\pages\dashboard.html">
+            <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon">
+        </a>
           <div class="stats-box">
             <h3>Profile</h3>
             <p>Calls Made Today: 50</p>
@@ -446,8 +461,10 @@ main {
         </div>
     
         <!-- Another individual icon container -->
-        <div class="icon-container">
-          <img src="../../public/icons/2644999_media_pinterest_social_icon.png" alt="Pinterest Icon" class="game-icon">
+        <div class="game-icon">
+          <a href="../../public\pages\dashboard.html">
+            <img src="../../public\icons\2644999_media_pinterest_social_icon.png" alt="Twitter Icon" class="game-icon">
+        </a>
           <div class="stats-box">
             <!-- Stats details identical or specific to this icon -->
             <h3>Sales Performance Stats</h3>
@@ -464,8 +481,10 @@ main {
         </div>
     
         <!-- Third individual icon container -->
-        <div class="icon-container">
-          <img src="../../public/icons/2645013_dropbox_media_social_icon.png" alt="Dropbox Icon" class="game-icon">
+        <div class="game-icon">
+          <a href="../../public\pages\dashboard.html">
+            <img src="../../public\icons\2645013_dropbox_media_social_icon.png" alt="Twitter Icon" class="game-icon">
+        </a>
           <div class="stats-box">
             <!-- Stats details identical or specific to this icon -->
             <h3>Settings</h3>
@@ -501,6 +520,9 @@ main {
     </div>
   </div>
 </div>
+
+
+
 
 </body>
 

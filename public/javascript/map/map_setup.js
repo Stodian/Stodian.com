@@ -31,6 +31,7 @@ function initMap() {
   };
 
   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  let zoomInterval;
 
 
   {
@@ -53,6 +54,19 @@ window.initMap = initMap;
 
 
 
+function createStaticCircle(location, map) {
+  new google.maps.Circle({
+    strokeColor: '#008000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#008000',
+    fillOpacity: 0.35,
+    map: map,
+    center: location,
+    radius: 100
+  });
+}
+
   // Fetch business data and create circles
   fetch('../../../../output.json')
     .then(response => response.json())
@@ -69,9 +83,39 @@ window.initMap = initMap;
   // Create a static circle overlay at a fixed location
   createStaticCircle(location, map);
 
+
+
+  function gradualZoomOut(map, initialZoom) {
+    let zoom = initialZoom;
+    // Get the map's container element for attaching the DOM event
+    const mapDiv = map.getDiv();
+    // Create the interval and store its ID to allow for cancellation
+    let intervalId = setInterval(() => {
+        if (zoom > 14) {
+            zoom -= 0.07;
+            map.setZoom(zoom);
+        } else {
+            clearInterval(intervalId);
+        }
+    }, 35);
+
+    // Add a 'wheel' event listener directly to the map's container
+    mapDiv.addEventListener('wheel', () => {
+        console.log("Scroll detected, stopping zoom out");
+        clearInterval(intervalId);
+        // Optionally remove the event listener if it's no longer needed
+        mapDiv.removeEventListener('wheel', this);
+    });
+
+    return intervalId; // Return the interval ID for further reference if needed
+}
+
   // Gradual zoom out effect
   gradualZoomOut(map, mapOptions.zoom);
 }
+
+
+
 
 // Function to create and return a Google Maps Circle with an attached InfoWindow
 function createBusinessCircle(business, map) {
@@ -87,18 +131,6 @@ function createBusinessCircle(business, map) {
     radius: 100  // Adjust the radius based on your needs
   });
 
-
-
-  const infoWindow = new google.maps.InfoWindow();
-  infoWindow.setContent(`
-    <div style="font-size: 16px;">
-      <strong>${business.name}</strong><br/>
-      Phone: ${business.formatted_phone_number}<br/>
-      <a href="#" onclick="openWebsiteInModal('${business.website}'); return false;">Website</a>
-    </div>
-  `);
-
-  
 
     
   class CustomOverlay extends google.maps.OverlayView {
@@ -177,33 +209,12 @@ return circle;
 
 
 
-function createStaticCircle(location, map) {
-  new google.maps.Circle({
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35,
-    map: map,
-    center: location,
-    radius: 100
-  });
-}
 
 
 
 
 
-function gradualZoomOut(map, initialZoom) {
-  let zoom = initialZoom;
-  const interval = setInterval(() => {
-    zoom -= 0.07;
-    map.setZoom(zoom);
-    if (zoom <= 14) {
-      clearInterval(interval);
-    }
-  }, 70);
-}
+
 
 
 
