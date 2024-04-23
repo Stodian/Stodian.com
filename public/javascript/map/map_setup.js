@@ -31,7 +31,7 @@ function initMap() {
   };
 
   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+  let circlesArray = []; // This will store all the circle objects
 
   {
   // NOTE: This uses cross-domain XHR, and may not work on older browsers.
@@ -73,12 +73,20 @@ function createStaticCircle(location, map) {
   fetch('../../../../output.json')
     .then(response => response.json())
     .then(data => {
+      console.log(data); // Check what the data looks like
       const circles = data.map(business => createBusinessCircle(business, map));
+      console.log(circlesArray); // Check if circles are being added
       // Wait for all circles to be created and added to the map
       setTimeout(() => {
       }, 1000);
-    })
+          // Push the newly created circles into the array
+    circlesArray.push(...circles);
+  })
     .catch(error => console.error('Error fetching data:', error));
+
+    console.log(circlesArray);
+    
+    
 
   // Create a static circle overlay at a fixed location
   createStaticCircle(location, map);
@@ -130,6 +138,7 @@ function createBusinessCircle(business, map) {
     center: location,
     radius: 100  // Adjust the radius based on your needs
   });
+
 
     
   class CustomOverlay extends google.maps.OverlayView {
