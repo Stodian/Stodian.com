@@ -4,8 +4,8 @@ const fetch = require('node-fetch');
 const path = 'output.json';
 
 const query = 'architects';
-const location = '52.771317, -1.554997'; // Your desired location
-const radius = 500; // Search within 500km of the specified location
+const location = '52.74625480174845, -1.6391234645638457'; // Your desired location
+const radius = 5000; // Search within 500km of the specified location
 const apiKey = process.env.GOOGLE_MAPS_API_KEY;
 
 async function getPlacesDetails(places, existingData) {
@@ -40,10 +40,10 @@ async function getPlacesDetails(places, existingData) {
   }
 }
 
-function searchPlaces() {
+function searchPlaces(nextPageToken = '') {
   fs.readFile(path, (err, data) => {
     let existingData = [];
-    if (!err) {
+    if (!err && data.length) {
       try {
         existingData = JSON.parse(data);
       } catch (e) {
@@ -51,13 +51,29 @@ function searchPlaces() {
       }
     }
 
-    const searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&location=${location}&radius=${radius}&key=${apiKey}`;
+    let searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&location=${location}&radius=${radius}&key=${apiKey}`;
+    if (nextPageToken) {
+      searchUrl += `&pagetoken=${nextPageToken}`;
+    }
+
     fetch(searchUrl)
       .then(response => response.json())
       .then(data => {
-        getPlacesDetails(data.results, existingData);
+        if (data.status === 'OK') {
+          getPlacesDetails(data.results, existingData).then(() => {
+            if (data.next_page_token) {
+              setTimeout(() => {
+                searchPlaces(data.next_page_token);
+              }, 2000); // Wait for the token to become valid
+            }
+          });
+        } else {
+          console.log('Google API error:', data.status);
+        }
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        console.error('Error fetching places:', error);
+      });
   });
 }
 
