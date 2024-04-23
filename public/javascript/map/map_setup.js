@@ -1,5 +1,14 @@
+// Global map variable
+let map;
+let circlesArray = []; // Array to store circle objects
+
+
+// Function to initialize the map
 function initMap() {
-  const location = { lat: 52.433799743652344, lng: -1.9201515913009644 };
+  // Location coordinates for the center of the map
+  const location = { lat: 52.4338, lng: -1.9202 };
+
+  // Map options configuration
   const mapOptions = {
     zoom: 19,
     center: location,
@@ -9,47 +18,33 @@ function initMap() {
       { elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
       { elementType: 'labels', stylers: [{ visibility: 'off' }] },
       { elementType: 'geometry.stroke', stylers: [{ color: '#000000' }] },
-      {
-        featureType: 'road',
-        elementType: 'geometry',
-        stylers: [{ color: '#999999' }]
-      },
-      {
-        featureType: 'road',
-        elementType: 'geometry.stroke',
-        stylers: [{ color: '#666666' }]
-      },
-      {
-        featureType: 'water',
-        elementType: 'geometry',
-        stylers: [{ color: '#C9C9C9' }]
-      }
+      { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#999999' }] },
+      { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#666666' }] },
+      { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#C9C9C9' }] }
     ],
     mapTypeControl: false,
     streetViewControl: false,
-    fullscreenControl: false,
+    fullscreenControl: false
   };
 
+
   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  let circlesArray = []; // This will store all the circle objects
+  
+
 
   {
-  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-  map.data.loadGeoJson(
-    "https://storage.googleapis.com/mapsdevsite/json/google.json",
-  );
+    function loadGeoJsonData() {
+      map.data.loadGeoJson("https://storage.googleapis.com/mapsdevsite/json/google.json");
+      map.data.loadGeoJson("http://localhost:8080/data.geojson");
+    }
 
+
+    loadGeoJsonData();
+    
   setupMapListeners(map);
 
 }
 
-
-{
-  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
-  map.data.loadGeoJson(
-    "http://localhost:8080/geojson",
-  );
-}
 
 
 window.initMap = initMap;
@@ -67,29 +62,58 @@ function createStaticCircle(location, map) {
     center: location,
     radius: 100
   });
+  
 }
+
+  // Create a static circle overlay at a fixed location
+  createStaticCircle(location, map);
+
+
+
+
+
+{
+  
 
   // Fetch business data and create circles
   fetch('../../../../output.json')
     .then(response => response.json())
     .then(data => {
       console.log(data); // Check what the data looks like
-      const circles = data.map(business => createBusinessCircle(business, map));
+      const circle = data.map(business => createBusinessCircle(business, map));
       console.log(circlesArray); // Check if circles are being added
       // Wait for all circles to be created and added to the map
       setTimeout(() => {
       }, 1000);
-          // Push the newly created circles into the array
-    circlesArray.push(...circles);
+
   })
     .catch(error => console.error('Error fetching data:', error));
-
-    console.log(circlesArray);
-    
     
 
-  // Create a static circle overlay at a fixed location
-  createStaticCircle(location, map);
+
+    // Function to create and return a Google Maps Circle with an attached InfoWindow
+function createBusinessCircle(business, map) {
+  const location = new google.maps.LatLng(business.lat, business.lng);
+  const circle = new google.maps.Circle({
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    map: map,
+    center: location,
+    radius: 100  // Adjust the radius based on your needs
+  });
+
+      // Push the created circle into the array
+      circlesArray.push(circle);
+
+}
+
+
+
+    
+
 
 
 
@@ -125,22 +149,7 @@ function createStaticCircle(location, map) {
 
 
 
-// Function to create and return a Google Maps Circle with an attached InfoWindow
-function createBusinessCircle(business, map) {
-  const location = new google.maps.LatLng(business.lat, business.lng);
-  const circle = new google.maps.Circle({
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35,
-    map: map,
-    center: location,
-    radius: 100  // Adjust the radius based on your needs
-  });
 
-
-    
   class CustomOverlay extends google.maps.OverlayView {
     constructor(position, content) {
         super();
@@ -251,6 +260,14 @@ function toggleStatsBox(event, id) {
 }
 
 
+
+// Example: Change the color of all circles to blue
+circlesArray.forEach(circle => {
+  circle.setOptions({
+    fillColor: 'blue',
+    strokeColor: 'blue'
+  });
+});
 
 
 
