@@ -28,6 +28,7 @@ function initMap() {
   };
 
 
+
   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
   
 
@@ -35,7 +36,7 @@ function initMap() {
   {
     function loadGeoJsonData() {
       map.data.loadGeoJson("https://storage.googleapis.com/mapsdevsite/json/google.json");
-      map.data.loadGeoJson("http://localhost:8080/data.geojson");
+      map.data.loadGeoJson("http://localhost:3046/data.geojson");
     }
 
 

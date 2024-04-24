@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = 3046;
 const path = require('path');
 
 // Serve static files from the 'public' directory
