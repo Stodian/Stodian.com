@@ -80,9 +80,7 @@ function createStaticCircle(location, map) {
   fetch('../../../../output.json')
     .then(response => response.json())
     .then(data => {
-      console.log(data); // Check what the data looks like
       const circle = data.map(business => createBusinessCircle(business, map));
-      console.log(circlesArray); // Check if circles are being added
       // Wait for all circles to be created and added to the map
       setTimeout(() => {
       }, 1000);
@@ -91,8 +89,6 @@ function createStaticCircle(location, map) {
     .catch(error => console.error('Error fetching data:', error));
     
 
-
-    // Function to create and return a Google Maps Circle with an attached InfoWindow
 function createBusinessCircle(business, map) {
   const location = new google.maps.LatLng(business.lat, business.lng);
   const circle = new google.maps.Circle({
@@ -106,8 +102,28 @@ function createBusinessCircle(business, map) {
     radius: 100  // Adjust the radius based on your needs
   });
 
-      // Push the created circle into the array
-      circlesArray.push(circle);
+  
+
+    // Create an InfoWindow
+    const infoWindow = new google.maps.InfoWindow({
+      content: `<div><strong>${business.name}</strong><br>
+                Address: ${business.address}<br>
+                Phone: ${business.phone}</div>`
+    });
+
+
+      // Attach event listener to the circle for mouseover
+  google.maps.event.addListener(circle, 'mouseover', () => {
+    infoWindow.open(map, circle);
+});
+  
+// Attach event listener to the circle for mouseout
+google.maps.event.addListener(circle, 'mouseout', () => {
+      infoWindow.close();
+});
+
+  
+
 
 }
 
@@ -146,8 +162,6 @@ function createBusinessCircle(business, map) {
   // Gradual zoom out effect
   gradualZoomOut(map, mapOptions.zoom);
 }
-
-
 
 
 
@@ -228,6 +242,7 @@ return circle;}
 
 
 
+
 function setupMapListeners(map) {
   let clickCount = 0; // To keep track of clicks
 
@@ -248,6 +263,8 @@ function setupMapListeners(map) {
       var center = map.getCenter();
       document.getElementById('metric3').textContent = `Center Lat: ${center.lat().toFixed(2)}`;
   });
+
+
 }
 
 
@@ -261,14 +278,6 @@ function toggleStatsBox(event, id) {
 }
 
 
-
-// Example: Change the color of all circles to blue
-circlesArray.forEach(circle => {
-  circle.setOptions({
-    fillColor: 'blue',
-    strokeColor: 'blue'
-  });
-});
 
 
 

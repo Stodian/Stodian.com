@@ -523,6 +523,57 @@ main {
     
     </style>
 
+<style>
+
+  /* General styling for InfoWindow */
+.info-window {
+    font-family: 'Arial', sans-serif; /* Sets a clean, readable font */
+    background: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px; /* Padding around the content */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+    max-width: 250px; /* Maximum width of the InfoWindow */
+}
+
+/* Styling for the title in InfoWindow, typically the business name */
+.info-window strong {
+    display: block; /* Makes the element a block for better control */
+    color: #333; /* Dark gray for text */
+    font-size: 16px; /* Larger font size for emphasis */
+    margin-bottom: 5px; /* Space below the title */
+}
+
+/* Paragraph styling within the InfoWindow */
+.info-window p {
+    color: #555; /* Medium gray for text */
+    font-size: 14px; /* Standard font size for readability */
+    margin: 2px 0; /* Vertical spacing for paragraph separation */
+}
+
+/* Styling for links within the InfoWindow */
+.info-window a {
+    color: #0066cc; /* Blue color for links */
+    text-decoration: none; /* No underline to keep it clean */
+    font-weight: bold; /* Makes text bold */
+}
+
+.info-window a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+
+/* Optional: Additional specific classes or IDs for more detailed customization */
+.info-window .address {
+    font-style: italic; /* Italicize the address for a subtle differentiation */
+}
+
+.info-window .phone {
+    padding-top: 5px; /* Extra padding above the phone number */
+    display: block; /* Ensures the phone number is on a new line */
+}
+
+</style>
+
 
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
