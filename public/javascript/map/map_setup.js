@@ -80,13 +80,13 @@ function createStaticCircle(location, map) {
   fetch('../../../../output.json')
     .then(response => response.json())
     .then(data => {
-      const circle = data.map(business => createBusinessCircle(business, map));
+      data.map(business => createBusinessCircle(business, map));
       // Wait for all circles to be created and added to the map
       setTimeout(() => {
       }, 1000);
 
   })
-    .catch(error => console.error('Error fetching data:', error));
+
     
 
 function createBusinessCircle(business, map) {
@@ -102,34 +102,28 @@ function createBusinessCircle(business, map) {
     radius: 100  // Adjust the radius based on your needs
   });
 
-  
 
     // Create an InfoWindow
     const infoWindow = new google.maps.InfoWindow({
       content: `<div><strong>${business.name}</strong><br>
                 Address: ${business.address}<br>
                 Phone: ${business.phone}</div>`
-    });
+  });
 
 
       // Attach event listener to the circle for mouseover
   google.maps.event.addListener(circle, 'mouseover', () => {
     infoWindow.open(map, circle);
-});
+  });
   
-// Attach event listener to the circle for mouseout
-google.maps.event.addListener(circle, 'mouseout', () => {
+      // Attach event listener to the circle for mouseout
+  google.maps.event.addListener(circle, 'mouseout', () => {
       infoWindow.close();
-});
-
-  
-
+  });
 
 }
 
 
-
-    
 
 
 
@@ -159,12 +153,12 @@ google.maps.event.addListener(circle, 'mouseout', () => {
     return intervalId; // Return the interval ID for further reference if needed
 }
 
-  // Gradual zoom out effect
+
   gradualZoomOut(map, mapOptions.zoom);
+
+
+
 }
-
-
-
   class CustomOverlay extends google.maps.OverlayView {
     constructor(position, content) {
         super();
@@ -211,6 +205,9 @@ google.maps.event.addListener(circle, 'mouseout', () => {
 
 
 let overlay; // Manage overlay's scope
+
+
+
 
 function handleCircleMouseover(event) {
     const content = `<div style="font-size: 16px;">
@@ -263,8 +260,6 @@ function setupMapListeners(map) {
       var center = map.getCenter();
       document.getElementById('metric3').textContent = `Center Lat: ${center.lat().toFixed(2)}`;
   });
-
-
 }
 
 

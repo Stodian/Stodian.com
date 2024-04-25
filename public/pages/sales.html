@@ -521,7 +521,9 @@ main {
   opacity: 100%;
 }
     
-    </style>
+</style>
+
+
 
 <style>
 
@@ -558,21 +560,9 @@ main {
     font-weight: bold; /* Makes text bold */
 }
 
-.info-window a:hover {
-    text-decoration: underline; /* Underline on hover for clarity */
-}
-
-/* Optional: Additional specific classes or IDs for more detailed customization */
-.info-window .address {
-    font-style: italic; /* Italicize the address for a subtle differentiation */
-}
-
-.info-window .phone {
-    padding-top: 5px; /* Extra padding above the phone number */
-    display: block; /* Ensures the phone number is on a new line */
-}
-
 </style>
+
+
 
 
 
@@ -706,22 +696,22 @@ main {
     </main>
 
 
-<!-- Modal -->
-<div class="modal fade hidden" id="websiteModal" tabindex="-1" role="dialog" aria-labelledby="websiteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="websiteModalLabel"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <!-- Modal -->
+  <div class="modal fade hidden" id="websiteModal" tabindex="-1" role="dialog" aria-labelledby="websiteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="websiteModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe id="websiteIframe" src="" style="width: 100%; height: 100%;" frameborder="0"></iframe>
       </div>
-      <div class="modal-body">
-        <iframe id="websiteIframe" src="" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-     </div>
+      </div>
     </div>
   </div>
-</div>
 
 
 
