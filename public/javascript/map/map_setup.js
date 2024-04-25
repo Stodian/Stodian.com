@@ -224,6 +224,8 @@ function handleCircleMouseover(event) {
     }
 }
 
+
+
 function handleCircleMouseout() {
     if (overlay) {
         overlay.startHideTimeout();
