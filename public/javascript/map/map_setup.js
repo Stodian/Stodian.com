@@ -1,14 +1,5 @@
-// Global map variable
-let map;
-let circlesArray = []; // Array to store circle objects
-
-
-// Function to initialize the map
 function initMap() {
-  // Location coordinates for the center of the map
-  const location = { lat: 52.4338, lng: -1.9202 };
-
-  // Map options configuration
+  const location = { lat: 52.433799743652344, lng: -1.9201515913009644 };
   const mapOptions = {
     zoom: 19,
     center: location,
@@ -18,77 +9,71 @@ function initMap() {
       { elementType: 'geometry', stylers: [{ color: '#ffffff' }] },
       { elementType: 'labels', stylers: [{ visibility: 'off' }] },
       { elementType: 'geometry.stroke', stylers: [{ color: '#000000' }] },
-      { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#999999' }] },
-      { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#666666' }] },
-      { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#C9C9C9' }] }
+      {
+        featureType: 'road',
+        elementType: 'geometry',
+        stylers: [{ color: '#999999' }]
+      },
+      {
+        featureType: 'road',
+        elementType: 'geometry.stroke',
+        stylers: [{ color: '#666666' }]
+      },
+      {
+        featureType: 'water',
+        elementType: 'geometry',
+        stylers: [{ color: '#C9C9C9' }]
+      }
     ],
     mapTypeControl: false,
     streetViewControl: false,
-    fullscreenControl: false
+    fullscreenControl: false,
   };
 
-
-
   const map = new google.maps.Map(document.getElementById("map"), mapOptions);
-  
 
 
   {
-    function loadGeoJsonData() {
-      map.data.loadGeoJson("https://storage.googleapis.com/mapsdevsite/json/google.json");
-      map.data.loadGeoJson("http://localhost:3046/data.geojson");
-    }
-
-
-    loadGeoJsonData();
-    
-  setupMapListeners(map);
-
+  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+  map.data.loadGeoJson(
+    "https://storage.googleapis.com/mapsdevsite/json/google.json",
+  );
 }
 
+
+{
+  // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+  map.data.loadGeoJson(
+    "http://localhost:8080/geojson",
+  );
+}
 
 
 window.initMap = initMap;
 
 
 
-function createStaticCircle(location, map) {
-  new google.maps.Circle({
-    strokeColor: '#008000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#008000',
-    fillOpacity: 0.35,
-    map: map,
-    center: location,
-    radius: 100
-  });
-  
-}
-
-  // Create a static circle overlay at a fixed location
-  createStaticCircle(location, map);
-
-
-
-
-
-{
-  
-
   // Fetch business data and create circles
   fetch('../../../../output.json')
     .then(response => response.json())
     .then(data => {
-      data.map(business => createBusinessCircle(business, map));
+      const circles = data.map(business => createBusinessCircle(business, map));
+      connectCircles(circles, map);
       // Wait for all circles to be created and added to the map
       setTimeout(() => {
+        drawShortestPath(circles, map);
       }, 1000);
+    })
+    .catch(error => console.error('Error fetching data:', error));
 
-  })
+  // Create a static circle overlay at a fixed location
+  createStaticCircle(location, map);
 
-    
+  // Gradual zoom out effect
+  gradualZoomOut(map, mapOptions.zoom);
+}
 
+// Function to create and return a Google Maps Circle with an attached InfoWindow
 function createBusinessCircle(business, map) {
   const location = new google.maps.LatLng(business.lat, business.lng);
   const circle = new google.maps.Circle({
@@ -103,62 +88,19 @@ function createBusinessCircle(business, map) {
   });
 
 
-    // Create an InfoWindow
-    const infoWindow = new google.maps.InfoWindow({
-      content: `<div><strong>${business.name}</strong><br>
-                Address: ${business.address}<br>
-                Phone: ${business.phone}</div>`
-  });
 
+  const infoWindow = new google.maps.InfoWindow();
+  infoWindow.setContent(`
+    <div style="font-size: 16px;">
+      <strong>${business.name}</strong><br/>
+      Phone: ${business.formatted_phone_number}<br/>
+      <a href="#" onclick="openWebsiteInModal('${business.website}'); return false;">Website</a>
+    </div>
+  `);
 
-      // Attach event listener to the circle for mouseover
-  google.maps.event.addListener(circle, 'mouseover', () => {
-    infoWindow.open(map, circle);
-  });
   
-      // Attach event listener to the circle for mouseout
-  google.maps.event.addListener(circle, 'mouseout', () => {
-      infoWindow.close();
-  });
 
-}
-
-
-
-
-
-
-  function gradualZoomOut(map, initialZoom) {
-    let zoom = initialZoom;
-    // Get the map's container element for attaching the DOM event
-    const mapDiv = map.getDiv();
-    // Create the interval and store its ID to allow for cancellation
-    let intervalId = setInterval(() => {
-        if (zoom > 14) {
-            zoom -= 0.07;
-            map.setZoom(zoom);
-        } else {
-            clearInterval(intervalId);
-        }
-    }, 35);
-
-    // Add a 'wheel' event listener directly to the map's container
-    mapDiv.addEventListener('wheel', () => {
-        console.log("Scroll detected, stopping zoom out");
-        clearInterval(intervalId);
-        // Optionally remove the event listener if it's no longer needed
-        mapDiv.removeEventListener('wheel', this);
-    });
-
-    return intervalId; // Return the interval ID for further reference if needed
-}
-
-
-  gradualZoomOut(map, mapOptions.zoom);
-
-
-
-}
+    
   class CustomOverlay extends google.maps.OverlayView {
     constructor(position, content) {
         super();
@@ -203,11 +145,7 @@ function createBusinessCircle(business, map) {
     }
 }
 
-
 let overlay; // Manage overlay's scope
-
-
-
 
 function handleCircleMouseover(event) {
     const content = `<div style="font-size: 16px;">
@@ -235,46 +173,91 @@ function handleCircleMouseout() {
 circle.addListener('mouseover', handleCircleMouseover);
 circle.addListener('mouseout', handleCircleMouseout);
 
-return circle;}
+return circle;
+
+}
 
 
 
-
-
-
-function setupMapListeners(map) {
-  let clickCount = 0; // To keep track of clicks
-
-  // Listener for map clicks
-  map.addListener('click', function() {
-      clickCount++;
-      document.getElementById('metric1').textContent = `Calls Made: ${clickCount}`;
-  });
-
-  // Listener for zoom changes
-  map.addListener('zoom_changed', function() {
-      var zoomLevel = map.getZoom();
-      document.getElementById('metric2').textContent = `Meetings Booked: ${zoomLevel}`;
-  });
-
-  // Listener for center changes (e.g., after dragging)
-  map.addListener('center_changed', function() {
-      var center = map.getCenter();
-      document.getElementById('metric3').textContent = `Center Lat: ${center.lat().toFixed(2)}`;
+function createStaticCircle(location, map) {
+  new google.maps.Circle({
+    strokeColor: '#007a02',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#00b303',
+    fillOpacity: 0.35,
+    map: map,
+    center: location,
+    radius: 100
   });
 }
+
+
+{
+  function gradualZoomOut(map, initialZoom) {
+    let zoom = initialZoom;
+    // Get the map's container element for attaching the DOM event
+    const mapDiv = map.getDiv();
+    // Create the interval and store its ID to allow for cancellation
+    let intervalId = setInterval(() => {
+        if (zoom > 14) {
+            zoom -= 0.07;
+            map.setZoom(zoom);
+        } else {
+            clearInterval(intervalId);
+        }
+    }, 35);
+
+    // Add a 'wheel' event listener directly to the map's container
+    mapDiv.addEventListener('wheel', () => {
+        console.log("Scroll detected, stopping zoom out");
+        clearInterval(intervalId);
+        // Optionally remove the event listener if it's no longer needed
+        mapDiv.removeEventListener('wheel', this);
+    });
+
+    return intervalId; // Return the interval ID for further reference if needed
+}
+
+  // Gradual zoom out effect
+  gradualZoomOut(map, mapOptions.zoom);
+}
+
+
+
+function toggleStatsBox(boxId) {
+  var box = document.getElementById(boxId);
+  if (box.style.display === "none") {
+      box.style.display = "block";
+  } else {
+      box.style.display = "none";
+  }
+}
+
+
+
+
+function incrementMetric(event) {
+  // Get the span element inside the clicked div, which contains the number
+  const numberSpan = event.target.querySelector('span');
+
+  // Check if the click was directly on the span, if so, use that
+  const targetSpan = event.target.tagName === 'SPAN' ? event.target : numberSpan;
+
+  // Parse the number, increment it, and update the span's text
+  let currentValue = parseFloat(targetSpan.textContent);
+  targetSpan.textContent = currentValue + 1;
+}
+
+// Attach the click event listener to each metric display
+document.querySelectorAll('.metric-display').forEach(metric => {
+  metric.addEventListener('click', incrementMetric);
+});
+
+
 
 
 setupMapListeners(map);
-
-
-function toggleStatsBox(event, id) {
-  const statsBox = document.getElementById(id);
-  statsBox.style.display = statsBox.style.display === 'block' ? 'none' : 'block';
-  event.preventDefault(); // Prevent default button click behavior if using <button>
-}
-
-
 
 
 

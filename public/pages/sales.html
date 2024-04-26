@@ -340,10 +340,9 @@ main {
 
 /* Base styles for stats-box */
 .stats-box-1 {
-  display: none; /* Hide by default */
   position: fixed;
   width: 300px;
-  bottom:600px; /* Position above the icon */
+  bottom:400px; /* Position above the icon */
   left: 20px; /* Center the box horizontally relative to the icon */
   transform: translate(100%, 100%);
   z-index: 100;
@@ -370,10 +369,9 @@ main {
 }
 
 .stats-box-2 {
-  display: none; /* Hide by default */
   position: fixed;
   width: 300px;
-  bottom:600px; /* Position above the icon */
+  bottom:800px; /* Position above the icon */
   left: 20px; /* Center the box horizontally relative to the icon */
   transform: translate(100%, 100%);
   z-index: 100;
@@ -401,7 +399,6 @@ main {
 
 
 .stats-box-3 {
-  display: none; /* Hide by default */
   position: fixed;
   width: 300px;
   bottom:600px; /* Position above the icon */
@@ -609,27 +606,27 @@ main {
 
       <div class="icon-stats-container">
         <a href="../../public/pages/dashboard.html" class="game-icon-link">
-          <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Twitter Icon" class="game-icon-1">
+          <img src="../../public/icons/2644990_media_social_twitter_icon.png" alt="Dashboard Icon" class="game-icon-1">
       </a>
-        <div class="stats-box" id="stats-box-1">
+        <div class="dashboard-button" id="dashboard-button-1">
         </div>
     </div>
     
 
 
     <div class="icon-stats-container">
-      <button class="game-icon-link" onclick="toggleStatsBox(event, 'stats-box-2')">
-          <img src="../../public\icons\2645013_dropbox_media_social_icon.png" alt="Twitter Icon" class="game-icon-1">
+      <button class="game-icon-link" onclick="toggleStatsBox(event, 'stats-box-1')">
+          <img src="../../public\icons\2645013_dropbox_media_social_icon.png" alt="Stat 1 Icon" class="game-icon-2">
       </button>
-      <div class="stats-box" id="stats-box-2">
+      <div class="stats-box-button" id="stats-box-button-1">
       </div>
   </div>
       
   <div class="icon-stats-container">
-    <button class="game-icon-link" onclick="toggleStatsBox(event, 'stats-box-3')">
-        <img src="../../public\icons\2644999_media_pinterest_social_icon.png" alt="Twitter Icon" class="game-icon-1">
+    <button class="game-icon-link" onclick="toggleStatsBox(event, 'stats-box-2')">
+        <img src="../../public\icons\2644999_media_pinterest_social_icon.png" alt="Stat 2 Icon" class="game-icon-3">
     </button>
-    <div class="stats-box" id="stats-box-3">
+    <div class="stats-box-button" id="stats-box-button-2">
     </div>
 </div>
 
@@ -637,7 +634,7 @@ main {
 
 
       <div>
-        <div class="stats-box-1">
+        <div id="stats-box-1" class="stats-box" style="display: none;">
           <h3>Profile</h3>
           <p>Calls Made Today: 50</p>
           <p>Emails Sent: 40</p>
@@ -651,23 +648,7 @@ main {
 
 
     <div>
-      <div class="stats-box-2">
-          <h3>Profile</h3>
-          <p>Calls Made Today: 50</p>
-          <p>Emails Sent: 40</p>
-          <p>Leads Generated: 20</p>
-          <p>Meetings Scheduled: 10</p>
-          <p>Conversion Rate: 10%</p>
-          <p>Average Deal Size: $3,000</p>
-          <p>Client Engagement Score: 80/100</p>
-      </div>
-    </div>
-
-
-
-
-    <div>
-      <div class="stats-box-3">
+      <div id="stats-box-2" class="stats-box" style="display: none;">
           <h3>Profile</h3>
           <p>Calls Made Today: 50</p>
           <p>Emails Sent: 40</p>
@@ -685,13 +666,14 @@ main {
 
 
         
-      <div>
+
         <div class="metrics-container">
-          <div class="metric-display" id="metric1">Calls Made: 0</div>
-          <div class="metric-display" id="metric2">Meetings Bookes: 8</div>
-          <div class="metric-display" id="metric3">Center Lat: 52.77</div>
+          <div class="metric-display" id="metric1">Calls Made: <span>0</span></div>
+          <div class="metric-display" id="metric2">Meetings Booked: <span>8</span></div>
+          <div class="metric-display" id="metric3">Center Lat: <span>52.77</span></div>
         </div>
-      </div>
+
+
 
     </main>
 
