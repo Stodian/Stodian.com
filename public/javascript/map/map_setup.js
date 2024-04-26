@@ -100,26 +100,42 @@ function createBusinessCircle(business, map) {
 
   
 
-    
+
   class CustomOverlay extends google.maps.OverlayView {
-    constructor(position, content) {
+    constructor(position, content, map) {
         super();
         this.position = position;  // This should be a google.maps.LatLng object
         this.content = content;
         this.div = null;
+        this.isOpen = false; // Flag to track if the overlay is open
+        this.setMap(map); // Assign the map instance
     }
 
     onAdd() {
-        this.div = document.createElement('div');
-        this.div.className = 'overlay-container';
-        this.div.innerHTML = this.content;
-        const panes = this.getPanes();
-        panes.overlayLayer.appendChild(this.div);
-
-        // Stops propagation of clicks from the overlay to the map
-        this.div.addEventListener('click', (event) => {
-            event.stopPropagation();
-        });
+      this.div = document.createElement('div');
+      this.div.className = 'overlay-container';
+      this.div.innerHTML = this.content;
+      const panes = this.getPanes();
+      panes.overlayLayer.appendChild(this.div);
+    
+      // Stops propagation of clicks from the overlay to the map
+      this.div.addEventListener('click', (event) => {
+          event.stopPropagation();
+      });
+    
+      // Prevent closing the overlay when clicking inside the overlay
+      this.div.addEventListener('click', () => {
+          this.isOpen = true;
+          event.stopPropagation(); // Prevent the event from being stopped
+      });
+    
+      // Add click event listener to the map to close the overlay when clicked outside
+      this.getMap().getDiv().addEventListener('click', () => {
+          if (this.isOpen) {
+              this.setMap(null);
+              this.isOpen = false;
+          }
+      });
     }
 
     draw() {
@@ -141,11 +157,16 @@ function createBusinessCircle(business, map) {
     startHideTimeout() {
         this.hideTimeout = setTimeout(() => {
             this.setMap(null);
+            this.isOpen = false;
         }, 300);
     }
 }
 
+
+
 let overlay; // Manage overlay's scope
+
+
 
 function handleCircleMouseover(event) {
     const content = `<div style="font-size: 16px;">
@@ -174,6 +195,11 @@ circle.addListener('mouseout', handleCircleMouseout);
 return circle;
 
 }
+
+
+
+
+
 
 
 

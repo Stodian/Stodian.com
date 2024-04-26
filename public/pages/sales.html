@@ -435,6 +435,7 @@ main {
     z-index: 1000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* softer shadow for a subtle depth */
+    overflow: hidden; /* Prevents content overflow */
 }
 
 /* Hover effect for the whole container */
@@ -456,6 +457,7 @@ main {
     font-size: 16px; /* appropriate font size for readability */
     color: #4a4a4a; /* consistent with elegant dark grey theme */
     margin-bottom: 15px; /* generous spacing for a clean layout */
+    overflow: hidden; /* Prevents content overflow */
 }
 
 /* Refined link/button styling */
@@ -468,6 +470,8 @@ main {
     background-color: #f8f8f8; /* light background for the button */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
     transition: background-color 0.3s, color 0.3s; /* smooth transitions for hover effects */
+    display: inline-block; /* Ensures inline display for proper interaction */
+    overflow: hidden; /* Prevents content overflow */
 }
 
 .overlay-container a:hover,
@@ -475,6 +479,7 @@ main {
     background-color: #e7e7e7; /* darker on hover for subtle interaction */
     text-decoration: none; /* maintain cleanliness */
 }
+
 
 
 @keyframes fade-in {
