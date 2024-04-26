@@ -101,6 +101,8 @@ function createBusinessCircle(business, map) {
   
 
 
+  let overlay; // Manage overlay's scope
+
   class CustomOverlay extends google.maps.OverlayView {
     constructor(position, content, map) {
         super();
@@ -108,71 +110,74 @@ function createBusinessCircle(business, map) {
         this.content = content;
         this.div = null;
         this.isOpen = false; // Flag to track if the overlay is open
+        this.isOverLink = false; // Flag to track if the mouse cursor is over the link
         this.setMap(map); // Assign the map instance
     }
-
+  
     onAdd() {
       this.div = document.createElement('div');
       this.div.className = 'overlay-container';
       this.div.innerHTML = this.content;
+      const link = this.div.querySelector('a');
+      link.addEventListener('mouseover', () => {
+          this.isOverLink = true;
+      });
+      link.addEventListener('mouseout', () => {
+          this.isOverLink = false;
+      });
       const panes = this.getPanes();
       panes.overlayLayer.appendChild(this.div);
-    
+  
       // Stops propagation of clicks from the overlay to the map
       this.div.addEventListener('click', (event) => {
           event.stopPropagation();
       });
-    
+  
       // Prevent closing the overlay when clicking inside the overlay
       this.div.addEventListener('click', () => {
           this.isOpen = true;
           event.stopPropagation(); // Prevent the event from being stopped
       });
-    
+  
       // Add click event listener to the map to close the overlay when clicked outside
       this.getMap().getDiv().addEventListener('click', () => {
-          if (this.isOpen) {
+          if (this.isOpen && !this.isOverLink) {
               this.setMap(null);
               this.isOpen = false;
           }
       });
     }
-
+  
     draw() {
         const overlayProjection = this.getProjection();
         const pixelCoords = overlayProjection.fromLatLngToDivPixel(this.position);
-
+  
         // Position the overlay directly above the circle
         this.div.style.left = (pixelCoords.x - this.div.offsetWidth / 2) + 'px';
         this.div.style.top = (pixelCoords.y - this.div.offsetHeight - 20) + 'px'; // 20 pixels above the circle
     }
-
+  
     onRemove() {
         if (this.div) {
             this.div.parentNode.removeChild(this.div);
             this.div = null;
         }
     }
-
+  
     startHideTimeout() {
         this.hideTimeout = setTimeout(() => {
             this.setMap(null);
             this.isOpen = false;
-        }, 300);
+        }, 1000);
     }
-}
+  }
 
-
-
-let overlay; // Manage overlay's scope
-
-
-
-function handleCircleMouseover(event) {
+  
+  function handleCircleMouseover(event) {
     const content = `<div style="font-size: 16px;">
         <strong>${business.name}</strong><br/>
         Phone: ${business.formatted_phone_number}<br/>
-        <a href="${business.website}" target="_blank">Website</a>
+        <a href="#" onclick="openWebsiteInModal('${business.website}'); return false;">Website</a>
     </div>`;
     if (!overlay || !overlay.getMap()) {
         if (overlay) {
@@ -184,16 +189,15 @@ function handleCircleMouseover(event) {
 }
 
 function handleCircleMouseout() {
-    if (overlay) {
-        overlay.startHideTimeout();
-    }
+  if (overlay && !overlay.isLinkHovered) {
+    overlay.startHideTimeout();
+  }
 }
 
 circle.addListener('mouseover', handleCircleMouseover);
 circle.addListener('mouseout', handleCircleMouseout);
 
 return circle;
-
 }
 
 
