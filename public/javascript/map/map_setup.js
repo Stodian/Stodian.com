@@ -223,30 +223,34 @@ function createStaticCircle(location, map) {
 
 
 
-
-
-
-function setupMapListeners(map) {
-  let clickCount = 0; // To keep track of clicks
-
-  // Listener for map clicks
-  map.addListener('click', function() {
-      clickCount++;
-      document.getElementById('metric1').textContent = `Calls Made: ${clickCount}`;
-  });
-
-  // Listener for zoom changes
-  map.addListener('zoom_changed', function() {
-      var zoomLevel = map.getZoom();
-      document.getElementById('metric2').textContent = `Meetings Booked: ${zoomLevel}`;
-  });
-
-  // Listener for center changes (e.g., after dragging)
-  map.addListener('center_changed', function() {
-      var center = map.getCenter();
-      document.getElementById('metric3').textContent = `Center Lat: ${center.lat().toFixed(2)}`;
-  });
+function toggleStatsBox(boxId) {
+  var box = document.getElementById(boxId);
+  if (box.style.display === "none") {
+      box.style.display = "block";
+  } else {
+      box.style.display = "none";
+  }
 }
+
+
+
+
+function incrementMetric(event) {
+  // Get the span element inside the clicked div, which contains the number
+  const numberSpan = event.target.querySelector('span');
+
+  // Check if the click was directly on the span, if so, use that
+  const targetSpan = event.target.tagName === 'SPAN' ? event.target : numberSpan;
+
+  // Parse the number, increment it, and update the span's text
+  let currentValue = parseFloat(targetSpan.textContent);
+  targetSpan.textContent = currentValue + 1;
+}
+
+// Attach the click event listener to each metric display
+document.querySelectorAll('.metric-display').forEach(metric => {
+  metric.addEventListener('click', incrementMetric);
+});
 
 
 
