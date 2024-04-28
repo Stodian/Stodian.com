@@ -53,7 +53,7 @@
   top: 0;
   right: 0;
   width: calc(500px - 20px); /* Adjusted to take up the whole right hand side with some padding */
-  height: 100vh; /* Adjusted to take up full height of the viewport */
+  height: 100%; /* Adjusted to take up full height of the viewport */
   padding: 20px;
   box-sizing: border-box;
   background-color: #f9f9f9;
@@ -107,12 +107,36 @@
   flex: 1; /* Letting the iframe take up remaining space */
 }
 
-  /* Additional styling for the text underneath the website */
-  .modal-text {
-    margin-top: 20px; /* Adjust spacing as needed */
-    text-align: center;
-    color: #333333;
-  }
+.sales-process {
+  max-width: calc(100% - 40px); /* Limiting the width to 100% of the modal width minus padding */
+  max-height: calc(100vh - 200px); /* Limiting the height to 100% of the viewport height minus modal header and footer */
+  overflow: auto; /* Adding scrollbars if the content overflows */
+  margin: 0 auto; /* Centering the sales process horizontally */
+}
+
+.sales-process h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.sales-process ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sales-process li {
+  margin-bottom: 10px;
+}
+
+.sales-process input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.sales-process label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 
 
 
@@ -659,9 +683,21 @@ main {
 
 
   <!-- Modal -->
-  <div class="modal fade hidden" id="websiteModal" tabindex="-1" role="dialog" aria-labelledby="websiteModalLabel" aria-hidden="true">
+  <div class="modal fade hidden" id="websiteModal" tabindex="-1" role="dialog" aria-labelledby="websiteModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
+              <div class="sales-process">
+        <h2>Sales Process</h2>
+        <ul>
+          <li><input type="checkbox" id="initial-call"><label for="initial-call">Made the initial call</label></li>
+          <li><input type="checkbox" id="follow-up-email"><label for="follow-up-email">Sent the follow-up email</label></li>
+          <li><input type="checkbox" id="meeting"><label for="meeting">Scheduled a meeting</label></li>
+          <li><input type="checkbox" id="proposal"><label for="proposal">Sent the proposal</label></li>
+          <li><input type="checkbox" id="follow-up-call"><label for="follow-up-call">Made the follow-up call</label></li>
+          <li><input type="checkbox" id="negotiation"><label for="negotiation">Started negotiation</label></li>
+          <li><input type="checkbox" id="closed"><label for="closed">Closed the deal</label></li>
+        </ul>
+      </div>  
         <div class="modal-header">
           <h5 class="modal-title" id="websiteModalLabel"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -672,9 +708,7 @@ main {
           <iframe id="websiteIframe" src="" style="width: 100%; height: 100%;" frameborder="0"></iframe>
       </div>
       </div>
-      <div class="modal-text">
-        This is additional text underneath the website.
-      </div>
+
     </div>
   </div>
 
