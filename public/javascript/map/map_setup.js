@@ -128,6 +128,18 @@ function createBusinessCircle(business, map) {
         openWebsiteInModal(business.website);
     });
 
+    // Check if modal is open when the circle is clicked
+    circle.addListener('click', () => {
+        const modal = document.getElementById('yourModalId'); // Replace 'yourModalId' with the actual ID of your modal element
+        if (modal.style.display === 'block') {
+            // If modal is displayed, change circle color to pink
+            circle.setOptions({
+                strokeColor: '#FF69B4',
+                fillColor: '#FF69B4'
+            });
+        }
+    });
+
     return circle;
 }
 
