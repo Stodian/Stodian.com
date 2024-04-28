@@ -139,6 +139,39 @@ function createBusinessCircle(business, map) {
             });
         }
     });
+    
+
+    // Function to style the pathway effect
+function styleSalesPathway() {
+    const salesSteps = document.getElementById('salesSteps').getElementsByTagName('li');
+    let completedSteps = 0;
+  
+    for (let i = 0; i < salesSteps.length; i++) {
+      const checkbox = salesSteps[i].querySelector('input[type="checkbox"]');
+      if (checkbox.checked) {
+        completedSteps++;
+        salesSteps[i].classList.add('completed');
+      } else {
+        salesSteps[i].classList.remove('completed');
+        if (completedSteps === i) {
+          salesSteps[i].classList.add('active');
+          break;
+        }
+      }
+    }
+  }
+  
+  // Event listener for checkbox changes
+  const checkboxes = document.querySelectorAll('.sales-process input[type="checkbox"]');
+  checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+      styleSalesPathway();
+    });
+  });
+  
+  // Initial styling on page load
+  styleSalesPathway();
+  
 
     return circle;
 }
@@ -182,3 +215,6 @@ function gradualZoomOut(map, initialZoom) {
 
 // Call the initMap function when the Google Maps API is loaded
 window.initMap = initMap;
+
+
+

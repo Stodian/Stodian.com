@@ -83,7 +83,7 @@
 
 
 .modal-body {
-  margin: 0 auto;
+  margin-top:  230px;
   height: 263px;
   width: 395px;
   padding: 20px;
@@ -107,34 +107,57 @@
   flex: 1; /* Letting the iframe take up remaining space */
 }
 
-.sales-process {
-  max-width: calc(100% - 40px); /* Limiting the width to 100% of the modal width minus padding */
-  max-height: calc(100vh - 200px); /* Limiting the height to 100% of the viewport height minus modal header and footer */
-  overflow: auto; /* Adding scrollbars if the content overflows */
-  margin: 0 auto; /* Centering the sales process horizontally */
-}
 
-.sales-process h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
+
+
 
 .sales-process ul {
+  margin-top: 50px;
   list-style: none;
   padding: 0;
 }
 
 .sales-process li {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
-.sales-process input[type="checkbox"] {
-  margin-right: 10px;
+.sales-process li input[type="checkbox"] {
+  display: none;
 }
 
-.sales-process label {
-  display: inline-block;
-  vertical-align: middle;
+.sales-process li label {
+  cursor: pointer;
+}
+
+.sales-process li:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -25px;
+  width: 20px;
+  height: 3px;
+  background-color: #ccc;
+}
+
+.sales-process li:first-child:before {
+  display: none;
+}
+
+.sales-process li.completed:before {
+  background-color: #4CAF50;
+}
+
+.sales-process li.active:before {
+  background-color: #4CAF50;
+}
+
+.sales-process #completionMessage {
+  display: none;
+}
+
+.sales-process .completed label {
+  text-decoration: line-through;
 }
 
 
@@ -686,18 +709,19 @@ main {
   <div class="modal fade hidden" id="websiteModal" tabindex="-1" role="dialog" aria-labelledby="websiteModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-              <div class="sales-process">
-        <h2>Sales Process</h2>
-        <ul>
-          <li><input type="checkbox" id="initial-call"><label for="initial-call">Made the initial call</label></li>
-          <li><input type="checkbox" id="follow-up-email"><label for="follow-up-email">Sent the follow-up email</label></li>
-          <li><input type="checkbox" id="meeting"><label for="meeting">Scheduled a meeting</label></li>
-          <li><input type="checkbox" id="proposal"><label for="proposal">Sent the proposal</label></li>
-          <li><input type="checkbox" id="follow-up-call"><label for="follow-up-call">Made the follow-up call</label></li>
-          <li><input type="checkbox" id="negotiation"><label for="negotiation">Started negotiation</label></li>
-          <li><input type="checkbox" id="closed"><label for="closed">Closed the deal</label></li>
-        </ul>
-      </div>  
+              <div class="sales-process" id="salesProcess">
+                  <h2>🚀 Sales Process Adventure</h2>
+                  <ul id="salesSteps">
+                    <li><input type="checkbox" id="initial-call"><label for="initial-call">Make the first call</label></li>
+                    <li><input type="checkbox" id="follow-up-email"><label for="follow-up-email">Send a follow-up email</label></li>
+                    <li><input type="checkbox" id="meeting"><label for="meeting">Schedule a meeting</label></li>
+                    <li><input type="checkbox" id="proposal"><label for="proposal">Send a compelling proposal</label></li>
+                    <li><input type="checkbox" id="follow-up-call"><label for="follow-up-call">Follow up with a call</label></li>
+                    <li><input type="checkbox" id="negotiation"><label for="negotiation">Start the negotiation dance</label></li>
+                    <li><input type="checkbox" id="closed"><label for="closed">Close the deal like a boss</label></li>
+                  </ul>
+                  <p id="completionMessage">🎉 Congratulations! You're on your way to closing deals like never before. Keep going!</p>
+                </div>
         <div class="modal-header">
           <h5 class="modal-title" id="websiteModalLabel"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
