@@ -89,7 +89,7 @@ function createBusinessCircle(business, map) {
 
 
   return circle;
-
+}
 
 
 
