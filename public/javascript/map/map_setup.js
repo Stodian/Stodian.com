@@ -139,38 +139,41 @@ circle.addListener('click', () => {
 
 
 
+
     
 
-    // Function to style the pathway effect
 function styleSalesPathway() {
-    const salesSteps = document.getElementById('salesSteps').getElementsByTagName('li');
-    let completedSteps = 0;
-  
-    for (let i = 0; i < salesSteps.length; i++) {
+  const salesSteps = document.getElementById('salesSteps').getElementsByTagName('li');
+  let completedSteps = 0;
+
+  for (let i = 0; i < salesSteps.length; i++) {
       const checkbox = salesSteps[i].querySelector('input[type="checkbox"]');
-      if (checkbox.checked) {
-        completedSteps++;
-        salesSteps[i].classList.add('completed');
+      const isChecked = checkbox.checked;
+
+      salesSteps[i].classList.toggle('completed', isChecked);
+      salesSteps[i].classList.toggle('active', !isChecked && completedSteps === i);
+
+      if (isChecked) {
+          completedSteps++;
       } else {
-        salesSteps[i].classList.remove('completed');
-        if (completedSteps === i) {
-          salesSteps[i].classList.add('active');
-          break;
-        }
+          break; // No need to iterate further if an unchecked checkbox is encountered
       }
-    }
   }
-  
-  // Event listener for checkbox changes
-  const checkboxes = document.querySelectorAll('.sales-process input[type="checkbox"]');
-  checkboxes.forEach(function(checkbox) {
-    checkbox.addEventListener('change', function() {
-      styleSalesPathway();
-    });
-  });
-  
-  // Initial styling on page load
-  styleSalesPathway();
+
+// Show completion message if all steps are completed
+const completionMessage = document.getElementById('completionMessage');
+completionMessage.style.visibility = (completedSteps === salesSteps.length) ? 'visible' : 'hidden';
+}
+
+// Event listener for checkbox changes
+const salesCheckboxes = document.querySelectorAll('.sales-process input[type="checkbox"]');
+salesCheckboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('change', styleSalesPathway);
+});
+
+// Initial styling on page load
+styleSalesPathway();
+
   
 
     return circle;
