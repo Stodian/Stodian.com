@@ -87,8 +87,8 @@ function createBusinessCircle(business, map) {
       radius: 100  // Adjust the radius based on your needs
   });
 
+
   return circle;
-}
 
 
 
