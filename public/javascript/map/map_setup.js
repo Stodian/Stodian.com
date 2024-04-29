@@ -122,23 +122,23 @@ function createBusinessCircle(business, map) {
         radius: 100  // Adjust the radius based on your needs
     });
 
-    // Add click event listener to the circle
-    circle.addListener('click', () => {
-        // Open the website associated with the business in a modal
-        openWebsiteInModal(business.website);
-    });
 
-    // Check if modal is open when the circle is clicked
-    circle.addListener('click', () => {
-        const modal = document.getElementById('yourModalId'); // Replace 'yourModalId' with the actual ID of your modal element
-        if (modal.style.display === 'block') {
-            // If modal is displayed, change circle color to pink
-            circle.setOptions({
-                strokeColor: '#FF69B4',
-                fillColor: '#FF69B4'
-            });
-        }
-    });
+    
+    
+// Function to handle circle click
+const handleCircleClick = () => {
+  // Open the website associated with the business in a modal
+  openWebsiteInModal(business.website);
+};
+
+// Add click event listener to the circle
+circle.addListener('click', () => {
+  handleCircleClick();
+});
+
+
+
+
     
 
     // Function to style the pathway effect
