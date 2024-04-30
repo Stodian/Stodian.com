@@ -70,30 +70,6 @@ function initMap() {
 
 
 
-
-
-
-// Function to create and return a Google Maps Circle with an attached InfoWindow
-function createBusinessCircle(business, map) {
-  const location = new google.maps.LatLng(business.lat, business.lng);
-  const circle = new google.maps.Circle({
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#FF0000',
-      fillOpacity: 0.35,
-      map: map,
-      center: location,
-      radius: 100  // Adjust the radius based on your needs
-  });
-
-
-  return circle;
-}
-
-
-
-
 // Function to create a static circle overlay at a fixed location
 function createStaticCircle(location, map) {
   new google.maps.Circle({
@@ -119,7 +95,8 @@ function createBusinessCircle(business, map) {
         fillOpacity: 0.35,
         map: map,
         center: location,
-        radius: 100  // Adjust the radius based on your needs
+        radius: 100,  // Adjust the radius based on your needs
+        businessData: business,
     });
 
 
@@ -136,6 +113,25 @@ circle.addListener('click', () => {
   handleCircleClick();
 });
 
+// Close the modal only when clicking on the close button
+$('.close').on('click', function() {
+    $('#websiteModal').modal('hide');
+});
+
+// Close the modal only when clicking on the modal overlay
+$('#websiteModal').on('click', function(event) {
+    if ($(event.target).hasClass('modal')) {
+        $('#websiteModal').modal('block');
+    }
+});
+
+// Prevent modal from closing when clicking inside the modal content
+$('.modal-content').on('click', function(event) {
+    event.stopPropagation();
+});
+
+
+
 
 
 
@@ -143,36 +139,44 @@ circle.addListener('click', () => {
     
 
 function styleSalesPathway() {
-  const salesSteps = document.getElementById('salesSteps').getElementsByTagName('li');
-  let completedSteps = 0;
+    const salesSteps = document.getElementById('salesSteps').getElementsByTagName('li');
+    let completedSteps = 0;
 
-  for (let i = 0; i < salesSteps.length; i++) {
-      const checkbox = salesSteps[i].querySelector('input[type="checkbox"]');
-      const isChecked = checkbox.checked;
+    for (let i = 0; i < salesSteps.length; i++) {
+        const checkbox = salesSteps[i].querySelector('input[type="checkbox"]');
+        const isChecked = checkbox.checked;
 
-      salesSteps[i].classList.toggle('completed', isChecked);
-      salesSteps[i].classList.toggle('active', !isChecked && completedSteps === i);
+        salesSteps[i].classList.toggle('completed', isChecked);
+        salesSteps[i].classList.toggle('active', !isChecked && completedSteps === i);
 
-      if (isChecked) {
-          completedSteps++;
-      } else {
-          break; // No need to iterate further if an unchecked checkbox is encountered
-      }
-  }
+        if (isChecked) {
+            completedSteps++;
+        } else {
+            break; // No need to iterate further if an unchecked checkbox is encountered
+        }
+    }
 
-// Show completion message if all steps are completed
-const completionMessage = document.getElementById('completionMessage');
-completionMessage.style.visibility = (completedSteps === salesSteps.length) ? 'visible' : 'hidden';
+    // Show completion message if all steps are completed
+    const completionMessage = document.getElementById('completionMessage');
+    completionMessage.style.visibility = (completedSteps === salesSteps.length) ? 'visible' : 'hidden';
+
+    // Update progress bar
+    updateProgressBar(completedSteps, salesSteps.length);
 }
 
 // Event listener for checkbox changes
 const salesCheckboxes = document.querySelectorAll('.sales-process input[type="checkbox"]');
 salesCheckboxes.forEach(function(checkbox) {
-  checkbox.addEventListener('change', styleSalesPathway);
+    checkbox.addEventListener('change', styleSalesPathway);
 });
 
 // Initial styling on page load
 styleSalesPathway();
+
+function updateProgressBar(completedSteps, totalSteps) {
+    const percentage = (completedSteps / totalSteps) * 100;
+    document.getElementById('progress-bar').style.width = `${percentage}%`;
+}
 
   
 
