@@ -37,6 +37,19 @@ h1, h2 {
     text-align: center;
 }
 
+
+/* CSS */
+.typed-words {
+    font-size: 3.5rem;               /* Large text similar to h1 */
+    margin-top: 30px;                /* Large top margin to separate from elements above */
+    margin-bottom: 2px;              /* Small bottom margin */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font styling */
+    background-color: #f5f5f5;       /* Light gray background color */
+    color: #333;                     /* Dark gray text color */
+    font-weight: bold; /* Makes the text bold */
+}
+
+
 /* Header styles */
 h1 {
     font-size: 3.5rem;
