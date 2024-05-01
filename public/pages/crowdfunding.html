@@ -6,11 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crowdfunding</title>
     <link rel="stylesheet" type="text/css" href="../styles/index.css">
+
+    <style>
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            font-family: Arial, sans-serif;
+        }
+        
+        
+        header {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            top: 0px; /* Initially hide the header */
+            z-index: 1000; /* Ensures it's above all other content */
+            transition: top 0.3s;
+        }
+        
+        
+        header nav {
+            display: flex;
+            align-items: center; /* Ensures vertical centering */
+            justify-content: space-between; /* Distributes space between and around content */
+            width: 80%; /* Ensures the nav element takes the full header width */
+            height: 20px;
+        }
+        
+        
+        header nav img {
+            scale: 0.9;
+            display: block; /* Removes the bottom space/margin often seen in inline-block elements */
+            margin: 0; /* Removes any margin around the image */
+            padding: 0; /* Ensures no padding is applied to the image */
+            border: none; /* Removes any border that might be applied */
+        }
+        
+        
+        header nav ul {
+          display: flex; /* Makes the list horizontal */
+            list-style: none; /* Removes default list styling */
+            padding: 0;
+            margin: 0 auto; /* Centers the list within the available space */
+            gap: 20px; /* Provides equal spacing between the list items */
+        }
+        
+        
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+            margin: 0; /* Removes margin from the list items */
+        }
+        
+        
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+            position: relative;
+            z-index: 1;
+        }
+    
+        
+
+        </style>
+
+
 </head>
 
 <body>
         <header>
             <nav class="main-nav">
+                <img src="../../public\icons\logos\Stodian Logo Final\White Version Final.png" alt="Stodian Logo" id="header-logo">
                 <ul>
                     <li><a href="../pages/beta.html">Beta</a></li>
                     <li><a href="../pages/about.html">About</a></li>
