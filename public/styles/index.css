@@ -17,6 +17,15 @@ header {
     padding: 20px;
 }
 
+#header-logo {
+    height: 50px; /* Adjust based on your logo's dimensions */
+    margin-right: 20px; /* Space between logo and any other header content */
+    display: flex;
+    align-items: center; /* Centers the items vertically */
+    justify-content: flex-start; /* Aligns items to the left */
+    padding: 10px 20px; /* Add padding as needed */
+}
+
 nav ul {
     list-style-type: none;
     margin: 0;

@@ -6,12 +6,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+<style>
+
+header nav {
+    display: flex;
+    align-items: center; /* Ensures vertical centering */
+    justify-content: space-between; /* Distributes space between and around content */
+    width: 100%; /* Ensures the nav element takes the full header width */
+}
+
+header nav img {
+    height: 500px; /* Adjust based on your logo's actual size */
+}
+
+header nav ul {
+    display: flex; /* Makes the list horizontal */
+    list-style: none; /* Removes default list styling */
+    padding: 0;
+    margin: 0 auto; /* Centers the list within the available space */
+    gap: 20px; /* Provides equal spacing between the list items */
+}
+
+header nav ul li {
+    margin: 0; /* Removes margin from the list items */
+}
+
+</style>
+
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stodian Design</title>
-    <!-- Link to main CSS file -->
+    <link rel="icon" href="../public\icons\logos\Stodian Logo Final\White Version Final 2.0.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="styles/index.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -23,6 +51,7 @@
 <body>
     <header>
         <nav>
+            <img src="../../public/icons/logos/Stodian Logo Final/LOGO_edited_edited.png" alt="Stodian Logo" id="header-logo">
             <ul>
                 <li><a href="pages/beta.html">Beta</a></li>
                 <li><a href="pages/about.html">About</a></li>
