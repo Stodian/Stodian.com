@@ -9,32 +9,94 @@
 
 <style>
 
-header nav {
-    display: flex;
-    align-items: center; /* Ensures vertical centering */
-    justify-content: space-between; /* Distributes space between and around content */
-    width: 80%; /* Ensures the nav element takes the full header width */
-    height: 20px;
-}
-
-header nav img {
-    scale: 0.8;
-    margin-left: 120px;
-}
-
-header nav ul {
-    display: flex; /* Makes the list horizontal */
-    list-style: none; /* Removes default list styling */
-    padding: 0;
-    margin: 0 auto; /* Centers the list within the available space */
-    gap: 20px; /* Provides equal spacing between the list items */
-}
-
-header nav ul li {
-    margin: 0; /* Removes margin from the list items */
-}
-
-</style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+        font-family: Arial, sans-serif;
+    }
+    
+    
+    header {
+        width: 100%;
+        background-color: #333;
+        color: white;
+        position: fixed;
+        top: 0px; /* Initially hide the header */
+        z-index: 1000; /* Ensures it's above all other content */
+        transition: top 0.3s;
+    }
+    
+    
+    header nav {
+        display: flex;
+        align-items: center; /* Ensures vertical centering */
+        justify-content: space-between; /* Distributes space between and around content */
+        width: 80%; /* Ensures the nav element takes the full header width */
+        height: 20px;
+    }
+    
+    
+    header nav img {
+        scale: 0.9;
+        display: block; /* Removes the bottom space/margin often seen in inline-block elements */
+        margin: 0; /* Removes any margin around the image */
+        padding: 0; /* Ensures no padding is applied to the image */
+        border: none; /* Removes any border that might be applied */
+    }
+    
+    
+    header nav ul {
+      display: flex; /* Makes the list horizontal */
+        list-style: none; /* Removes default list styling */
+        padding: 0;
+        margin: 0 auto; /* Centers the list within the available space */
+        gap: 20px; /* Provides equal spacing between the list items */
+    }
+    
+    
+    header nav ul li {
+        display: inline;
+        margin-right: 20px;
+        margin: 0; /* Removes margin from the list items */
+    }
+    
+    
+    header nav ul li a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    
+    main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f4f4;
+        position: relative;
+        z-index: 1;
+    }
+    
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      justify-content: center;
+      top: 0; /* Aligns container to the top */
+      width: 100%; /* Fixed width to suit the icon size */
+      height: 15%; /* Fixed width to suit the icon size */
+      padding-top: 10px; /* Space from top of the viewport */
+      z-index: 2; /* Ensures it stays above other elements */
+      background-color: transparent; /* No background color */
+      transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
+      position: fixed; /* Fixes the container to the viewport */
+    }
+    
+    </style>
 
 <head>
 
@@ -53,7 +115,9 @@ header nav ul li {
 <body>
     <header>
         <nav>
-            <img src="../../public/icons/logos/Stodian Logo Final/LOGO_edited_edited.png" alt="Stodian Logo" id="header-logo">
+            <a href="../../public\index.html">
+                <img src="../../public/icons/logos/Stodian Logo Final/White Version Final.png" alt="Stodian Logo" id="header-logo">
+            </a>
             <ul>
                 <li><a href="pages/beta.html">Beta</a></li>
                 <li><a href="pages/about.html">About</a></li>
@@ -111,10 +175,10 @@ header nav ul li {
         <hr class="footer-line">
         <!-- Social media links -->
         <div class="social-links">
-            <a href="https://www.linkedin.com/" target="_blank"><img src="../public/Icons/2644994_linkedin_media_social_icon.png" alt="LinkedIn Icon"></a>
-            <a href="https://www.instagram.com/" target="_blank"><img src="../public\icons\4691240_instagram_icon.png" alt="Instagram"></a>
-            <a href="https://twitter.com/" target="_blank"><img src="../public\icons\2644990_media_social_twitter_icon.png" alt="Twitter"></a>
-            <a href="https://www.youtube.com/" target="_blank"><img src="../public\icons\2644987_media_social_youtube_icon.png" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/" target="_blank"><img src="../public\icons\socials\2644994_linkedin_media_social_icon.png" alt="LinkedIn Icon"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="../public\icons\socials\4691240_instagram_icon.png" alt="Instagram"></a>
+            <a href="https://twitter.com/" target="_blank"><img src="../public\icons\socials\2644990_media_social_twitter_icon.png" alt="Twitter"></a>
+            <a href="https://www.youtube.com/" target="_blank"><img src="../public\icons\socials\2644987_media_social_youtube_icon.png" alt="YouTube"></a>
         </div>
     </footer>
 
