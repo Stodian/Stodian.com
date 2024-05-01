@@ -1,6 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+    <style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;  /* Consider this padding when calculating width */
+    cursor: crosshair; /* Hide the default cursor */
+}
+
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Adjust gap to ensure only three posts fit within a single row */
+}
+
+.blog-post {
+    width: calc((60% - 40px) / 3); /* Subtract total horizontal gap from 100% and divide by 3 */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px; /* Optional, adds space between rows */
+    z-index: 1;
+}
+
+.blog-post:hover {
+    transform: translateY(-10px);
+}
+
+.blog-post img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* Ensures the image covers the area without distorting aspect ratio */
+}
+
+.post-content {
+    padding: 15px;
+}
+
+.post-date {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.post-content h2 {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.post-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.read-more {
+    display: block;
+    text-decoration: none;
+    color: #007BFF;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+    </style>
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +85,9 @@
 </head>
 
 <body>
+
+    <canvas id="cadCanvas"></canvas>
+
     <header>
         <nav>
             <ul>
@@ -27,6 +105,69 @@
         <h1>Blog</h1>
         <p>Welcome to our blog page. We will have this built out before you know it...</p>
         <!-- Add more content here as needed -->
+
+
+        <div class="blog-container">
+            <div class="blog-post">
+                <img src="../../../public\icons\logos\Stodian Logo Final\LOGO.jpg" alt="Blog Image">
+                <div class="post-content">
+                    <p class="post-date">January 17, 2023</p>
+                    <h2>Laiout selected as "most promising Proptech start-up in Norway!"</h2>
+                    <p>Together with 9 others, laiout has been selected as one of 10 most promising start-ups of 2023!</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </div>
+            </div>
+    
+            <div class="blog-post">
+                <img src="../../../public\icons\logos\Stodian Logo Final\LOGO.jpg" alt="Blog Image">
+                <div class="post-content">
+                    <p class="post-date">January 17, 2023</p>
+                    <h2>Laiout selected as "most promising Proptech start-up in Norway!"</h2>
+                    <p>Together with 9 others, laiout has been selected as one of 10 most promising start-ups of 2023!</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <img src="../../../public\icons\logos\Stodian Logo Final\LOGO.jpg" alt="Blog Image">
+                <div class="post-content">
+                    <p class="post-date">January 17, 2023</p>
+                    <h2>Laiout selected as "most promising Proptech start-up in Norway!"</h2>
+                    <p>Together with 9 others, laiout has been selected as one of 10 most promising start-ups of 2023!</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <img src="../../../public\icons\logos\Stodian Logo Final\LOGO.jpg" alt="Blog Image">
+                <div class="post-content">
+                    <p class="post-date">January 17, 2023</p>
+                    <h2>Laiout selected as "most promising Proptech start-up in Norway!"</h2>
+                    <p>Together with 9 others, laiout has been selected as one of 10 most promising start-ups of 2023!</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <img src="../../../public\icons\logos\Stodian Logo Final\LOGO.jpg" alt="Blog Image">
+                <div class="post-content">
+                    <p class="post-date">January 17, 2023</p>
+                    <h2>Laiout selected as "most promising Proptech start-up in Norway!"</h2>
+                    <p>Together with 9 others, laiout has been selected as one of 10 most promising start-ups of 2023!</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <img src="../../../public\icons\logos\Stodian Logo Final\LOGO.jpg" alt="Blog Image">
+                <div class="post-content">
+                    <p class="post-date">January 17, 2023</p>
+                    <h2>Laiout selected as "most promising Proptech start-up in Norway!"</h2>
+                    <p>Together with 9 others, laiout has been selected as one of 10 most promising start-ups of 2023!</p>
+                    <a href="#" class="read-more">Read more →</a>
+                </div>
+            </div>
+        </div>
     </main>
 
 </body>
@@ -46,7 +187,90 @@
 
 
     <script src="../Static/Javascript/Social_links.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('cadCanvas');
+    const ctx = canvas.getContext('2d');
+    const headerHeight = 50; // Height of the header
+    const lines = []; // Array to store drawn lines and their timestamps
 
+    // Adjust canvas dimensions to start below the header
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - headerHeight;
+    canvas.style.top = `${headerHeight}px`;
+
+    function drawGrid() {
+        const spacing = 20; // Grid spacing
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+        ctx.beginPath();
+        for (let x = 0; x <= canvas.width; x += spacing) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+        }
+        for (let y = 0; y <= canvas.height; y += spacing) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+        }
+        ctx.strokeStyle = '#ddd'; // Light grey grid lines
+        ctx.stroke();
+    }
+
+    function drawLine(x1, y1, x2, y2, opacity) {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = `rgba(0, 0, 0, ${opacity})`; // Black line color with opacity
+        ctx.lineWidth = 2;
+        ctx.lineJoin = 'round'; // Creates rounded corners
+        ctx.lineCap = 'round'; // Creates rounded ends of lines
+        ctx.stroke();
+    }
+
+    function draw(event) {
+        const x = event.clientX;
+        const y = event.clientY - headerHeight;
+        const lastPoint = lines.length > 0 ? lines[lines.length - 1].point : null;
+        const currentTime = Date.now();
+
+        if (!lastPoint || lastPoint.x !== x || lastPoint.y !== y) {
+            const point = { x, y };
+            lines.push({ point, timestamp: currentTime });
+            if (lastPoint) {
+                const opacity = Math.max(0, 1 - (currentTime - lastPoint.timestamp) / 5000);
+                drawLine(lastPoint.x, lastPoint.y, x, y, opacity);
+            }
+        }
+    }
+
+    function updateCanvas() {
+        drawGrid();
+        const currentTime = Date.now();
+        lines.forEach((line, index) => {
+            if (index > 0) {
+                const prevPoint = lines[index - 1].point;
+                const opacity = Math.max(0, 1 - (currentTime - line.timestamp) / 1000);
+                drawLine(prevPoint.x, prevPoint.y, line.point.x, line.point.y, opacity);
+            }
+        });
+        lines = lines.filter(line => currentTime - line.timestamp <= 5000); // Clean up old lines
+    }
+
+    canvas.addEventListener('mousedown', function(event) {
+        draw(event);
+        canvas.addEventListener('mousemove', draw);
+    });
+
+    canvas.addEventListener('mouseup', function() {
+        canvas.removeEventListener('mousemove', draw);
+    });
+
+    setInterval(updateCanvas, 20); // Update canvas more frequently for smoother animation
+});
+
+    </script>
+
+    
 </body>
 
 </html>

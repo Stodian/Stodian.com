@@ -21,8 +21,9 @@
         background: #f4f4f4; /* light grey background simulating a CAD interface */
     }
 
+
     body {
-        cursor: url('https://github.com/Stodian/Stodian.com/blob/main/public/icons/logos/autodesk-pointer.png'), auto;
+        cursor: crosshair; /* Hide the default cursor */
 }
     
     
@@ -32,7 +33,7 @@
         color: white;
         position: fixed;
         top: 0px; /* Initially hide the header */
-        z-index: 1000; /* Ensures it's above all other content */
+        z-index: 3; /* Ensures it's above all other content */
         transition: top 0.3s;
     }
     
@@ -85,7 +86,6 @@
         justify-content: center;
         background-color: #f4f4f4;
         position: relative;
-        z-index: 1;
     }
     
     
@@ -146,7 +146,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="page1" class="page">
         <!-- Main heading -->
         <div class="typed-words">
             <span id="constant1">Your Partner in </span><span id="dynamic"></span><span id="constant2"> Design </span>
@@ -160,19 +160,35 @@
         </form>
     </main>
 
+    <section id="page2" class="page">
+        <!-- Content for page 2 -->
+    </section>
+
+    <section id="page3" class="page">
+        <!-- Content for page 3 -->
+    </section>
+
+    <section id="page4" class="page">
+        <!-- Content for page 4 -->
+    </section>
+
+    <section id="page5" class="page">
+        <!-- Content for page 5 -->
+    </section>
+
     <section class="data-boxes">
         <!-- First data box -->
         <div class="data-box">
-            <h4>BIM Adoption Rate</h4>
+            <h4>2D CAD Drafting</h4>
             <!-- Placeholder for main figure -->
             <div class="figure">
-                <h3>$45,678.90</h3>
+                <h3>>80% of AEC</h3>
             </div>
-            <p>+20% month over month</p>
+            <p>over 80% of architecture, engineering, and construction (AEC) professionals use 2D CAD drafting as their primary design tool</p>
         </div>
         <!-- Second data box -->
         <div class="data-box">
-            <h4>Energy Efficiency Trend</h4>
+            <h4>3D Modeling</h4>
             <!-- Placeholder for main figure -->
             <div class="figure">
                 <h3>2,405</h3>
@@ -181,12 +197,12 @@
         </div>
         <!-- Third data box -->
         <div class="data-box">
-            <h4>Machine Learning in Construction</h4>
+            <h4>Building Information Modeling (BIM)</h4>
             <!-- Placeholder for main figure -->
             <div class="figure">
-                <h3>10,353</h3>
+                <h3>62%</h3>
             </div>
-            <p>-8% month over month</p>
+            <p>60% of architects and 51% of MEP and structural engineers currently use BIM on at least 50% of projects. That number is forecasted to skyrocket to 89% and 80% respectively within the next 2-3 years.</p>
         </div>
     </section>
 
@@ -204,7 +220,7 @@
 
 
     <script src="/public/javascript/index/index.js"></script>
-
+    <div id="customCursor"></div>
 
 
 </body>
