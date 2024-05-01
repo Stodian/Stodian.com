@@ -73,37 +73,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('drawingCanvas');
-    const ctx = canvas.getContext('2d');
-
-    // Set canvas size to match its container
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-    let isDrawing = false;
-    let lastX = 0;
-    let lastY = 0;
-
-    function draw(e) {
-        if (!isDrawing) return; // Stop if not drawing
-        ctx.strokeStyle = '#000'; // Black color
-        ctx.lineWidth = 2; // Line width
-        ctx.lineCap = 'round'; // Rounded line endings
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY); // Start from
-        ctx.lineTo(e.offsetX, e.offsetY); // Go to
-        ctx.stroke();
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
-
-    canvas.addEventListener('mousedown', (e) => {
-        isDrawing = true;
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-    });
-
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
-});
