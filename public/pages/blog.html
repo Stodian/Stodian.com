@@ -74,6 +74,105 @@ body {
 
     </style>
 
+<style>
+
+
+
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        background: #f4f4f4; /* light grey background simulating a CAD interface */
+    }
+
+
+    body {
+        cursor: crosshair; /* Hide the default cursor */
+}
+    
+    
+    header {
+        width: 100%;
+        background-color: #333;
+        color: white;
+        position: fixed;
+        top: 0px; /* Initially hide the header */
+        z-index: 3; /* Ensures it's above all other content */
+        transition: top 0.3s;
+    }
+    
+    
+    header nav {
+        display: flex;
+        align-items: center; /* Ensures vertical centering */
+        justify-content: space-between; /* Distributes space between and around content */
+        width: 80%; /* Ensures the nav element takes the full header width */
+        height: 20px;
+    }
+    
+    
+    header nav img {
+        scale: 0.9;
+        display: block; /* Removes the bottom space/margin often seen in inline-block elements */
+        margin: 0; /* Removes any margin around the image */
+        padding: 0; /* Ensures no padding is applied to the image */
+        border: none; /* Removes any border that might be applied */
+    }
+    
+    
+    header nav ul {
+      display: flex; /* Makes the list horizontal */
+        list-style: none; /* Removes default list styling */
+        padding: 0;
+        margin: 0 auto; /* Centers the list within the available space */
+        gap: 20px; /* Provides equal spacing between the list items */
+    }
+    
+    
+    header nav ul li {
+        display: inline;
+        margin-right: 20px;
+        margin: 0; /* Removes margin from the list items */
+    }
+    
+    
+    header nav ul li a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    
+    main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f4f4;
+        position: relative;
+    }
+    
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      justify-content: center;
+      top: 0; /* Aligns container to the top */
+      width: 100%; /* Fixed width to suit the icon size */
+      height: 15%; /* Fixed width to suit the icon size */
+      padding-top: 10px; /* Space from top of the viewport */
+      z-index: 2; /* Ensures it stays above other elements */
+      background-color: transparent; /* No background color */
+      transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
+      position: fixed; /* Fixes the container to the viewport */
+    }
+    
+    </style>
+
 
 
 <head>
@@ -85,17 +184,19 @@ body {
 </head>
 
 <body>
-
     <canvas id="cadCanvas"></canvas>
 
     <header>
         <nav>
+            <a href="../../public\index.html">
+                <img src="../../public/icons/logos/Stodian Logo Final/White Version Final.png" alt="Stodian Logo" id="header-logo">
+            </a>
             <ul>
-                <li><a href="../pages/beta.html">Beta</a></li>
-                <li><a href="../pages/about.html">About</a></li>
-                <li><a href="../pages/sales.html">Sales</a></li>
-                <li><a href="../pages/blog.html">Blog</a></li>
-                <li><a href="../pages/crowdfunding.html">Crowdfunding</a></li>
+                <li><a href="../../public\index.html">Home</a></li>
+                <li><a href="../../public\pages\about.html">About</a></li>
+                <li><a href="../../public\pages\sales.html">Sales</a></li>
+                <li><a href="../../public\pages\blog.html">Blog</a></li>
+                <li><a href="../../public\pages\crowdfunding.html">Crowdfunding</a></li>
             </ul>
         </nav>
     </header>
