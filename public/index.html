@@ -98,6 +98,14 @@
     
     </style>
 
+
+    <style>
+    #dynamic {
+        color: #800000;  /* Sets the text color of the dynamic span to red */
+    }
+    </style>
+
+
 <head>
 
     <meta charset="UTF-8">
@@ -130,9 +138,11 @@
 
     <main>
         <!-- Main heading -->
-        <span  class="typed-words" id="typed-words"></span>
+        <div class="typed-words">
+            <span id="constant1">Automated </span><span id="dynamic"></span><span id="constant2"> Design </span>
+        </div>
         <!-- Subheading -->
-        <h2>Join the Investor waitlist</h2>
+        <h2>AI Assisted Engineering</h2>
         <!-- Signup form -->
         <form action="#" method="post" class="signup-form">
             <input type="email" id="email" name="email" placeholder="name@mepdesigns.com" required>

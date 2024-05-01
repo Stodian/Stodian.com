@@ -24,6 +24,7 @@ header {
     align-items: center; /* Centers the items vertically */
     justify-content: flex-start; /* Aligns items to the left */
     padding: 10px 20px; /* Add padding as needed */
+    scale: 0.7;
 }
 
 nav ul {
@@ -116,7 +117,7 @@ main {
     }
 
     .signup-form button {
-        background-color: #000000; /* Black color */
+        background-color: #800000; /* Black color */
         color: #fff;
         padding: 10px 20px;
         border: none;
@@ -127,7 +128,7 @@ main {
     }
 
         .signup-form button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            background-color: #520e0e; /* Darker blue on hover */
         }
 
 /* Data boxes styles */
