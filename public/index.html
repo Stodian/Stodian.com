@@ -9,13 +9,21 @@
 
 <style>
 
+
+
     body, html {
         height: 100%;
         margin: 0;
         padding: 0;
         overflow-x: hidden; /* Prevents horizontal scrolling */
         font-family: Arial, sans-serif;
+        overflow: hidden;
+        background: #f4f4f4; /* light grey background simulating a CAD interface */
     }
+
+    body {
+    cursor: url('https://github.com/Stodian/Stodian.com/blob/main/public/icons/logos/Screenshot_2024-05-01_161525-removebg-preview.png'), auto;
+}
     
     
     header {
@@ -121,6 +129,8 @@
 
 
 <body>
+    <canvas id="cadCanvas"></canvas>
+
     <header>
         <nav>
             <a href="../../public\index.html">
@@ -139,10 +149,10 @@
     <main>
         <!-- Main heading -->
         <div class="typed-words">
-            <span id="constant1">Automated </span><span id="dynamic"></span><span id="constant2"> Design </span>
+            <span id="constant1">Your Partner in </span><span id="dynamic"></span><span id="constant2"> Design </span>
         </div>
         <!-- Subheading -->
-        <h2>AI Assisted Engineering</h2>
+        <h2>Drawing Services for Construction</h2>
         <!-- Signup form -->
         <form action="#" method="post" class="signup-form">
             <input type="email" id="email" name="email" placeholder="name@mepdesigns.com" required>
@@ -194,6 +204,7 @@
 
 
     <script src="/public/javascript/index/index.js"></script>
+
 
 
 </body>

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const messages = ["Mechanical",  "Electrical", "Plumbing", "Fire", "Communications"];
+    const messages = ["Residential",  "Commercial", "Industrial", "Educational", "Public"];
     const typingSpeed = 150; // milliseconds
     const deletingSpeed = 75; // milliseconds
     let currentMessage = 0;
@@ -28,4 +28,82 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     typeLetter(); // Start typing the first message
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('cadCanvas');
+    const ctx = canvas.getContext('2d');
+    const headerHeight = 50; // Height of the header
+
+    // Adjust canvas dimensions to start below the header
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - headerHeight;
+    canvas.style.top = `${headerHeight}px`;
+
+    function drawGrid() {
+        const spacing = 20; // Grid spacing
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+        ctx.beginPath();
+        // Draw vertical lines
+        for (let x = 0; x <= canvas.width; x += spacing) {
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+        }
+        // Draw horizontal lines
+        for (let y = 0; y <= canvas.height; y += spacing) {
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+        }
+        ctx.strokeStyle = '#ddd'; // Light grey grid lines
+        ctx.stroke();
+    }
+
+    function updateCanvas() {
+        drawGrid();
+        // Additional interactive features can be added here
+    }
+
+    setInterval(updateCanvas, 50); // Update canvas every 50 milliseconds
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size to match its container
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    function draw(e) {
+        if (!isDrawing) return; // Stop if not drawing
+        ctx.strokeStyle = '#000'; // Black color
+        ctx.lineWidth = 2; // Line width
+        ctx.lineCap = 'round'; // Rounded line endings
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY); // Start from
+        ctx.lineTo(e.offsetX, e.offsetY); // Go to
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
 });
