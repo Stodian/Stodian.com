@@ -266,15 +266,17 @@ body {
 .blog-post {
     width: 350px;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-    margin-bottom: 20px; /* Optional, adds space between rows */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a more subtle effect */
+    border-radius: 15px; /* Increase border radius for rounder edges */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
+    margin-bottom: 20px;
     z-index: 1;
+    overflow: hidden; /* Ensures no content spills outside the border-radius */
 }
 
 .blog-post:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Reduced movement for a subtler hover effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover for a lifting effect */
 }
 
 .blog-post img {
