@@ -255,6 +255,68 @@ body {
     cursor: crosshair; /* Hide the default cursor */
 }
 
+
+.featured-post-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light grey background for distinction */
+}
+
+.featured-post {
+    width: 80%; /* Adjust width as per your design preference */
+    height: calc(100vh / 3); /* Takes up the first third of the viewport height */
+    display: flex;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* Subtle shadow for depth */
+    border-radius: 20px; /* Softer, rounder edges */
+    overflow: hidden; /* Keeps all content neatly contained */
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.featured-post:hover {
+    transform: translateY(-10px); /* Slight raise effect on hover for interactivity */
+}
+
+.featured-image {
+    width: 40%; /* Display image taking up nearly half of the card */
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the designated area without distortion */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.featured-content {
+    padding: 20px;
+    width: 60%;
+}
+
+.featured-content h1 {
+    font-size: 1.8rem; /* Larger font size for emphasis */
+    margin-bottom: 10px;
+}
+
+.featured-content .featured-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.read-more {
+    display: block;
+    text-decoration: none;
+    color: #007BFF;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+
+
 .blog-container {
     display: flex;
     flex-wrap: wrap;
@@ -297,6 +359,8 @@ body {
 .post-content h2 {
     font-size: 1.2rem;
     margin-top: 5px;
+    font-weight: bold;
+    color: black;
 }
 
 .post-content p {
@@ -442,10 +506,12 @@ body {
     </header>
 
 
+ma
+
+
     <main>
-        <h1>Blog</h1>
-        <p>Welcome to our blog page. We will have this built out before you know it...</p>
-        <!-- Add more content here as needed -->
+
+
 
 
         <div class="blog-container">
