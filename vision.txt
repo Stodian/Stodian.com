@@ -1,0 +1,35 @@
+1. Basic Drawing Service ("Bare Bones")
+
+Description: This service is tailored for clients needing basic mechanical, electrical, and plumbing (MEP) drawings to kickstart projects. It's ideal for those in the early planning stages who require simple, schematic designs.
+Features:
+2D MEP schematic layouts.
+Basic coordination with existing architectural and structural plans.
+Standard compliance checks to meet minimum regulatory requirements.
+Ideal for: Small-scale projects or clients needing initial drawings for concept development, such as independent builders or small design firms.
+
+
+
+
+2. Enhanced Drawing Service
+
+Description: A more comprehensive service designed for full project development, offering detailed drawings with additional layers of integration and coordination.
+Features:
+Detailed 2D MEP drawings, with optional 3D modeling for critical systems.
+Enhanced integration with all relevant construction disciplines.
+Incorporation of standard sustainable design elements.
+Preparation of documentation for local authority approvals.
+Ideal for: Mid-sized projects requiring detailed technical plans and coordination, suitable for general contractors, engineering firms, and design-build companies looking for an integrated approach.
+
+
+
+
+3. Premium Drawing Service ("Full Service")
+
+Description: The most advanced service offering, designed for complex and large-scale projects demanding high precision, customization, and innovative sustainable solutions.
+Features:
+Comprehensive 2D and 3D MEP drawings with full Building Information Modeling (BIM) integration.
+Advanced coordination across all construction disciplines, including structural, MEP, and environmental engineering.
+High-level sustainable design integrations, such as energy modeling and renewable energy solutions.
+Virtual reality (VR) walkthroughs and augmented reality (AR) for real-time collaboration and visualization.
+Detailed compliance documentation for rigorous regulatory and certification processes.
+Ideal for: Large or complex projects where detailed integration, cutting-edge technology, and a focus on sustainability are crucial. Suitable for large construction firms, multi-disciplinary engineering companies, and major project developers.
