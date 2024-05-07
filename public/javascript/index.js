@@ -32,9 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('cadCanvas');
     const ctx = canvas.getContext('2d');
@@ -114,3 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setInterval(updateCanvas, 20); // Update canvas more frequently for smoother animation
 });
+
+
+

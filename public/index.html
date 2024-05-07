@@ -1,119 +1,6 @@
-
-<!--
-    the main entry point for the Website Stodianreid.com
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
-
-<style>
-
-
-
-    body, html {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        overflow: hidden;
-        background: #f4f4f4; /* light grey background simulating a CAD interface */
-        scroll-behavior: smooth;
-    }
-    
-
-
-    body {
-        cursor: crosshair; /* Hide the default cursor */
-}
-    
-    
-    header {
-        width: 100%;
-        background-color: #333;
-        color: white;
-        position: fixed;
-        top: 0px; /* Initially hide the header */
-        z-index: 3; /* Ensures it's above all other content */
-        transition: top 0.3s;
-    }
-    
-    
-    header nav {
-        display: flex;
-        align-items: center; /* Ensures vertical centering */
-        justify-content: space-between; /* Distributes space between and around content */
-        width: 80%; /* Ensures the nav element takes the full header width */
-        height: 20px;
-    }
-    
-    
-    header nav img {
-        scale: 0.9;
-        display: block; /* Removes the bottom space/margin often seen in inline-block elements */
-        margin: 0; /* Removes any margin around the image */
-        padding: 0; /* Ensures no padding is applied to the image */
-        border: none; /* Removes any border that might be applied */
-    }
-    
-    
-    header nav ul {
-      display: flex; /* Makes the list horizontal */
-        list-style: none; /* Removes default list styling */
-        padding: 0;
-        margin: 0 auto; /* Centers the list within the available space */
-        gap: 20px; /* Provides equal spacing between the list items */
-    }
-    
-    
-    header nav ul li {
-        display: inline;
-        margin-right: 20px;
-        margin: 0; /* Removes margin from the list items */
-    }
-    
-    
-    header nav ul li a {
-        text-decoration: none;
-        color: white;
-    }
-    
-    
-    main {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f4f4f4;
-        position: relative;
-    }
-    
-    
-    .header-container {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      justify-content: center;
-      top: 0; /* Aligns container to the top */
-      width: 100%; /* Fixed width to suit the icon size */
-      height: 15%; /* Fixed width to suit the icon size */
-      padding-top: 10px; /* Space from top of the viewport */
-      z-index: 2; /* Ensures it stays above other elements */
-      background-color: transparent; /* No background color */
-      transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
-      position: fixed; /* Fixes the container to the viewport */
-    }
-    
-    </style>
-
-
-    <style>
-    #dynamic {
-        color: #800000;  /* Sets the text color of the dynamic span to red */
-    }
-
-    </style>
 
 
 <head>
@@ -123,7 +10,6 @@
     <title>Stodian Design</title>
     <link rel="icon" href="../public\icons\logos\Stodian Logo Final\White Version Final 2.0.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="styles/index.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -131,6 +17,7 @@
 
 
 <body>
+
     <canvas id="cadCanvas"></canvas>
     <img src="../public\icons\images\DALL·E 2024-05-07 18.00.33 - A simplified 2D MEP (Mechanical, Electrical, and Plumbing) floor plan for a small building. The plan includes basic symbols for HVAC units, minimal du.webp" alt="Descriptive Text" class="specific-position1">
     <img src="../public\icons\images\DALL·E 2024-05-07 18.01.33 - A very simplified 2D MEP (Mechanical, Electrical, and Plumbing) floor plan for a small building. The plan includes the most basic symbols for HVAC uni.webp" alt="Descriptive Text" class="specific-position2">
@@ -160,26 +47,15 @@
         <h2>Drawing Services for Construction</h2>
         <!-- Signup form -->
         <form action="#" method="post" class="signup-form">
-            <button type="submit" name="action" value="custom_design" class="button1">Free Custom Design</button>
+            <button type="submit" name="action" value="custom_design" class="button1">
+                Free Custom Design
+                <div class="line-animation" style="width: 0;"></div> <!-- Line inside the button -->
+            </button>
             <button type="submit" name="action" value="how_it_works" class="button2">How it Works</button>
         </form>
     </main>
 
-    <section id="page2" class="page">
-        <!-- Content for page 2 -->
-    </section>
 
-    <section id="page3" class="page">
-        <!-- Content for page 3 -->
-    </section>
-
-    <section id="page4" class="page">
-        <!-- Content for page 4 -->
-    </section>
-
-    <section id="page5" class="page">
-        <!-- Content for page 5 -->
-    </section>
 
     <section class="data-boxes">
         <!-- First data box -->
@@ -219,6 +95,23 @@
             </ul>
         </div>
     </section>
+
+
+    <section id="page2" class="page">
+        <!-- Content for page 2 -->
+    </section>
+
+    <section id="page3" class="page">
+        <!-- Content for page 3 -->
+    </section>
+
+    <section id="page4" class="page">
+        <!-- Content for page 4 -->
+    </section>
+
+    <section id="page5" class="page">
+        <!-- Content for page 5 -->
+    </section>
     
 
     <footer>
@@ -234,8 +127,8 @@
     </footer>
 
 
-    <script src="/public/javascript/index/index.js"></script>
-
+    <script src="/public/javascript/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 

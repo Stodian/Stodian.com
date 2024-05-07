@@ -1,343 +1,61 @@
-/* styles.css */
 
-/* General styles */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    color: #333; /* Text color */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
-    z-index: 1; /* Higher than the canvas' z-index */
-}
-
-header {
-    text-align: center;
-    padding: 20px;
-}
-
-#header-logo {
-    height: 50px; /* Adjust based on your logo's dimensions */
-    margin-right: 20px; /* Space between logo and any other header content */
-    display: flex;
-    align-items: center; /* Centers the items vertically */
-    justify-content: flex-start; /* Aligns items to the left */
-    padding: 10px 20px; /* Add padding as needed */
-    scale: 0.7;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-    nav ul li {
-        display: inline;
-        margin-right: 20px;
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
     }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-        }
+    .toolbar {
+        width: 60px;
+        background-color: #333;
+        height: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
 
-h1, h2 {
-    text-align: center;
-    z-index: 2;
-}
-
-
-/* CSS */
-.typed-words {
-    font-size: 3.5rem;               /* Large text similar to h1 */
-    margin-top: 30px;                /* Large top margin to separate from elements above */
-    margin-bottom: 2px;              /* Small bottom margin */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font styling */
-    background-color: #f5f5f5;       /* Light gray background color */
-    color: #333;                     /* Dark gray text color */
-    font-weight: bold; /* Makes the text bold */
-    z-index: 2;
-}
-
-
-/* Header styles */
-h1 {
-    font-size: 3.5rem;
-    margin-bottom: 2px;
-    margin-top: 30px;
-    background-color: transparent;
-
-}
-
-h2 {
-    font-size: 1.5rem;
-    margin-top: 0;
-    margin-bottom: 10px; /* Add some space below the heading */
-    color: #9a9a9a; /* Lighter grey */
-    background-color: transparent;
-}
-
-/* Main styles */
-main {
-    flex: 1; /* Allow main to take up remaining vertical space */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-    text-align: center;
-    padding-top: 10px; /* Adjust the top padding to move the content down */
-    background-color: transparent;
-}
-
-
-.engineering-fact {
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.data-box {
-    margin: 10px 0;
-    padding: 20px;
-    border: 1px solid #ccc;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.7); /* Adjust the last value (0.8) for the desired opacity */
-    z-index: 1;
-}
-
-
-
-/* Signup form styles */
-.signup-form {
-    margin-top: 20px; /* Add space above the subscription form */
-    margin: 0 auto; /* Center the form horizontally */
-    padding: 20px; /* Add padding inside the form */
-    font-size: 20px;
-    padding: 30px;
-    z-index: 1;
-}
-
-    .signup-form input[type="email"] {
+    .toolbar button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
         padding: 10px;
         margin-bottom: 10px;
-        border: none; /* Remove border */
-        border-radius: 4px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for subtle effect */
-        font-size: 20px;
-        z-index: 1;
+        cursor: pointer;
     }
 
-/* General styling for buttons within the signup form */
-.signup-form button {
-    padding: 12px 24px; /* Slightly larger padding for a better touch area */
-    border-radius: 5px; /* Smoothed corners for a modern look */
-    cursor: pointer; /* Indicates clickable items */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    font-size: 18px; /* Optimal font size for readability */
-    font-family: 'Arial', sans-serif; /* Clean and professional font */
-    font-weight: bold; /* Makes text bold to stand out */
-    text-transform: uppercase; /* Uppercase text for a more impactful appearance */
-    outline: none; /* Removes the outline to clean up focus style */
-    z-index: 1; /* Keeps button above other content */
-}
+    .toolbar button:hover {
+        background-color: #555;
+    }
 
-/* Styling for the first button - deep red background with white text */
-.button1 {
-    color: white; /* White text for contrast */
-    background-color: #800000; /* Deep, rich maroon background */
-    border: 2px solid transparent; /* Subtle border effect when not hovered */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for 3D effect */
-}
+    .canvas-container {
+        margin-left: 60px;
+        height: 100%;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-/* Additional hover effect for button1 */
-.button1:hover {
-    background-color: #660000; /* Darker shade on hover for interactive feedback */
-}
-
-/* Styling for the second button - white background with a subtle grey border */
-.button2 {
-    color: #800000; /* Text color matches button1's background for design consistency */
-    background-color: white; /* Clean white background */
-    border: 2px solid #ccc; /* Soft grey border for subtle definition */
-}
-
-/* Additional hover effect for button2 */
-.button2:hover {
-    color: white; /* White text on hover */
-    background-color: #800000; /* Background turns to the deep red on hover */
-    border-color: #800000; /* Border color transitions to match the background */
-}
-
-
-        .signup-form button:hover {
-            background-color: #520e0e; /* Darker blue on hover */
-        }
-
-/* Main container style for data boxes */
-.data-boxes {
+    .toolbar {
     display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    padding: 0 50px; /* Padding on both sides */
-    text-align: left;
-    overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the spacer can push the last button to the bottom */
+    height: 100%; /* Make sure the toolbar takes full height */
 }
 
-/* Individual data box styling */
-.data-box {
-    flex: 1; /* Each box takes up equal space */
-    max-width: calc((100% - 120px) / 3); /* Maximum width calculation */
-    padding: 20px;
-    border: 2px solid #333; /* Updated border style for consistency */
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-sizing: border-box;
-    margin-left: 20px; /* Left margin for spacing between boxes */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease-in-out; /* Smooth transformation on hover */
+.spacer {
+    flex: 1; /* Takes up all available space */
 }
 
-/* Remove left margin for the first data box */
-.data-box:first-child {
-    margin-left: 0;
+#navigate-beta {
+    margin-bottom: 30px; /* Adjust the value as needed */
 }
 
-/* Styling for headers and paragraphs in data boxes */
-.data-box h4,
-.data-box .figure h3,
-.data-box p {
-    margin: 4px; /* Unified margin for headers and paragraphs */
-}
-
-.data-box h4 {
-    color: #800000; /* AutoCAD-style color, corrected */
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.data-box .figure h3 {
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #333; /* Consistent color for figure header */
-}
-
-.data-box p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #666; /* Lighter color for paragraph text */
-}
-
-
-/* Footer styles */
-footer {
-    text-align: center;
-}
-
-.footer-line {
-    width: calc(100% - 80px); /* Set the width to 100% of the parent container minus 40px */
-    margin: 0 auto; /* Center the line horizontally */
-    border: none;
-    border-top: 1px solid #ccc; /* Add a solid border line */
-    margin-top: 10px; /* Adjust top margin for spacing */
-    margin-bottom: 100px; /* Adjust bottom margin for spacing */
-}
-
-/* Social links styles */
-.social-links {
-    position: fixed;
-    bottom: 35px;
-    right: 20px;
-    z-index: 1;
-}
-
-    .social-links a {
-        display: inline-block;
-        margin-left: 10px;
+    canvas {
+        border: 1px solid #ccc;
     }
 
-    .social-links img {
-        width: 30px; /* Adjust as needed */
-        height: 30px; /* Adjust as needed */
-        transition: transform 0.3s ease;
-    }
-
-        .social-links img:hover {
-            transform: scale(1.1);
-        }
-
-
-canvas {
-    display: block;
-    position: absolute;
-    top: 50px; /* Adjust this value to match the header height */
-    left: 0;
-    width: 100%;
-    height: calc(100% - 50px); /* Resize height to take up remaining space */
-    z-index: 1;
-}
-
-.typed-words{
-    background-color: transparent;
-    z-index: 2;
-}
-
-        /* Positioning the image */
-        .specific-position1 {
-            left: 150px; /* Horizontal coordinate from the left side of the nearest positioned ancestor */
-            top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
-            position: fixed; /* Fixed position to keep it in place on scroll */
-            top: 42%;
-            left: 4%;
-            width: 450px;
-            height: 400px;
-            background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
-            background-size: cover; /* Cover the entire area */
-            background-position: center; /* Center the background image */
-            z-index: 1; /* Sit behind all other content */
-            opacity: 0.5; /* Start with lower opacity */
-            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transition for opacity and transform */
-        }
-
-        .specific-position2 {
-            left: 150px; /* Horizontal coordinate from the left side of the nearest positioned ancestor */
-            top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
-            position: fixed; /* Fixed position to keep it in place on scroll */
-            top:42%;
-            left: 37%;
-            width: 450px;
-            height: 400px;
-            background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
-            background-size: cover; /* Cover the entire area */
-            background-position: center; /* Center the background image */
-            z-index: 1; /* Sit behind all other content */
-            opacity: 0.5; /* Start with lower opacity */
-            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transition for opacity and transform */
-        }
-
-        .specific-position3 {
-            left: 150px; /* Horizontal coordinate from the left side of the nearest positioned ancestor */
-            top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
-            position: fixed; /* Fixed position to keep it in place on scroll */
-            top: 42%;
-            left: 69.5%;
-            width: 450px;
-            height: 400px;
-            background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
-            background-size: cover; /* Cover the entire area */
-            background-position: center; /* Center the background image */
-            z-index: 1; /* Sit behind all other content */
-            opacity: 0.5; /* Start with lower opacity */
-            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transition for opacity and transform */
-        }
-
-        /* Hover effects for all specific positions */
-.specific-position1:hover, .specific-position2:hover, .specific-position3:hover {
-    opacity: 1; /* Full visibility on hover */
-    transform: translateY(-10px) scale(1.01); /* Moves up slightly and scales up */;
-    transition: transform 0.3s ease-in-out; /* Smooth transformation on hover */
-}
+    
