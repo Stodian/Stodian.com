@@ -129,17 +129,47 @@ main {
         z-index: 1;
     }
 
-    .signup-form button {
-        background-color: #800000; /* Black color */
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        font-size: 20px;
-        z-index: 1;
-    }
+/* General styling for buttons within the signup form */
+.signup-form button {
+    padding: 12px 24px; /* Slightly larger padding for a better touch area */
+    border-radius: 5px; /* Smoothed corners for a modern look */
+    cursor: pointer; /* Indicates clickable items */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    font-size: 18px; /* Optimal font size for readability */
+    font-family: 'Arial', sans-serif; /* Clean and professional font */
+    font-weight: bold; /* Makes text bold to stand out */
+    text-transform: uppercase; /* Uppercase text for a more impactful appearance */
+    outline: none; /* Removes the outline to clean up focus style */
+    z-index: 1; /* Keeps button above other content */
+}
+
+/* Styling for the first button - deep red background with white text */
+.button1 {
+    color: white; /* White text for contrast */
+    background-color: #800000; /* Deep, rich maroon background */
+    border: 2px solid transparent; /* Subtle border effect when not hovered */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for 3D effect */
+}
+
+/* Additional hover effect for button1 */
+.button1:hover {
+    background-color: #660000; /* Darker shade on hover for interactive feedback */
+}
+
+/* Styling for the second button - white background with a subtle grey border */
+.button2 {
+    color: #800000; /* Text color matches button1's background for design consistency */
+    background-color: white; /* Clean white background */
+    border: 2px solid #ccc; /* Soft grey border for subtle definition */
+}
+
+/* Additional hover effect for button2 */
+.button2:hover {
+    color: white; /* White text on hover */
+    background-color: #800000; /* Background turns to the deep red on hover */
+    border-color: #800000; /* Border color transitions to match the background */
+}
+
 
         .signup-form button:hover {
             background-color: #520e0e; /* Darker blue on hover */
@@ -261,3 +291,18 @@ canvas {
     background-color: transparent;
     z-index: 2;
 }
+
+        /* Positioning the image */
+        .specific-position {
+            left: 150px; /* Horizontal coordinate from the left side of the nearest positioned ancestor */
+            top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
+            position: fixed; /* Fixed position to keep it in place on scroll */
+            top: 50%;
+            left: 10%;
+            width: 400px;
+            height: 400px;
+            background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the background image */
+            z-index: 1; /* Sit behind all other content */
+        }
