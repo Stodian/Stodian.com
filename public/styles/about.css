@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure the body takes up the full height of the viewport */
-    z-index: 1; /* Higher than the canvas' z-index */
+    z-index: 0; /* Higher than the canvas' z-index */
 }
 
 header {
@@ -245,6 +245,7 @@ footer {
     border-top: 1px solid #ccc; /* Add a solid border line */
     margin-top: 10px; /* Adjust top margin for spacing */
     margin-bottom: 100px; /* Adjust bottom margin for spacing */
+    bottom: 200px;
 }
 
 /* Social links styles */
@@ -270,16 +271,6 @@ footer {
             transform: scale(1.1);
         }
 
-
-canvas {
-    display: block;
-    position: absolute;
-    top: 50px; /* Adjust this value to match the header height */
-    left: 0;
-    width: 100%;
-    height: calc(100% - 50px); /* Resize height to take up remaining space */
-    z-index: 1;
-}
 
 .typed-words{
     background-color: transparent;
@@ -350,7 +341,6 @@ canvas {
         height: 100%;
         margin: 0;
         padding: 0;
-        overflow-x: hidden; /* Prevents horizontal scrolling */
         overflow-y: auto; /* Allows vertical scrolling */
         font-family: Arial, sans-serif;
         background: #f4f4f4; /* light grey background simulating a CAD interface */
@@ -449,95 +439,100 @@ body, html {
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
-    overflow-x: hidden; /* Prevents horizontal scrolling */
     overflow-y: auto; /* Allows vertical scrolling */
     scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
 }
 
+
+
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 50px; /* Adjust this value to match the header height */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 50px); /* Resize height to take up remaining space */
+    z-index:1;
+}
+
+
+
 /* Styling for all sections */
 section {
     min-height: 100vh; /* Each section takes at least the full height of the viewport */
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centers content vertically */
     align-items: center; /* Centers content horizontally */
     padding: 20px;
     box-sizing: border-box; /* Includes padding in the height calculation */
+    z-index: 1;
+    opacity: 1;
+    background-color: transparent;
 }
+
+.section-heading{
+    z-index: 2;
+}
+
 
 /* Header and Welcome Section */
 #welcome {
-    background: url('header-image.jpg') no-repeat center center/cover;
-    color: white;
+    background-color: transparent;
     text-align: center;
 }
 
 /* Timeline Section */
 #timeline {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 /* Mission and Vision Section */
 #mission {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 /* Companies Section */
 #companies {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 /* Sustainability and Innovation Section */
 #sustainability {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 /* Community and Outreach Section */
 #community {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 /* Meet the Team Section */
 #team {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 /* News and Achievements Section */
 #news {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 /* Join Our Journey CTA Section */
 #join {
-    background-color: #f4f4f4;
+    background-color: transparent;
     color: #333;
 }
 
 
 .social-links img:hover {
 transform: scale(1.1);} /* Increase size by 10% */
-
-
-
-section {
-    padding: 20px;
-    text-align: center;
-}
-
-#welcome {
-    background: url('header-image.jpg') no-repeat center center/cover;
-    color: white;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 

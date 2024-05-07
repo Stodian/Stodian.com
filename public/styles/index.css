@@ -153,6 +153,8 @@ main {
     overflow: hidden; /* Ensures the line does not extend outside the button */
 }
 
+
+
 /* Additional hover effect for button1 */
 .button1:hover {
     background-color: #660000; /* Darker shade on hover for interactive feedback */
@@ -311,9 +313,9 @@ canvas {
             top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
             position: fixed; /* Fixed position to keep it in place on scroll */
             top:42%;
-            left: 37%;
-            width: 450px;
-            height: 400px;
+            left: 565px;
+            width: 420px;
+            height: 350px;
             background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
             background-size: cover; /* Cover the entire area */
             background-position: center; /* Center the background image */
