@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="stylesheet" type="text/css" href="../styles/index.css">
+    <link rel="stylesheet" type="text/css" href="../styles/about.css">
 
+    
 <style>
 
 
@@ -102,113 +105,81 @@
 
     
 <style>
-/* Styles for the contribution graph container */
-.contribution-graph {
-display: flex;
-flex-direction: column; /* Arrange items vertically */
-font-family: Arial, sans-serif; /* Use a common font */
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    color: #333;
 }
 
-/* Styles for the months */
-.months {
-display: flex;
-justify-content: space-between; /* Space evenly between items */
-margin-bottom: 10px; /* Add margin below the months */
+/* Styling for all sections */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.month {
-font-size: 11px; /* Font size */
+/* Header and Welcome Section */
+#welcome {
+    background: url('header-image.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
 }
 
-/* Styles for the graph grid */
-.graph {
-display: grid;
-grid-template-columns: repeat(52, 10px); /* 52 columns for the days of the year */
-grid-template-rows: repeat(7, 10px); /* 7 rows for the weeks */
-gap: 1px; /* Gap between each cell */
-border: 1px solid #e1e4e8; /* Light border */
-background-color: #f6f8fa; /* Light gray background */
-border-radius: 3px; /* Add border radius */
-overflow: hidden; /* Hide overflowing content */
-width: 576px; /* Width matches GitHub's profile */
-height: 77px; /* Height matches GitHub's profile */
+/* Timeline Section */
+#timeline {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Styles for each cell in the graph */
-.graph-cell {
-width: 10px; /* Adjust cell width */
-height: 10px; /* Adjust cell height */
-background-color: #ebedf0; /* Default gray color */
-border-radius: 1px; /* Add border radius */
-overflow: hidden; /* Hide overflowing content */
-border-radius: 2px; /* Match GitHub's border radius */
+/* Mission and Vision Section */
+#mission {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Styles for the legend */
-.legend {
-margin-top: 10px; /* Add margin above the legend */
-display: flex; /* Display legend items horizontally */
-justify-content: center; /* Center align legend items */
-}
-/* Colors used in the graph */
-.color-0 { background-color: #ebedf0; } /* Lightest gray */
-.color-1 { background-color: #c6e48b; } /* Light green */
-.color-2 { background-color: #7bc96f; } /* Green */
-.color-3 { background-color: #239a3b; } /* Dark green */
-.color-4 { background-color: #196127; } /* Darkest green */
-
-/* Styles for the legend */
-.legend {
-margin-top: 10px; /* Add margin above the legend */
-display: flex; /* Display legend items horizontally */
-justify-content: center; /* Center align legend items */
+/* Companies Section */
+#companies {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Styles for each legend item */
-.legend-item {
-display: flex;
-align-items: center;
-margin-right: 10px; /* Add some margin between legend items */
+/* Sustainability and Innovation Section */
+#sustainability {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Styles for the colored circle in the legend */
-.legend-item div {
-width: 10px;
-height: 10px;
-border-radius: 20%;
+/* Community and Outreach Section */
+#community {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Styles for the text in the legend */
-.legend-item-text {
-font-size: 14px;
+/* Meet the Team Section */
+#team {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-
-.contribution-graph {
-margin-bottom: 10px; /* Add margin to create space between graphs */
+/* News and Achievements Section */
+#news {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.graph {
-margin-top: 30px;
+/* Join Our Journey CTA Section */
+#join {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.footer-line { margin-top: 100px;
-}
-
-.container {
-display: flex;
-align-items: center;
-justify-content: center; /* Aligns items at the center */
-}
-
-.legend {
-margin: 0 10px; /* Smaller margin for minimal but clear separation */
-}
-
-.left-text, .right-text {
-/* Minimal or no margin for closer placement */
-margin: 0 5px; /* Small margin for minimal separation */
-}
 
 .social-links img:hover {
 transform: scale(1.1);} /* Increase size by 10% */
@@ -216,12 +187,33 @@ transform: scale(1.1);} /* Increase size by 10% */
 </style>
 
 
+<style> 
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+#welcome {
+    background: url('header-image.jpg') no-repeat center center/cover;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="icon" href="../../public\icons\logos\Stodian Logo Final\White Version Final 2.0.png" type="image/png">
-    <link rel="stylesheet" type="text/css" href="../styles/index.css">
+
 
 
 
@@ -248,41 +240,54 @@ transform: scale(1.1);} /* Increase size by 10% */
     </header>
 
     <main>
-        <h1>Stodian</h1>
-        <!-- Add more content here as needed -->
-    
-        <div class="contribution-graph">
-            <div class="graph">
-                <!-- Graph cells will be dynamically generated here -->
-            </div>
-            <div class="months">
-                <div class="month">Jan</div>
-                <div class="month">Feb</div>
-                <div class="month">Mar</div>
-                <div class="month">Apr</div>
-                <div class="month">May</div>
-                <div class="month">Jun</div>
-                <div class="month">Jul</div>
-                <div class="month">Aug</div>
-                <div class="month">Sep</div>
-                <div class="month">Oct</div>
-                <div class="month">Nov</div>
-                <div class="month">Dec</div>
-            </div>
-            
-            <div class="container">
-                <span class="left-text">Less</span>
-                <div class="legend">Your Legend Content Here</div>
-                <span class="right-text">More</span>
-            </div>
-            
-                <!-- Legend will be dynamically generated here -->
-            </div>
-        </div>
-
-        <p></p>
-
-        <h1></h1>
+        <body>
+            <section id="welcome">
+                <h1>Innovating for a Better Tomorrow</h1>
+                <p>Scroll to discover our journey</p>
+            </section>
+        
+            <section id="timeline">
+                <h2>Our Story</h2>
+                <!-- Add timeline items here -->
+            </section>
+        
+            <section id="mission">
+                <h2>Mission and Vision</h2>
+                <!-- Content about the mission and vision -->
+            </section>
+        
+            <section id="companies">
+                <h2>Our Companies</h2>
+                <!-- Company logos and descriptions here -->
+            </section>
+        
+            <section id="sustainability">
+                <h2>Sustainability and Innovation</h2>
+                <!-- Sustainability info here -->
+            </section>
+        
+            <section id="community">
+                <h2>Community and Outreach</h2>
+                <!-- Community involvement content -->
+            </section>
+        
+            <section id="team">
+                <h2>Meet the Team</h2>
+                <!-- Team member bios and photos here -->
+            </section>
+        
+            <section id="news">
+                <h2>News and Achievements</h2>
+                <!-- News items and achievements here -->
+            </section>
+        
+            <section id="join">
+                <h2>Join Our Journey</h2>
+                <!-- CTA for newsletter or social media -->
+            </section>
+        
+            <script src="scripts.js"></script>
+        </body>
 
     </main>
     
