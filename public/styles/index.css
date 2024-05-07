@@ -145,54 +145,68 @@ main {
             background-color: #520e0e; /* Darker blue on hover */
         }
 
-/* Data boxes styles */
+/* Main container style for data boxes */
 .data-boxes {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+    padding: 0 50px; /* Padding on both sides */
     text-align: left;
     overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
-    padding: 0 50px; /* Add padding on both sides */
 }
 
+/* Individual data box styling */
 .data-box {
     flex: 1; /* Each box takes up equal space */
-    max-width: calc((100% - 120px) / 3); /* Maximum width for each box with padding included */
-    padding: 20px; /* Adjust padding for content */
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-width: calc((100% - 120px) / 3); /* Maximum width calculation */
+    padding: 20px;
+    border: 2px solid #333; /* Updated border style for consistency */
+    background-color: #f9f9f9;
+    border-radius: 8px;
     box-sizing: border-box;
-    margin-left: 20px; /* Add left margin to create space between boxes */
+    margin-left: 20px; /* Left margin for spacing between boxes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth transformation on hover */
 }
 
-    .data-box:first-child {
-        margin-left: 0; /* Remove left margin for the first box */
-    }
+/* Remove left margin for the first data box */
+.data-box:first-child {
+    margin-left: 0;
+}
 
-    .data-box h2,
-    .data-box p,
-    .data-box h3,
-    .data-box h4 {
-        margin: 4px; /* Add margin for all headings and paragraphs */
-    }
+/* Styling for headers and paragraphs in data boxes */
+.data-box h4,
+.data-box .figure h3,
+.data-box p {
+    margin: 4px; /* Unified margin for headers and paragraphs */
+}
 
-    .data-box h2 {
-        font-size: 18px;
-    }
+.data-box h4 {
+    color: #800000; /* AutoCAD-style color, corrected */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 
-    .data-box p {
-        font-size: 14px;
-    }
+.data-box .figure h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #333; /* Consistent color for figure header */
+}
 
-    .data-box h3 {
-        font-size: 35px;
-    }
+.data-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666; /* Lighter color for paragraph text */
+}
 
-    .data-box h4 {
-        font-size: 18px;
-    }
-
-
+/* Hover effect for data boxes */
+.data-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
 
 
 /* Footer styles */
