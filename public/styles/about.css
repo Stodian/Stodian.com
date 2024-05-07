@@ -341,3 +341,198 @@ canvas {
     transform: translateY(-10px) scale(1.01); /* Moves up slightly and scales up */;
     transition: transform 0.3s ease-in-out; /* Smooth transformation on hover */
 }
+
+
+
+
+
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevents horizontal scrolling */
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        background: #f4f4f4; /* light grey background simulating a CAD interface */
+    }
+
+
+    body {
+        cursor: crosshair; /* Hide the default cursor */
+}
+    
+    
+    header {
+        width: 100%;
+        background-color: #333;
+        color: white;
+        position: fixed;
+        top: 0px; /* Initially hide the header */
+        z-index: 3; /* Ensures it's above all other content */
+        transition: top 0.3s;
+    }
+    
+    
+    header nav {
+        display: flex;
+        align-items: center; /* Ensures vertical centering */
+        justify-content: space-between; /* Distributes space between and around content */
+        width: 80%; /* Ensures the nav element takes the full header width */
+        height: 20px;
+    }
+    
+    
+    header nav img {
+        scale: 0.9;
+        display: block; /* Removes the bottom space/margin often seen in inline-block elements */
+        margin: 0; /* Removes any margin around the image */
+        padding: 0; /* Ensures no padding is applied to the image */
+        border: none; /* Removes any border that might be applied */
+    }
+    
+    
+    header nav ul {
+      display: flex; /* Makes the list horizontal */
+        list-style: none; /* Removes default list styling */
+        padding: 0;
+        margin: 0 auto; /* Centers the list within the available space */
+        gap: 20px; /* Provides equal spacing between the list items */
+    }
+    
+    
+    header nav ul li {
+        display: inline;
+        margin-right: 20px;
+        margin: 0; /* Removes margin from the list items */
+    }
+    
+    
+    header nav ul li a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    
+    main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f4f4;
+        position: relative;
+    }
+    
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      justify-content: center;
+      top: 0; /* Aligns container to the top */
+      width: 100%; /* Fixed width to suit the icon size */
+      height: 15%; /* Fixed width to suit the icon size */
+      padding-top: 10px; /* Space from top of the viewport */
+      z-index: 2; /* Ensures it stays above other elements */
+      background-color: transparent; /* No background color */
+      transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
+      position: fixed; /* Fixes the container to the viewport */
+    }
+    
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    color: #333;
+}
+
+/* Styling for all sections */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Header and Welcome Section */
+#welcome {
+    background: url('header-image.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+}
+
+/* Timeline Section */
+#timeline {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Mission and Vision Section */
+#mission {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Companies Section */
+#companies {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Sustainability and Innovation Section */
+#sustainability {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Community and Outreach Section */
+#community {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Meet the Team Section */
+#team {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* News and Achievements Section */
+#news {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Join Our Journey CTA Section */
+#join {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+.social-links img:hover {
+transform: scale(1.1);} /* Increase size by 10% */
+
+
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+#welcome {
+    background: url('header-image.jpg') no-repeat center center/cover;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+

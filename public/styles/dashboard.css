@@ -341,3 +341,184 @@ canvas {
     transform: translateY(-10px) scale(1.01); /* Moves up slightly and scales up */;
     transition: transform 0.3s ease-in-out; /* Smooth transformation on hover */
 }
+
+
+
+html, body {
+          height: 100%; /* Ensures that the html and body elements take up the full height of the viewport */
+          margin: 0;
+          padding: 0;
+          overflow: hidden; /* Prevents scrolling on the entire page */
+        }
+      
+        header {
+          text-align: center; /* Center aligns the text for aesthetics */
+          padding: 0px 0; /* Adds padding but only vertically */
+          background: #f8f9fa; /* Gives a light grey background */
+        }
+      
+        main {
+          height: calc(100vh - 120px); /* Reduces the height of main by the total height of the header and footer */
+          overflow: hidden; /* Prevents scrolling within the main tag */
+        }
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	padding: 20px;
+}
+
+h1, h2 {
+	color: #333;
+}
+
+
+	body, html {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden; /* Prevents horizontal scrolling */
+		font-family: Arial, sans-serif;
+	}
+	
+	
+	header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: -50px; /* Initially hide the header */
+    z-index: 1000; /* Ensures it's above all other content */
+    transition: top 0.3s;
+}
+	
+	
+	header nav ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		text-align: center;
+	}
+	
+	
+	header nav ul li {
+		display: inline;
+		margin-right: 20px;
+	}
+	
+	
+	header nav ul li a {
+		text-decoration: none;
+		color: white;
+	}
+	
+	
+	main {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #f4f4f4;
+		position: relative;
+		z-index: 1;
+	}
+	
+	
+	.header-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center;
+  top: 0; /* Aligns container to the top */
+  width: 100%; /* Fixed width to suit the icon size */
+  height: 15%; /* Fixed width to suit the icon size */
+  padding-top: 10px; /* Space from top of the viewport */
+  z-index: 2; /* Ensures it stays above other elements */
+  background-color: transparent	; /* No background color */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for moving in/out */
+  position: fixed; /* Fixes the container to the viewport */
+}
+	
+/* Extending the hoverable area using ::before pseudo-element */
+.header-container::before {
+  content: "";
+  position: absolute;
+  top: 1000px;
+  left: 0px; 
+  height: 500px; 
+  background: black; 
+  z-index: 1; /* Lower than the actual container to not interfere with other interactions */
+}
+	
+	/* When the mouse hovers over the left side of the viewport, the icons move into view */
+	.header-container:hover,
+	.header-container:focus-within { /* Focus-within ensures accessibility for keyboard users */
+	  transform: translateY(50px); /* Moves the icons into view */
+	}
+	
+
+
+	h1	{
+		margin-bottom: 15px;
+		margin-top: 0px;
+	}
+
+
+.this-week, .last-week {
+	background-color: #fff;
+    margin-right: 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.stat-container-1 {
+	height: 300px;
+	width: 1800px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.stat-container-2 {
+	height: 300px;
+	width: 1800px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.sales-dashboard {
+    display: flex; /* Aligns children horizontally */
+    justify-content: space-around; /* Distributes space evenly around the items */
+    align-items: center; /* Vertically aligns items in the middle */
+    background-color: #f4f4f4; /* Light grey background */
+    padding: 20px; /* Padding around the entire container */
+    border-radius: 8px; /* Rounded corners */
+	width: 100%;
+    margin: 20px; /* Margin around the container */
+    overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+}
+
+.dashboard-item {
+    min-width: 120px; /* Minimum width for each item */
+    padding: 10px; /* Padding inside each item */
+    text-align: center; /* Centers text horizontally */
+    border-right: 1px solid #ddd; /* Separator between items */
+}
+
+.dashboard-item:last-child {
+    border-right: none; /* Removes border from the last item */
+}
+
+.dashboard-item h4 {
+    color: #333; /* Dark grey color for headings */
+    font-size: 16px; /* Font size for headings */
+    margin-bottom: 5px; /* Space below headings */
+}
+
+.dashboard-item p {
+    color: #666; /* Medium grey color for numbers */
+    font-size: 14px; /* Font size for numbers */
+}
