@@ -293,16 +293,59 @@ canvas {
 }
 
         /* Positioning the image */
-        .specific-position {
+        .specific-position1 {
             left: 150px; /* Horizontal coordinate from the left side of the nearest positioned ancestor */
             top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
             position: fixed; /* Fixed position to keep it in place on scroll */
-            top: 50%;
-            left: 10%;
-            width: 400px;
+            top: 42%;
+            left: 4%;
+            width: 450px;
             height: 400px;
             background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
             background-size: cover; /* Cover the entire area */
             background-position: center; /* Center the background image */
             z-index: 1; /* Sit behind all other content */
+            opacity: 0.5; /* Start with lower opacity */
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transition for opacity and transform */
         }
+
+        .specific-position2 {
+            left: 150px; /* Horizontal coordinate from the left side of the nearest positioned ancestor */
+            top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
+            position: fixed; /* Fixed position to keep it in place on scroll */
+            top:42%;
+            left: 37%;
+            width: 450px;
+            height: 400px;
+            background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the background image */
+            z-index: 1; /* Sit behind all other content */
+            opacity: 0.5; /* Start with lower opacity */
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transition for opacity and transform */
+        }
+
+        .specific-position3 {
+            left: 150px; /* Horizontal coordinate from the left side of the nearest positioned ancestor */
+            top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
+            position: fixed; /* Fixed position to keep it in place on scroll */
+            top: 42%;
+            left: 69.5%;
+            width: 450px;
+            height: 400px;
+            background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the background image */
+            z-index: 1; /* Sit behind all other content */
+            opacity: 0.5; /* Start with lower opacity */
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out; /* Transition for opacity and transform */
+        }
+
+        /* Hover effects for all specific positions */
+.specific-position1:hover, .specific-position2:hover, .specific-position3:hover {
+    opacity: 1; /* Full visibility on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth transformation on hover */
+}
