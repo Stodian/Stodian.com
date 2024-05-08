@@ -463,6 +463,7 @@ canvas {
 /* Styling for all sections */
 section {
     min-height: 100vh; /* Each section takes at least the full height of the viewport */
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -484,6 +485,7 @@ section {
 #welcome {
     background-color: transparent;
     text-align: center;
+    color: #333;
 }
 
 /* Timeline Section */
