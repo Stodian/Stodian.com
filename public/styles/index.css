@@ -313,7 +313,7 @@ canvas {
             top: 100px; /* Vertical coordinate from the top of the nearest positioned ancestor */
             position: fixed; /* Fixed position to keep it in place on scroll */
             top:42%;
-            left: 565px;
+            left: 642px;
             width: 420px;
             height: 350px;
             background-image: url('../../public\icons\logos\OMEGA LOGO cropped.jpg'); /* Path to your image */

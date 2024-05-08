@@ -236,6 +236,9 @@ main {
 /* Footer styles */
 footer {
     text-align: center;
+    bottom: 200px;
+    position: fixed; /* Position the footer relative to the viewport */
+    bottom: 0;
 }
 
 .footer-line {
@@ -345,6 +348,7 @@ footer {
         font-family: Arial, sans-serif;
         background: #f4f4f4; /* light grey background simulating a CAD interface */
         scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+        min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
     }
 
 
@@ -362,8 +366,6 @@ footer {
         z-index: 3; /* Ensures it's above all other content */
         transition: top 0.3s;
         position: fixed;
-
-
     }
     
     
