@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const messages = ["Residential",  "Commercial", "Industrial", "Educational", "Public"];
+    const messages = ["Software",  "AI Centred", "Future First", "Scalable", "Adaptive"];
     const typingSpeed = 150; // milliseconds
     const deletingSpeed = 75; // milliseconds
     let currentMessage = 0;
